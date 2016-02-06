@@ -1,0 +1,75 @@
+<style>
+
+
+.colored{
+background-color:black;
+color:white;
+}
+.colorednav{
+background-color:black;
+border-color:black;
+}
+.step{
+	border-radius: 15px 50px;
+    background: #d8d8d4;
+    padding: 20px; 
+    width: 300px;
+   
+}
+
+.heh{
+	border-radius: 15px 50px;
+    background: #d8d8d4;
+    padding: 20px; 
+    width: 250px;
+}
+	
+#sideBar{
+	float:left;
+	width:250px;
+height:100%;
+background-color:#eeeeee;
+}
+body{
+	height:100%;
+	width:100%;
+	}
+ul{
+list-style-type:none;
+}
+.showcontrol{
+display:inline;
+}
+.hidecontrol{
+display:none;
+}
+.frmstyle{
+ border-radius: 15px 50px;
+    background: #d8d8d4;
+    padding: 20px; 
+    width: 350px;
+   
+}
+.frmstyle:hover{
+	background: #fafafa;
+}
+
+#form{
+float:left;
+width:300px;
+margin-left:10px;
+}
+
+.btn-resized{
+width:250px;
+}
+#main{
+float:left;
+margin-left:10px;
+background-color:#eeeeee;
+}
+
+#side{
+width:250px;
+float:right;
+}
