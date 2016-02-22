@@ -32,10 +32,13 @@ border-color:black;
     </div>
     <ul class="nav navbar-nav">
       <li class="active"><a href="index.php">Home</a></li>
-      <li><a href="login.php">Login</a></li>
+     <li> <a href="login.php">Login</a></li>
+     <li> <a href="guest.php">Guest</a></li>
+       <li  > <a href="faq.php">Info</a></li>
     </ul>
   </div>
 </nav>
+
 <center>
 <div class="jumbotron" >
 <h1>Custeez</h1>

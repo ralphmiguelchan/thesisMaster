@@ -64,6 +64,8 @@ width:350px;
     <ul class="nav navbar-nav">
       <li ><a href="index.php">Home</a></li>
      <li class="active"> <a href="login.php">Login</a></li>
+     <li> <a href="guest.php">Guest</a></li>
+       <li  > <a href="faq.php">Info</a></li>
     </ul>
   </div>
 </nav>
@@ -76,7 +78,9 @@ width:350px;
 <label for="userName">Username:</label>
 <input type="text" class="form-control" name="userName" id="userName" />
 <label for="pass">Password:</label>
-<input type="text" class="form-control" name="pass" id="pass" /><br>
+<input type="password" class="form-control" name="pass" id="pass" /><br>
+<a href="register.php">Click here to register</a>
+<br><br>
 <input type="submit" value="Login" id="submit" name="submit" class="btn btn-primary" />
 </form>
 </fieldset>

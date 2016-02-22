@@ -36,6 +36,32 @@ if(isset($_SESSION['uid'])){
 	}else if(isset($_GET['fid'])){
 		$fid = $_GET['fid'];
 	}
+}else if(isset($_SESSION['guid'])){
+	$uid = $_SESSION['guid'];
+	if(isset($_GET['pid'])){
+		$pid = $_GET['pid'];
+	
+		$query = "SELECT * FROM processes WHERE `process_id` = '$pid'";
+		$result = $conn->query($query);
+		while($row = $result->fetch_assoc()){
+			$name = $row['processName'];
+			$details = $row['processDetails'];
+			$ownerid = $row['owner_id'];
+			$desc = $row['processDetails'];
+			$pub = $row['pubType_id'];
+		}
+	}else if(isset($_GET['sid'])){
+		$sid = $_GET['sid'];
+	
+		$query = "SELECT * FROM steps WHERE `step_id` = '$sid'";
+		$result = $conn->query($query);
+		while($row = $result->fetch_assoc()){
+			$name = $row['stepName'];
+			$pid = $row['process_id'];
+		}
+	}else if(isset($_GET['fid'])){
+		$fid = $_GET['fid'];
+	}
 }else{
 	header("location: login.php");
 }
@@ -47,6 +73,7 @@ if(isset($_SESSION['uid'])){
 <script src="js/b.js"></script>
 <script src="js/main.js"></script>
 <script src="dist/sweetalert.min.js"></script> 
+<script src="js/dash.js"></script> 
 <script>
 var pid = "<?php echo $pid; ?>";
 var uid = "<?php echo $uid ?>";
@@ -83,89 +110,55 @@ var ppub = "<?php echo $pub ?>";
 </nav>
 
 <ul class="nav nav-tabs">
+<li><a data-toggle="tab" href="#dashboard">Dashboard</a></li>
 <?php 
-
-	echo '<li><a data-toggle="tab" href="#dashboard">Dashboard</a></li>
-<li class="active"><a data-toggle="tab" href="#maker">Editor</a></li>';
-
+if(isset($_SESSION['uid'])){
+	echo '<li><a  href="editor.php">Editor</a></li>';
+}
 ?>
-  
+  <li class="active"><a data-toggle="tab" href="#user">User</a></li>
   </ul>
 
   <div class="tab-content">
     <div id="dashboard" class="tab-pane fade">
+    <fieldset><legend>Notifications</legend>
+    <?php include("notif.php"); ?>
+    </fieldset>
     <fieldset>
-<legend>Pending</legend>
+<legend>Process Notifications</legend>
+<div id="pendproc">
+<div class="row">
+
+
+
+</div>
+</div>
 </fieldset>	
+
 <fieldset>
-<legend>Approved</legend>
-</fieldset>	
+<legend>Approved/Declined</legend>
+<div id="appdecform">
+<div class="row"></div>
+</div>
+</fieldset>
     </div>
    
-    <div id="maker" class="tab-pane fade in active">
-      <div id="sideBar">
+    <div id="user" class="tab-pane fade in active">
+    <div id="main">
+    	<fieldset>
+    	<legend>Search</legend>
+    	<input type="text" name="searchBar" class="form-control" id="searchBar" />
+    	<?php include("search.php"); ?>
+    	</fieldset>
 
-<?php if(isset($_GET['pid'])){
-
-	
-	echo "<fieldset><legend>Add</legend>";
-echo '<button type="button" class="btn btn-primary btn-resized" data-toggle="modal" data-target="#addStep">Add Step</button>';
-echo '</fieldset>';
-}else if(isset($_GET['sid'])){
-	echo "<fieldset><legend>Add</legend>";
-echo '<button type="button" class="btn btn-primary btn-resized">Add Form</button>';
-echo '</fieldset>';
-}else if(isset($_GET['fid'])){
-	
-}else{
-	echo "<fieldset><legend>Add</legend>";
-echo '<button type="button" class="btn btn-primary btn-resized" data-toggle="modal" data-target="#addProc">Add Process</button>';
-echo '</fieldset>';
-echo "<fieldset>
-<legend>Folders</legend>";
-echo '<button type="button" class="btn btn-primary btn-resized" onClick="viewProc();">Processes</button>';
-
-echo '<br><br><button type="button" class="btn btn-primary btn-resized" onClick="viewForms();">Forms</button>';
-}
-
-?>
-</div>
-
-
-<div id="main">
-<div id='ginto'>
-
-</div>
-<fieldset>
-<legend>
-
-<?php if(isset($_GET['pid'])){
-echo "<span id='pname'>Process: ".$name."</span><br>";
-echo "<span id='pdesc'>Description:".$desc."</span>&nbsp;";
-echo '<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editProc">Edit</button>';
-}else if(isset($_GET['sid'])){
-	echo "<span id='sname'>Step: ".$name."</span>&nbsp;";
-	echo '<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editStep">Edit</button>';
-}
-
-?>
-
-</legend>
-<?php if(isset($_GET['pid'])){
-include("steps.php");
-}else if(isset($_GET['sid']) || isset($_GET['fid'])){
-	include("formmaker.php");
-}
-
-?>
-
-</fieldset>
-
-</div>
-
-
-</div>
-</div>
+    	<div id="stepss">
+    	<ul id="stepup">
+    	
+    	</ul>
+    	</div>
+	</div>
+    </div>
+    
 </div>
 
 

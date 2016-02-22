@@ -1,7 +1,7 @@
 <div id="side">
 <ul class="nav nav-tabs">
     <li class="active"><a data-toggle="tab" href="#menu1">Action 1</a></li>
-    <li><a data-toggle="tab" href="#menu2">Action 2</a></li>
+
   </ul>
   
   <div class="tab-content">
@@ -12,10 +12,11 @@
   <button type="button" class="btn btn-primary btn-resized" data-toggle="modal" data-target="#addCheck">Add Checkbox</button><br><br>
   <button type="button" class="btn btn-primary btn-resized" data-toggle="modal" data-target="#addRadio">Add Radio</button><br><br>
   <button type="button" class="btn btn-primary btn-resized" data-toggle="modal" data-target="#addSelect">Add List</button><br><br>
+    <button type="button" class="btn btn-primary btn-resized" data-toggle="modal" data-target="#addFile">Add File</button><br><br>
+     <button type="button" class="btn btn-primary btn-resized" data-toggle="modal" data-target="#addApprover">Add Approver</button>
+  
   </div>
-  <div id="menu2" class="tab-pane fade">
-   <button type="button" class="btn btn-primary btn-resized" data-toggle="modal" data-target="#addApprover">Add Approver</button>
-  </div>
+  
 </div>
 </div>
 
@@ -58,6 +59,33 @@
         <input type="text" class="form-control" name="txt[1][desc]" id="desc" />
        </form>
        <button type="button" class="btn btn-primary" data-dismiss="modal" id="addTextBtn">Save</button>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<div id="addFile" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Add File</h4>
+      </div>
+      <div class="modal-body">
+       <form name="datas" id="datas" method="POST">
+        <label for="title">Question Title:</label>
+        <input type="text" class="form-control" name="file[1][title]" id="title" />
+         <label for="desc">Question Description:</label>
+        <input type="text" class="form-control" name="file[1][desc]" id="desc" />
+       </form>
+       <button type="button" class="btn btn-primary" data-dismiss="modal" id="addFileBtn">Save</button>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

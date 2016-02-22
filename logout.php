@@ -35,8 +35,10 @@ border-color:black;
       <a class="navbar-brand" href="#">Custeez</a>
     </div>
     <ul class="nav navbar-nav">
-      <li class="active"><a href="index.php">Home</a></li>
-      <li><a href="login.php">Login</a></li>
+      <li ><a href="index.php">Home</a></li>
+     <li class="active"> <a href="login.php">Login</a></li>
+     <li> <a href="guest.php">Guest</a></li>
+       <li  > <a href="faq.php">Info</a></li>
     </ul>
   </div>
 </nav>

@@ -16,12 +16,22 @@ border-color:black;
     width: 300px;
    
 }
-
+.mahor{
+	width:150px;
+	border:1px solid #DEDCDC;
+	height:150px;
+	margin:20px;
+}
+.need{
+	width:250px;
+	background:#DEDCDC;
+	padding:20px;
+}
 .heh{
-	border-radius: 15px 50px;
-    background: #d8d8d4;
-    padding: 20px; 
-    width: 250px;
+	width:150px;
+	border:1px solid #DEDCDC;
+	height:150px;
+	margin:20px;
 }
 	
 #sideBar{
@@ -29,6 +39,25 @@ border-color:black;
 	width:250px;
 height:100%;
 background-color:#eeeeee;
+}
+.proc{
+	width:250px;
+	border:1px solid #eeeeee;
+}
+.pend{
+	width:100px;
+	border:1px solid #DEDCDC;
+	height:120px;
+}
+.notpend{
+	width:150px;
+	border:1px solid #DEDCDC;
+	height:150px;
+}
+#sideBarr{
+	float:right;
+	width:250px;
+background-color:#DEDCDC;
 }
 body{
 	height:100%;
@@ -65,8 +94,9 @@ width:250px;
 }
 #main{
 float:left;
-margin-left:10px;
 background-color:#eeeeee;
+margin-left:10px;
+width:100%:
 }
 
 #side{

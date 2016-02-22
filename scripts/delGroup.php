@@ -1,0 +1,14 @@
+<?php
+include("conn.php");
+
+$id = $_GET['id'];
+
+$query = "DELETE from groups WHERE `group_id` = '$id'";
+$result = $conn->query($query);
+
+if(result){
+	
+}else{
+	mysqli_error($conn);
+}
+?>

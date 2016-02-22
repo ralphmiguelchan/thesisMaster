@@ -1,10 +1,29 @@
 $(document).ready(function(){
 	setWidth();
+	setInterval("setWidth()");
 	$("#sid").val(sid);
 	$("#formOwner").val(uid);
-	if(sid < 0){
+	try{
 		$("#formData").sortable();
+
+	}catch(err){
+		
 	}
+	$("#addGroupBtn").click(function(){
+		var serial = ConvertFormToJSON($("#addGroupForm"));
+		var json = JSON.stringify(serial);
+		
+		$.post("scripts/addgroup.php",{myData:json},function(data,status){
+				swal({   
+					title: "Added!",   
+					text: "Added Successfully",   
+					type: "success",   
+					confirmButtonText: "Thanks" },function(){
+						$("#addGroup").modal('hide');
+						document.location = "groups.php?gid=" + data;
+					});
+			});
+	});
 	$("#addProcBtn").click(function(){
 		var serial = ConvertFormToJSON($("#addProcForm"));
 		var json = JSON.stringify(serial);
@@ -16,10 +35,11 @@ $(document).ready(function(){
 					type: "success",   
 					confirmButtonText: "Thanks" },function(){
 						$("#addProc").modal('hide');
-						document.location = "user.php?pid=" + data;
+						document.location = "editor.php?pid=" + data;
 					});
 		});
 	});
+
 
 	
 	$("#addStepBtn").click(function(){
@@ -33,7 +53,7 @@ $(document).ready(function(){
 				text: "Added Successfully",   
 				type: "success",   
 				confirmButtonText: "Thanks" },function(){
-					document.location = "user.php?sid=" + data;
+					document.location = "editor.php?sid=" + data;
 				});
 		});
 	});
@@ -48,7 +68,7 @@ $(document).ready(function(){
 					text: "Saved Successfully",   
 					type: "success",   
 					confirmButtonText: "Thanks" },function(){
-						window.location = "user.php?pid=" + pid;
+						window.location = "editor.php?pid=" + pid;
 					});
 			});
 		}else{
@@ -58,7 +78,7 @@ $(document).ready(function(){
 					text: "Saved Successfully",   
 					type: "success",   
 					confirmButtonText: "Thanks" },function(){
-						alert(data);
+						window.location = "listform.php";
 					});
 			});
 		}
@@ -77,6 +97,21 @@ $(document).ready(function(){
 		
 		if(check == null){
 			addTextField(title,desc,id);
+		}
+	});
+	
+	$("#addFileBtn").click(function(){
+		var main = $("#addFile");
+		
+		var title = main.find("#title").val();
+		var desc = main.find("#desc").val();
+		var rand = Math.floor((Math.random() * 99999) + 1);
+		
+		var id = rand;
+		var check = $("#li_" + id).val();
+		
+		if(check == null){
+			addFileField(title,desc,id);
 		}
 	});
 	
@@ -204,7 +239,37 @@ $(document).ready(function(){
 		
 		editParaField(title,desc,id);
 	});
-	
+	$("#searchBar").keyup(function(event){
+			$("#proc").find(".row").html("");
+			$("#groups").html("");
+			$("#forms").html("");
+			$.get("scripts/getsearchproc.php?q=" + $("#searchBar").val(),function(data){
+				var json = $.parseJSON(data);
+				if($("#searchBar").val() == ""){
+					
+				}else{
+					$.each(json,function(i,item){
+						$("#proc").find(".row").append('<div>' + 
+								'<a href="viewprocess.php?pid=' + item.process_id + '"><img src="img/proc.png" width="40" style="float:left;"></a>'+
+								'<span>Name: ' + item.processName + '</span><br>'+
+								'<span>Process ID: ' + item.rgid + '</span></div>');
+					});
+				}
+			});
+			$.get("scripts/getsearchgroups.php?q=" + $("#searchBar").val(),function(data){
+				var json = $.parseJSON(data);
+				if($("#searchBar").val() == ""){
+					
+				}else{
+					$.each(json,function(i,item){
+						$("#groups").append('<div>' + 
+								'<a href="viewgroup.php?gid=' + item.group_id + '"><img src="img/proc.png" width="40" style="float:left;"></a>'+
+								'<span>Name: ' + item.groupName + '</span><br>');
+					});
+				}
+			});
+		
+	});
 	$("#editProcBtn").click(function(){
 		var main = $("#editProc");
 		
@@ -220,6 +285,7 @@ $(document).ready(function(){
 	fillApprover();
 	fillForm();
 	getSteps();
+	getStepx();
 	fillEditProc();
 });
 
@@ -231,6 +297,20 @@ function fillEditProc(){
 	main.find("#procDetails").val(pdesc);
 	main.find("#publicity").val(ppub);
 }
+function subBtn(){
+	var json = $("#frm").serialize();
+	$.post("scripts/submitdata.php", json, function(data){
+		$.get("scripts/getproid.php?sid=" + sid,function(datas,status){
+			swal({   
+				title: "Submitted!",   
+				text: "Submitted Successfully",   
+				type: "success",   
+				confirmButtonText: "Thanks" },function(){
+					document.location = "viewprocess.php?pid=" + datas;
+				});
+		});
+	});
+}
 function editProc(title,desc){
 	$.post("scripts/updateproc.php",$("#editProcForm").serialize(),function(data,status){
 		$("#pname").html("Process: " + title);
@@ -240,7 +320,7 @@ function editProc(title,desc){
 
 function fillForm(){
 	if(sid > 0){
-		$.get("scripts/getstep.php?sid=" + sid,function(data,status){
+		$.get("scripts/getstep.php?sid=" + sid,function(data,status){ 
 			var datum = $.parseJSON(data);
 			$.each(datum,function(i,item){
 				$("#formName").val(item.formName);
@@ -260,6 +340,8 @@ function fillForm(){
 							addRadioField2(elem.title,elem.desc,rand,elem);
 						}else if(elem.type == "select"){
 							addSelectField2(elem.title,elem.desc,rand,elem);
+						}else if(elem.type == "file"){
+							addFileField(elem.title,elem.desc,rand);
 						}
 					});
 				});
@@ -288,6 +370,8 @@ function fillForm(){
 							addRadioField2(elem.title,elem.desc,rand,elem);
 						}else if(elem.type == "select"){
 							addSelectField2(elem.title,elem.desc,rand,elem);
+						}else if(elem.type == "file"){
+							addFileField(elem.title,elem.desc,rand);
 						}
 					});
 				});
@@ -304,7 +388,13 @@ function delProc(id){
 
 function delForm(id){
 	$.get("scripts/delform.php?id=" + id,function(data,status){
-		viewForms();
+		viewForm();
+	});
+}
+
+function delGroup(id){
+	$.get("scripts/delGroup.php?id=" + id,function(data,status){
+		viewGroup();
 	});
 }
 
@@ -314,65 +404,98 @@ function delSteps(id){
 	});
 }
 
-function viewProc(){
-	setWidth();
-	$.get("scripts/getproc.php?id=" + uid,function(data,status){
-		var main = $("#ginto");
-		main.html("");
-		
-		var datum = $.parseJSON(data);
-		
-		$.each(datum,function(i,item){
-			main.append("<div id='row' class='row'></div>");
-			
-			var lmain = $("#row");
-			
-			lmain.append("<div class='col-sm-4 heh' id='proc_" + item.process_id + "'></div>");
-			
-			var rmain = $("#proc_" + item.process_id);
-			
-			rmain.append("<span>Process Name: " + item.processName + "</font></span>&nbsp;");
-			rmain.append("<a href='user.php?pid=" + item.process_id + "'>Edit</a>");
-			rmain.append("|<a href='javascript:delProc(\"" + item.process_id + "\");'>Delete</a>");
-		});
-	});
-}
-
-function viewForms(){
-	setWidth();
-	$.get("scripts/getforms.php?id=" + uid,function(data,status){
-		var main = $("#ginto");
-		main.html("");
-		
-		var datum = $.parseJSON(data);
-		
-		$.each(datum,function(i,item){
-			main.append("<div id='row' class='row'></div>");
-			
-			var lmain = $("#row");
-			
-			lmain.append("<div class='col-sm-4 heh' id='form_" + item.form_id + "'></div>");
-			
-			var rmain = $("#form_" + item.form_id);
-			
-			rmain.append("<span>Form Name: " + item.formName + "</font></span>&nbsp;");
-			rmain.append("<a href='user.php?fid=" + item.form_id + "'>Edit</a>");
-			rmain.append("|<a href='javascript:delForm(\"" + item.form_id + "\");'>Delete</a>");
-		});
-	});
-}
 
 function fillApprover(){
 	var main = $("#app");
-	$.get("scripts/getapp.php",function(data,status){
-		var datum = jQuery.parseJSON(data);
-		
-		$.each(datum,function(i,item){
-			main.append("<option value='" + item.user_id + "'>" + item.username + "</option>");
-		});
+	$.get("scripts/checkgroup.php?pid=" + pid,function(data,status){
+		if(data == 0){
+			$.get("scripts/getapp.php",function(data,status){
+				var datum = jQuery.parseJSON(data);
+				
+				$.each(datum,function(i,item){
+					main.append("<option value='" + item.user_id + "'>" + item.username + "</option>");
+				});
+			});
+		}else{
+			$.get("scripts/getmembers.php?id=" + pid,function(dataa){
+				var json = $.parseJSON(dataa);
+				
+				$.each(json,function(i,item){
+					main.append("<option value='" + item.user_id + "'>" + item.username + "</option>");
+
+				});
+			});
+		}
 	});
 	
 }
+
+
+	
+function getStepx(){
+$.get("scripts/track.php?uid=" + uid + "&pid=" + pid,function(dataa,statuss){
+	var dats = $.parseJSON(dataa);
+	$.get("scripts/getsteps.php?pid=" + pid,function(data,status){
+		var datum = $.parseJSON(data);
+		var main = $("#stepup");
+		main.html("");
+		$.each(datum,function(i,item){
+			
+			main.append("<li><div class='step' id='vstep_" + item.step_id + "'></div><br></li>");
+			
+			var rmain = $("#vstep_" + item.step_id);
+			var stepn = 0;
+			$.get("scripts/getrack.php?uid=" + uid + "&pid=" + pid,function(tom){
+				if(tom == "0"){
+					if(item.stepNum == 1){
+						rmain.append("<span>Step " + item.stepNum + ": " + item.stepName + " </span>");
+						rmain.append("<a href='viewform.php?sid=" + item.step_id + "'>view</a>");
+						rmain.append("<img src='img/forms.png'>");
+					}else{
+						rmain.append("<span>Step " + item.stepNum + ": " + item.stepName + " </span>");
+						rmain.append("<br>not yet available.");
+						rmain.append("<img src='img/forms.png'>");
+					}
+				}else{
+					$.each(dats,function(ii,itemm){
+						$.get("scripts/getstepnum.php?sid=" + itemm.step_id,function(s){
+							if(s == item.stepNum){
+
+									rmain.append("<span>Step " + item.stepNum + ": " + item.stepName + " </span>");
+									rmain.append("<a href='viewform.php?sid=" + item.step_id + "'>view</a>");
+									rmain.append("<img src='img/forms.png'>");
+									rmain.append("<b>Next Step</b>");
+
+							}else{
+								
+									rmain.append("<span>Step " + item.stepNum + ": " + item.stepName + " </span>");
+									rmain.append("<img src='img/forms.png'>");
+										
+								
+							}
+						});
+						
+					});
+				}
+			});
+		});
+		
+		/*
+		 <li>
+
+		<div id="step">
+		<span>Step 1: Ralph Chan</span>
+		<a href=''>Edit</button></a>|<a href=''>Delete</button></a>
+		<img src="img/forms.png">
+		</div>	
+		
+		</li>
+		 */
+	});
+});
+}
+
+
 function getSteps(){
 	$.get("scripts/getsteps.php?pid=" + pid,function(data,status){
 		var datum = $.parseJSON(data);
@@ -385,7 +508,7 @@ function getSteps(){
 			var rmain = $("#step_" + item.step_id);
 			
 			rmain.append("<span>Step " + item.stepNum + ": " + item.stepName + " </span>");
-			rmain.append("<a href='user.php?sid=" + item.step_id + "'>edit</a>|<a href='javascript:delSteps(\"" + item.step_id + "\");'>Delete</a>");
+			rmain.append("<a href='editor.php?sid=" + item.step_id + "'>edit</a>|<a href='javascript:delSteps(\"" + item.step_id + "\");'>Delete</a>");
 			rmain.append("<img src='img/forms.png'>");
 		});
 		
@@ -404,7 +527,9 @@ function getSteps(){
 }
 function setWidth(){
 	var sidewidth = $("#sideBar").width();
+	var sideh = $("#sideBar").height();
 	$("#main").width($("body").width() - sidewidth - 100);
+	$("#main").height(sideh);
 }
 function addRadioField2(title,desc,id,elem){
 	
@@ -672,6 +797,24 @@ function editRadioField(title,desc,id){
 		mainitems.append("<input type='radio' id='radio' name='radio[" + id + "][items][" + c + "]' value='" + $(this).val() + "' checked>" + $(this).val() + "</input><br>");
 		c++;
 	});
+}
+
+function addFileField(title,desc,id){
+	var main = $("#formData");
+	main.append("<li id=\"li_" + id + "\"></li>");
+	var limain = main.find("#li_" + id);
+	limain.append('<div id="frmgroup" class="frmstyle"></div>');
+	var formain = limain.find("#frmgroup");
+	
+	formain.append("<label for='txt_" + id + "' id='lbl_" + id + "'>" + title + ": </label>");
+	formain.append('<span><a href="javascript:editTxt(\'' + id + '\');">Edit</a>|<span><a href="javascript:deleteField(\'' + id + '\');">Delete</a></span><br>');
+	formain.append('<span id="desclabel_' + id + '">' + desc + '</span>');
+	formain.append('<input type="file" disabled/>');
+	formain.append('<input type="hidden" class="form-control" id="txt_' + id + '" value="' + title + '" name="file[' + id + '][title]" />');
+	formain.append('<input type="hidden" class="form-control" id="desc_' + id + '" value="' + desc + '" name="file[' + id + '][desc]" />');
+	formain.append('<input type="hidden" class="form-control" id="type_' + id + '" value="file" name="file[' + id + '][type]" />');
+	
+	limain.append("<br>");
 }
 function addTextField(title,desc,id){
 	
