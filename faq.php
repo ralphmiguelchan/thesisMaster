@@ -31,10 +31,11 @@ border-color:black;
       <a class="navbar-brand" href="#">Custeez</a>
     </div>
     <ul class="nav navbar-nav">
-      <li ><a href="index.php">Home</a></li>
+      <li><a href="index.php">Home</a></li>
      <li> <a href="login.php">Login</a></li>
      <li> <a href="guest.php">Guest</a></li>
-      <li  class="active"> <a href="faq.php">Info</a></li>
+       <li> <a href="register.php">Register</a></li>
+       <li class="active"> <a href="faq.php">Info</a></li>
     </ul>
   </div>
 </nav>
@@ -42,6 +43,7 @@ border-color:black;
 <div class="jumbotron" >
 <h1>Information</h1>
 <p>Contact Us : ralphmiguelchan@gmail.com</p>
+<p>Contact Us : fleur4296@gmail.com</p>
 
 </div>
 </center>

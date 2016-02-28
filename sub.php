@@ -37,6 +37,7 @@ border-color:black;
     <ul class="nav navbar-nav">
       <li ><a href="index.php">Home</a></li>
      <li class="active"> <a href="login.php">Login</a></li>
+     <li class="active"> <a href="register.php">Register</a></li>
      <li> <a href="guest.php">Guest</a></li>
        <li  > <a href="faq.php">Info</a></li>
     </ul>

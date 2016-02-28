@@ -116,7 +116,7 @@ if(isset($_SESSION['uid'])){
 	echo '<li><a  href="editor.php">Editor</a></li>';
 }
 ?>
-  <li class="active"><a data-toggle="tab" href="#user">User</a></li>
+  <li class="active"><a data-toggle="tab" href="#user">Find & Use</a></li>
   </ul>
 
   <div class="tab-content">
@@ -146,9 +146,16 @@ if(isset($_SESSION['uid'])){
     <div id="user" class="tab-pane fade in active">
     <div id="main">
     	<fieldset>
-    	<legend>Search</legend>
+    	<br><br><br>
+    	<div class="col-sm-1"></div>
+    	<div class="col-sm-10"><legend>Search</legend></div>
+    	<div class="col-sm-2"></div>
+    	<div class="col-sm-8">
     	<input type="text" name="searchBar" class="form-control" id="searchBar" />
+    	</div>
+    	<div class="col-sm-12">
     	<?php include("search.php"); ?>
+    	</div>
     	</fieldset>
 
     	<div id="stepss">

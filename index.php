@@ -34,16 +34,25 @@ border-color:black;
       <li class="active"><a href="index.php">Home</a></li>
      <li> <a href="login.php">Login</a></li>
      <li> <a href="guest.php">Guest</a></li>
-       <li  > <a href="faq.php">Info</a></li>
+       <li> <a href="register.php">Register</a></li>
+       <li> <a href="faq.php">Info</a></li>
     </ul>
   </div>
 </nav>
 
 <center>
-<div class="jumbotron" >
-<h1>Custeez</h1>
-<p>Form Processing System</p>
-</div>
+	<div class="jumbotron" >
+		<h1>Custeez</h1>
+		<p>Customized Processes and Customized Forms Creator</p>
+	</div>
+	<div class="jumbotron">
+		<h1>Customized Processes</h1>
+		<p> The website allows you to create your own process for your needs.</p>
+	</div>
+	<div class="jumbotron">
+		<h1>Customized Form</h1>
+		<p> The website allows you to create your own forms for your needs similar to Google Forms or Formstack.</p>
+	</div>
 </center>
 </div>
 </body>

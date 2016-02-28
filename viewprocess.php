@@ -102,8 +102,9 @@ var ppub = "<?php echo $pub ?>";
       <a class="navbar-brand" href="#">Custeez</a>
     </div>
     <ul class="nav navbar-nav">
-      <li ><a href="user.php">Home</a></li>
+      <li class="active"><a href="index.php">Home</a></li>
      <li> <a href="logout.php">Logout</a></li>
+       <li> <a href="faq.php">Info</a></li>
     </ul>
   </div>
 </nav>
