@@ -144,6 +144,8 @@ var ppub = "<?php echo $pub ?>";
    
     <div id="maker" class="tab-pane fade in active">
       <div id="sideBar">
+      <div class='col-sm-1'></div>
+      <div class='col-sm-11'><br>
 
 <?php if(isset($_GET['pid'])){
 
@@ -164,7 +166,7 @@ echo '</fieldset>';
 }else{
 	echo "<fieldset><legend>Add</legend>";
 echo '<button type="button" class="btn btn-primary btn-resized" data-toggle="modal" data-target="#addProc">Add Process</button>';
-echo '<br><br><button type="button" class="btn btn-primary btn-resized" data-toggle="modal" data-target="#addGroup">Add Group</button>';
+echo '<br><br><button type="button" class="btn btn-primary btn-resized" data-toggle="modal" data-target="#addGroup">Add Group</button><br><br>';
 
 echo '</fieldset>';
 echo "<fieldset>
@@ -176,15 +178,19 @@ echo '<br><br><a href="listgroup.php"><button type="button" class="btn btn-prima
 }
 ?>
 </div>
+</div>
 
 
 <div id="main">
-<fieldset><legend>Process List</legend>
+<div class="col-sm-1"></div>
+<div class="col-sm-10"><br>
+<fieldset><legend>Group List</legend>
 <label for="searchProc">Search:</label>
 <input type="text" id="searchProc" class='form-control' name="searchProc" /><br>
-<legend>Result</legend>
+<legend>Result</legend><br>
 <div id="res">
 <div class="row">
+</div>
 
 </div>
 </div>
@@ -202,7 +208,7 @@ echo '<button type="button" class="btn btn-primary" data-toggle="modal" data-tar
 
 ?>
 
-</legend>
+</legend>&nbsp;&nbsp;&nbsp;
 <?php if(isset($_GET['pid'])){
 include("steps.php");
 }else if(isset($_GET['sid']) || isset($_GET['fid'])){

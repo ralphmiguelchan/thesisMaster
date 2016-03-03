@@ -105,7 +105,6 @@ var ppub = "<?php echo $pub ?>";
     <ul class="nav navbar-nav">
       <li ><a href="user.php">Home</a></li>
      <li> <a href="logout.php">Logout</a></li>
-     <li> <a href="info.php">Info</a></li>
     </ul>
   </div>
 </nav>
@@ -117,18 +116,20 @@ if(isset($_SESSION['uid'])){
 	echo '<li><a  href="editor.php">Editor</a></li>';
 }
 ?>
-<li><a href="user.php">User</a></li>
+<li><a href="user.php">Find & Use</a></li>
 
   
   </ul>
 
   <div class="tab-content">
+  	<div class='col-sm-1'></div>
+    <div class='col-sm-10'><br>
     <div id="dashboard" class="tab-pane fade in active">
-    <fieldset><legend>Notifications</legend>
+    <fieldset style="height: 20%;"><legend>For Your Review</legend>
     <?php include("notif.php"); ?>
     </fieldset>
-    <fieldset>
-<legend>Process Notifications</legend>
+    <fieldset style="height: 20%;">
+<legend>Process Status</legend>
 <div id="pendproc">
 <div class="row">
 
@@ -138,13 +139,13 @@ if(isset($_SESSION['uid'])){
 </div>
 </fieldset>	
 
-<fieldset>
-<legend>Approved/Declined</legend>
+<fieldset style="height: 20%;">
+<legend>Your Approved/Declined Items</legend>
 <div id="appdecform">
 <div class="row"></div>
 </div>
 </fieldset>
-    </div>
+    </div></div>
    
     <div id="maker" class="tab-pane fade">
       <div id="sideBar">

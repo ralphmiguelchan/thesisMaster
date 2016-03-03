@@ -104,7 +104,6 @@ var ppub = "<?php echo $pub ?>";
     <ul class="nav navbar-nav">
       <li ><a href="user.php">Home</a></li>
      <li> <a href="logout.php">Logout</a></li>
-     <li> <a href="info.php">Info</a></li>
     </ul>
   </div>
 </nav>
@@ -129,8 +128,10 @@ var ppub = "<?php echo $pub ?>";
 </fieldset>	
     </div>
    
-    <div id="maker" class="tab-pane fade in active">
-      <div id="sideBar">
+    <div id="maker" style="height: 100%;" class="tab-pane fade in active">
+      <div id="sideBar" style="height: 100%;">
+      <div class='col-sm-1'></div>
+      <div class='col-sm-11'><br>
 
 <?php if(isset($_GET['pid'])){
 
@@ -146,7 +147,7 @@ echo '</fieldset>';
 	
 }else{
 	echo "<fieldset><legend>Add</legend>";
-echo '<button type="button" class="btn btn-primary btn-resized" data-toggle="modal" data-target="#addProc">Add Process</button>';
+echo '<button type="button" class="btn btn-primary btn-resized" data-toggle="modal" data-target="#addProc">Add Process</button><br><br>';
 echo '</fieldset>';
 echo "<fieldset>
 <legend>Folders</legend>";
@@ -157,12 +158,15 @@ echo '<br><br><button type="button" class="btn btn-primary btn-resized" onClick=
 
 ?>
 </div>
+</div>
 
 
 <div id="main">
-<div id='ginto'>
+<div id='ginto' style="height: 100%;">
 
 </div>
+<div class="col-sm-1"></div>
+<div class="col-sm-10"><br>
 <fieldset>
 <legend>
 
@@ -187,7 +191,7 @@ include("steps.php");
 ?>
 
 </fieldset>
-
+</div>
 </div>
 
 

@@ -124,7 +124,6 @@ var ppub = "<?php echo $pub ?>";
     <ul class="nav navbar-nav">
       <li class="active"><a href="index.php">Home</a></li>
      <li> <a href="logout.php">Logout</a></li>
-       <li> <a href="faq.php">Info</a></li>
     </ul>
   </div>
 </nav>
@@ -136,7 +135,7 @@ if(isset($_SESSION['uid'])){
 	echo '<li><a  href="editor.php">Editor</a></li>';
 }
 ?>
-  <li class="active"><a data-toggle="tab" href="#user">User</a></li>
+  <li class="active"><a data-toggle="tab" href="#user">Find & Use</a></li>
   </ul>
 
   <div class="tab-content">
@@ -167,21 +166,25 @@ if(isset($_SESSION['uid'])){
     <div id="main">
     
     	<div id="sideBarr">
+    	<div class='col-sm-1'></div>
+     	<div class='col-sm-11'><br>
     	<fieldset>
     	<legend>Search</legend>
     	<input type="text" name="searchBar" class="form-control" id="searchBar" />
     	<?php include("search.php"); ?>
     	</fieldset>
     	</div>
+    	</div>
     	<fieldset>
-    	
-    	<legend>Group Name: <?php echo $name; ?><br>
+    	<div class="col-sm-1"></div>
+		<div class="col-sm-9"><br>
+    	<legend>Group Name: <?php echo $name; ?><br><br>
     	Description: <?php echo $desc; ?></legend>
 		<div id="res">
 		<div class="row">
-		
 		</div>
 		</div>
+
     	</fieldset>
     	
 	</div>

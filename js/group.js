@@ -101,7 +101,7 @@ function getGroups(){
 			rmain.append("<span style='color:red;'>" + item.processDetails + "</span><br>");
 
 			rmain.append("<img src='img/proc.png' width='50'></img><br>");
-			rmain.append("<a href='editor.php?pid=" + item.process_id + "'>Edit</a>");
+			rmain.append("<a href='editor.php?pid=" + item.process_id + "'>View</a>");
 			rmain.append("|<a href='javascript:delProc(\"" + item.process_id + "\");'>Delete</a></center>" + 
 					"<a href='javascript:remFromGroup(" + item.process_id + ");'><button type='text' class='btn btn-primary'>Remove Process </button></a>");
 	});

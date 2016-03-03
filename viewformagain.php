@@ -106,7 +106,6 @@ var ppub = "<?php echo $pub ?>";
     <ul class="nav navbar-nav">
       <li ><a href="user.php">Home</a></li>
      <li> <a href="logout.php">Logout</a></li>
-     <li> <a href="faq.php">Info</a>
     </ul>
   </div>
 </nav>
@@ -118,7 +117,7 @@ if(isset($_SESSION['uid'])){
 	echo '<li><a  href="editor.php">Editor</a></li>';
 }
 ?>  
-<li class="active"><a data-toggle="tab" href="#user">User</a></li>
+<li class="active"><a data-toggle="tab" href="#user">Find & Use</a></li>
   </ul>
 
   <div class="tab-content">
@@ -146,7 +145,9 @@ if(isset($_SESSION['uid'])){
     </div>
    
     <div id="user" class="tab-pane fade in active">
-    <div id="main">
+    <div id="main" style="height: 100%;">
+    <div class="col-sm-1"></div>
+	<div class="col-sm-10"><br><br>
     	
     	<fieldset>
     	
@@ -160,7 +161,7 @@ if(isset($_SESSION['uid'])){
     	</form>
     	
     	</fieldset>
-    	
+    	</div>
     	</div>
     	
 	</div>

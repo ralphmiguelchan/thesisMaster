@@ -118,7 +118,6 @@ var ppub = "<?php echo $pub ?>";
     <ul class="nav navbar-nav">
       <li ><a href="user.php">Home</a></li>
      <li> <a href="logout.php">Logout</a></li>
-     <li> <a href="info.php">Info</a></li>
     </ul>
   </div>
 </nav>
@@ -126,7 +125,7 @@ var ppub = "<?php echo $pub ?>";
 <ul class="nav nav-tabs">
 <li><a data-toggle="tab" href="#dashboard">Dashboard</a></li>
 <li class="active"><a data-toggle="tab" href="#maker">Editor</a></li>
-<li><a href="user.php">User</a></li>
+<li><a href="user.php">Find & Use</a></li>
   
   </ul>
 
@@ -157,6 +156,8 @@ var ppub = "<?php echo $pub ?>";
    
     <div id="maker" class="tab-pane fade in active">
       <div id="sideBar">
+      <div class='col-sm-1'></div>
+      <div class='col-sm-11'><br>
      	 <fieldset><legend>Add</legend>
      	 <button type="button" class="btn btn-primary btn-resized" data-toggle="modal" data-target="#addProc">Add Process</button>
      	 <br><br><a href="editor.php"><button type="button" class="btn btn-primary btn-resized">Back</button></a>
@@ -175,17 +176,19 @@ var ppub = "<?php echo $pub ?>";
      	 <div id="processlist" style="height:100px; overflow: auto;">
      	 </div>
      	 </fieldset>
-     	 
+     	 </div>
 	</div>
 
 
 <div id="main">
+<div class="col-sm-1"></div>
+<div class="col-sm-10"><br>
 <fieldset>
 <legend>
-<span id='tit'>Group Name: <?php echo $name ?></span>&nbsp;<button class='btn btn-primary' data-toggle="modal" data-target="#editGroup">Edit</button><br>
-<span id='desc'>Description: <?php echo $details ?></span>
+<span id='tit'>Group Name: <?php echo $name ?></span>&nbsp;<button class='btn btn-primary' style="margin: 15px;" data-toggle="modal" data-target="#editGroup">Edit</button><br>
+<span id='desc'>Description: <?php echo $details ?></span><br>
 
-</legend></fieldset>
+</legend></fieldset></div>
 <div class="row">
 
 </div>

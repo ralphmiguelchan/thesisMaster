@@ -66,7 +66,7 @@ if(isset($_SESSION['uid'])){
 	header("location: login.php");
 }
 ?>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN">
+<!DOCTYPE HTML>
 <html>
 <head>
 <script src="js/jq.js"></script>
@@ -77,6 +77,14 @@ if(isset($_SESSION['uid'])){
 <script src="js/forms.js"></script> 
 <script src="js/group.js"></script> 
 
+<!-- for the toggle switch -->
+<!-- <link href="css/bootstrap-switch.css" rel="stylesheet"> -->
+<!-- <link href="css/bootstrap.min.css" rel="stylesheet"> -->
+<!-- <script src="js/bootstrap-switch.js"></script> -->
+<!-- <script src="js/jquery.min.js"></script> -->
+<!-- <link href="css/highlight.css" rel="stylesheet"> -->
+<!-- <link href="css/main.css" rel="stylesheet"> -->
+<!-- <link href="http://getbootstrap.com/assets/css/docs.min.css" rel="stylesheet"> -->
 
 <script>
 var pid = "<?php echo $pid; ?>";
@@ -94,7 +102,6 @@ var ppub = "<?php echo $pub ?>";
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <link rel="stylesheet" type="text/css" href="css/jqu-min.css">
-</style>
 </head>
 <body>
 
@@ -109,48 +116,25 @@ var ppub = "<?php echo $pub ?>";
     <ul class="nav navbar-nav">
       <li ><a href="user.php">Home</a></li>
      <li> <a href="logout.php">Logout</a></li>
-     <li> <a href="info.php">Info</a></li>
     </ul>
   </div>
 </nav>
 
 <ul class="nav nav-tabs">
-<li><a data-toggle="tab" href="#dashboard">Dashboard</a></li>
+<li><a href="dashboard.php">Dashboard</a></li>
 <li class="active"><a data-toggle="tab" href="#maker">Editor</a></li>
-<li><a href="user.php">User</a></li>
+<li><a href="user.php">Find & Use</a></li>
   
   </ul>
 
-  <div class="tab-content">
-      <div id="dashboard" class="tab-pane fade">
-    <fieldset><legend>Notifications</legend>
-    <?php include("notif.php"); ?>
-    </fieldset>
-    <fieldset>
-<legend>Process Notifications</legend>
-<div id="pendproc">
-<div class="row">
-
-
-
-</div>
-</div>
-</fieldset>	
-
-<fieldset>
-<legend>Approved/Declined</legend>
-<div id="appdecform">
-<div class="row"></div>
-</div>
-</fieldset>
-    </div>
-   
+  <div class="tab-content" style="height: 100%;">
     <div id="maker" class="tab-pane fade in active">
       <div id="sideBar">
+      <div class='col-sm-1'></div>
+      <div class='col-sm-11'><br>
 
 <?php if(isset($_GET['pid'])){
 
-	
 	echo "<fieldset><legend>Add</legend>";
 echo '<button type="button" class="btn btn-primary btn-resized" data-toggle="modal" data-target="#addStep">Add Step</button>';
 echo '<br><br><button type="button" class="btn btn-primary btn-resized" data-toggle="modal" data-target="#addExistingForm">Add Existing Form</button>';
@@ -168,7 +152,7 @@ echo '</fieldset>';
 }else{
 	echo "<fieldset><legend>Add</legend>";
 echo '<button type="button" class="btn btn-primary btn-resized" data-toggle="modal" data-target="#addProc">Add Process</button>';
-echo '<br><br><button type="button" class="btn btn-primary btn-resized" data-toggle="modal" data-target="#addGroup">Add Group</button>';
+echo '<br><br><button type="button" class="btn btn-primary btn-resized" data-toggle="modal" data-target="#addGroup">Add Group</button><br><br>';
 
 echo '</fieldset>';
 echo "<fieldset>
@@ -182,19 +166,23 @@ echo '<br><br><a href="listgroup.php"><button type="button" class="btn btn-prima
 
 ?>
 </div>
+</div>
 
 
 <div id="main">
 <div id='ginto'>
 
 </div>
+<div class="col-sm-1"></div>
+<div class="col-sm-10"><br>
 <fieldset>
 <legend>
 
+
 <?php if(isset($_GET['pid'])){
 echo "<span id='pname'>Process: ".$name."</span><br>";
-echo "<span id='pdesc'>Description:".$desc."</span>&nbsp;";
-echo '<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editProc">Edit</button>';
+echo "<span id='pdesc'>Description:".$desc."</span>";
+echo '<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editProc" style="margin: 15px;">Edit</button>';
 }else if(isset($_GET['sid'])){
 	echo "<span id='sname'>Step: ".$name."</span>&nbsp;";
 	echo '<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editStep">Edit</button>';
@@ -212,6 +200,7 @@ include("steps.php");
 ?>
 
 </fieldset>
+</div>
 
 </div>
 
@@ -236,9 +225,9 @@ include("steps.php");
       </div>
       <div class="modal-body">
        <form name="addProcForm" id="addProcForm" method="POST">
-        <label for="procName">Process Name:</label>
+        <label for="procName" required="required">Process Name:</label>
         <input type="text" class="form-control" name="procName" />
-        <label for="procDetails">Process Details:</label>
+        <label for="procDetails" required="required">Process Details:</label>
         <input type="text" class="form-control" name="procDetails" />
          <label for="publicity">Process Publicity:</label>
            <input type="radio" class="form-control" value="1" name="publicity">Public</input>
@@ -300,11 +289,21 @@ include("steps.php");
       </div>
       <div class="modal-body">
        <form name="addGroupForm" id="addGroupForm" method="POST">
-        <label for="procName">Group Name:</label>
+        <label for="procName" required="required">Group Name:</label>
         <input type="text" class="form-control" name="groupname" />
-        <label for="procDetails">Group Details:</label>
+        <label for="procDetails" required="required">Group Details:</label>
         <input type="text" class="form-control" name="groupdetails" />
          <label for="publicity">Group Publicity:</label>
+				<!-- toggle switch -->
+	         	<!-- <div class="bootstrap-switch bootstrap-switch-wrapper bootstrap-switch-id-switch-state bootstrap-switch-animate bootstrap-switch-off" style="width: 108px;height:5%;">
+		         	<div class="bootstrap-switch-container" style="width: 159px; margin-left: -53px;">
+			         	<span class="bootstrap-switch-handle-on bootstrap-switch-primary" style="width: 53px;">ON</span>
+			         	<span class="bootstrap-switch-label" style="width: 53px;">&nbsp;</span>
+			         	<span class="bootstrap-switch-handle-off bootstrap-switch-default" style="width: 53px;">OFF</span>
+			         	<input id="switch-state" type="checkbox" checked="">
+		         	</div>
+	         	</div> -->
+
            <input type="radio" class="form-control" value="1" name="publicity">Public</input>
            <input type="radio" class="form-control" value="2" name="publicity">Private</input>
         <input type="hidden" name="id" value='<?php echo $_SESSION["uid"]; ?>' />

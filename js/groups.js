@@ -23,7 +23,7 @@ function viewGroup(){
 			rmain.append("<span>" + item.groupName + "</span><br>");
 			rmain.append("<span style='color:red;'>" + item.groupDetails + "</span><br>");
 			rmain.append("<img src='img/proc.png' width='50'></img><br>");
-			rmain.append("<a href='groups.php?gid=" + item.group_id + "'>Edit</a>");
+			rmain.append("<a href='groups.php?gid=" + item.group_id + "'>View</a>");
 			rmain.append("|<a href='javascript:delGroup(\"" + item.group_id + "\");'>Delete</a>");
 		});
 	});
