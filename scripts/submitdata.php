@@ -27,7 +27,15 @@ foreach( $_POST as $stuff ) {
 
 $finals = json_encode($arrays);
 
-$query = "INSERT into submittedforms (subFormData, user_id, substatus, step_id)VALUES('$finals','$uid','0','$sid')";
+$query = "SELECT * FROM steps WHERE `step_id` = '$sid'";
+$result = $conn->query($query);
+
+$insert = 0;
+
+while($rox = $result->fetch_assoc()){
+	$insert = $rox['form_id'];
+}
+$query = "INSERT into submittedforms (subFormData, user_id, substatus, step_id,form_id)VALUES('$finals','$uid','0','$sid','$insert')";
 $c = $conn->query($query);
 
 if($c){

@@ -1,5 +1,12 @@
 $(document).ready(function(){
-	setWidth();
+	try{
+		$("#addProc").find("#publicity").bootstrapSwitch();
+		$("#addGroup").find("#publicity").bootstrapSwitch();
+		$("#editProc").find("#publicity").bootstrapSwitch();
+	}catch($e){
+		
+	}
+
 	setInterval("setWidth()");
 	$("#sid").val(sid);
 	$("#formOwner").val(uid);
@@ -24,6 +31,19 @@ $(document).ready(function(){
 					});
 			});
 	});
+	$("#addGroupBtn2").click(function(){
+		var serial = ConvertFormToJSON($("#addGroupForm"));
+		var json = JSON.stringify(serial);
+		
+		$.post("scripts/addgroup.php",{myData:json},function(data,status){
+				swal({   
+					title: "Added!",   
+					text: "Added Successfully",   
+					type: "success",   
+					confirmButtonText: "Thanks" },function(){
+					});
+			});
+	});
 	$("#addProcBtn").click(function(){
 		var serial = ConvertFormToJSON($("#addProcForm"));
 		var json = JSON.stringify(serial);
@@ -39,7 +59,22 @@ $(document).ready(function(){
 					});
 		});
 	});
-
+	$("#addProcBtn2").click(function(){
+		var serial = ConvertFormToJSON($("#addProcForm"));
+		var json = JSON.stringify(serial);
+		
+		$.post("scripts/addproc.php",{myData:json},function(data,status){
+				swal({   
+					title: "Added!",   
+					text: "Added Successfully",   
+					type: "success",   
+					confirmButtonText: "Thanks" },function(){
+						$("#addProc").find("#procName").val("");
+						$("#addProc").find("#procDetails").val("");
+						$("#addProc").find("#publicity").val("");
+					});
+		});
+	});
 
 	
 	$("#addStepBtn").click(function(){
@@ -61,26 +96,36 @@ $(document).ready(function(){
 	
 	$("#saveBtn").click(function(){
 		var json = $("#frm").serialize();
-		if(sid > 0){
-			$.post("scripts/addform.php",json,function(data,status){
-				swal({   
-					title: "Saved!",   
-					text: "Saved Successfully",   
-					type: "success",   
-					confirmButtonText: "Thanks" },function(){
-						window.location = "editor.php?pid=" + pid;
-					});
-			});
+		if($("#formName").val() == ""){
+			swal({   
+				title: "Error!",   
+				text: "No form name input.",   
+				type: "error",   
+				confirmButtonText: "Try Again" },function(){
+					
+				});
 		}else{
-			$.post("scripts/addrealform.php",json,function(data,status){
-				swal({   
-					title: "Saved!",   
-					text: "Saved Successfully",   
-					type: "success",   
-					confirmButtonText: "Thanks" },function(){
-						window.location = "listform.php";
-					});
-			});
+			if(sid > 0){
+				$.post("scripts/addform.php",json,function(data,status){
+					swal({   
+						title: "Saved!",   
+						text: "Saved Successfully",   
+						type: "success",   
+						confirmButtonText: "Thanks" },function(){
+							window.location = "editor.php?pid=" + pid;
+						});
+				});
+			}else{
+				$.post("scripts/addrealform.php",json,function(data,status){
+					swal({   
+						title: "Saved!",   
+						text: "Saved Successfully",   
+						type: "success",   
+						confirmButtonText: "Thanks" },function(){
+							window.location = "listform.php";
+						});
+				});
+			}
 		}
 	});
 	
@@ -241,15 +286,15 @@ $(document).ready(function(){
 	});
 	$("#searchBar").keyup(function(event){
 			$("#proc").find(".row").html("");
-			$("#groups").html("");
+			$("#groups").find(".row").html("");
 			$("#forms").html("");
 			$.get("scripts/getsearchproc.php?q=" + $("#searchBar").val(),function(data){
 				var json = $.parseJSON(data);
 				if($("#searchBar").val() == ""){
 					
 				}else{
-					$.each(json,function(i,item){
-						$("#proc").find(".row").append('<div>' + 
+					$.each(json,function(i,item){	
+						$("#proc").find(".row").append('<div class="col-sm-12">' + 
 								'<a href="viewprocess.php?pid=' + item.process_id + '"><img src="img/proc.png" width="40" style="float:left;"></a>'+
 								'<span>Name: ' + item.processName + '</span><br>'+
 								'<span>Process ID: ' + item.rgid + '</span></div>');
@@ -262,9 +307,9 @@ $(document).ready(function(){
 					
 				}else{
 					$.each(json,function(i,item){
-						$("#groups").append('<div>' + 
+						$("#groups").find(".row").append('<div class="col-sm-12">' + 
 								'<a href="viewgroup.php?gid=' + item.group_id + '"><img src="img/proc.png" width="40" style="float:left;"></a>'+
-								'<span>Name: ' + item.groupName + '</span><br>');
+								'<span>Name: ' + item.groupName + '</span><br></div>');
 					});
 				}
 			});
@@ -317,7 +362,20 @@ function editProc(title,desc){
 		$("#pdesc").html("Description: " + desc);
 	});
 }
-
+function editBtn(){
+	$.get("scripts/getprocs.php?id=" + pid,function(data){
+		var json = $.parseJSON(data);
+		$.each(json,function(i,item){
+			$("#editProc").find("#procName").val(item.processName);
+			$("#editProc").find("#procDetails").val(item.processDetails);
+			
+			if(item.pubType_id == 2){
+				$("#editProc").find("#publicity").bootstrapSwitch('state', true); // true || false
+			}
+		});
+		$("#editProc").modal("show");
+	});
+}
 function fillForm(){
 	if(sid > 0){
 		$.get("scripts/getstep.php?sid=" + sid,function(data,status){ 
@@ -527,9 +585,9 @@ function getSteps(){
 }
 function setWidth(){
 	var sidewidth = $("#sideBar").width();
-	var sideh = $("#sideBar").height();
+	
 	$("#main").width($("body").width() - sidewidth - 100);
-	$("#main").height(sideh);
+	$("#main").height(1000);
 }
 function addRadioField2(title,desc,id,elem){
 	

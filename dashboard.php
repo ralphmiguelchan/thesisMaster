@@ -125,10 +125,10 @@ if(isset($_SESSION['uid'])){
   	<div class='col-sm-1'></div>
     <div class='col-sm-10'><br>
     <div id="dashboard" class="tab-pane fade in active">
-    <fieldset style="height: 20%;"><legend>For Your Review</legend>
+    <fieldset><legend>For Your Review</legend>
     <?php include("notif.php"); ?>
     </fieldset>
-    <fieldset style="height: 20%;">
+    <fieldset>
 <legend>Process Status</legend>
 <div id="pendproc">
 <div class="row">
@@ -139,7 +139,7 @@ if(isset($_SESSION['uid'])){
 </div>
 </fieldset>	
 
-<fieldset style="height: 20%;">
+<fieldset>
 <legend>Your Approved/Declined Items</legend>
 <div id="appdecform">
 <div class="row"></div>

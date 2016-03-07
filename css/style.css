@@ -100,6 +100,10 @@ margin-right:2%;
 width: auto;
 height: 100%;
 }
+#mains{
+background-color:#eeeeee;
+height: 100%;
+}
 
 #side{
 width:250px;

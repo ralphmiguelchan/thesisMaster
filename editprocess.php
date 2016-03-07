@@ -119,13 +119,27 @@ var ppub = "<?php echo $pub ?>";
   </ul>
 
   <div class="tab-content">
-    <div id="dashboard" class="tab-pane fade">
+    <div id="dashboard" class="tab-pane fade in active">
+    <fieldset><legend>For Your Review</legend>
+    <?php include("notif.php"); ?>
+    </fieldset>
     <fieldset>
-<legend>Pending</legend>
+<legend>Process Status</legend>
+<div id="pendproc">
+<div class="row">
+
+
+
+</div>
+</div>
 </fieldset>	
+
 <fieldset>
-<legend>Approved</legend>
-</fieldset>	
+<legend>Your Approved/Declined Items</legend>
+<div id="appdecform">
+<div class="row"></div>
+</div>
+</fieldset>
     </div>
    
     <div id="maker" style="height: 100%;" class="tab-pane fade in active">

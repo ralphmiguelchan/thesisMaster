@@ -2,12 +2,21 @@
 session_start();
 include("conn.php");
 $obj = json_decode($_POST['myData']);
-
-$name = mysql_real_escape_string($obj->groupname);
-$details = mysql_real_escape_string($obj->groupdetails);
-$id = mysql_real_escape_string($obj->id);
-$pub = mysql_real_escape_string($obj->publicity);
+$pub = 0;
+$name =($obj->groupname);
+$details = ($obj->groupdetails);
+$id = ($obj->id);
+if(isset($obj->publicity)){
+	$pub = $obj->publicity;
+}
 $un = uniqid();
+
+if($pub < 2){
+	$pub = 1;
+}else{
+	$pub = 2;
+}
+
 $query = "INSERT into groups (groupName,groupDetails,owner_id,pubType_id) VALUES ('$name','$details','$id','$pub')";
 $result = $conn->query($query);
 

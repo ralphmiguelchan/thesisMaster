@@ -1,37 +1,39 @@
 $(document).ready(function(){
-	setInterval("FillPendingProc()",2000);
+	setInterval("checkPendingProc()",2000);
+	setInterval("checkPendingForms()",2000);
+	setInterval("checkAccDec()",2000);
 });
-
-function FillPendingProc(){
-	$.get("scripts/getpendingprocess.php?uid=" + uid,function(data){
-		var json = $.parseJSON(data);
-		$("#pendproc").find(".row").html("");
-		$.each(json,function(i,item){
-			$.get("scripts/countproc.php?pid=" + item.process_id,function(datax){
-				$("#pendproc").find(".row").append('<div class="col-sm-1">' +
-				'<div class="notpend">'+
-				'<center>'+
-				'<span style="font-size:10px;">' + item.processName + '</span><br>' +
-				'<span style="font-size:10px; color:red;">' + item.rgid + '</span><br>'+
-				'<img src="img/proc.png"><br>' +
-				'<div id="p_' + item.rgid + '"></div>' +
-				'<a href="viewprocess.php?pid=' + item.process_id + '"><button type="button" class="btn btn-primary">View</button></a>' + 
-				'</center>' +
-				'</div>' +
-				'</div>');
-				
-				
-				if(item.tstatus == 0){
-					$("#p_" + item.rgid).append('<span>Progress: ' + item.stepNum + '/' + datax + '</span>');
-				}else if(item.tstatus == 1){
-					$("#p_" + item.rgid).append('<span>Finished!</span>');
-
-				}
-			});
-		});
+var pendproc = 0;
+var pendform = 0;
+var pendacc = 0;
+function checkPendingProc(){
+	$.get("scripts/counttrack.php?uid=" + uid,function(data,status){
+		if(pendproc < data){
+			pendproc = data;
+			FillPendingProc();
+		}
 	});
-	
-	
+}
+function checkPendingForms(){
+	$.get("scripts/countforms.php?uid=" + uid,function(data,status){
+		if(pendform < data){
+			pendform = data;
+			FillPendingForm();
+		}
+	});
+}
+
+function checkAccDec(){
+	$.get("scripts/countaccdec.php?uid=" + uid,function(data,status){
+		if(pendacc < data){
+			pendacc = data;
+			FillAccDec();
+		}
+	});
+}
+
+function FillPendingForm(){
+
 	$.get("scripts/getpendingform.php?uid=" + uid,function(data){
 		var json = $.parseJSON(data);
 		$("#notif").find(".row").html("");
@@ -39,13 +41,18 @@ function FillPendingProc(){
 			$("#notif").find(".row").append('<div class="col-sm-2">' +
 					'<div class="notpend">'+
 					'<center>'+
-					'<span style="font-size:10px;">' + item.formName + '</span><br>' +
+					'<span style="font-size:10px;">Name:' + item.formName + '</span><br>' +
+					'<span style="font-size:10px;">Process:' + item.processName + '</span><br>' +
 					'<span style="font-size:10px; color:red;">Submitted By: ' + item.username + '</span><br>'+
-					'<img src="img/forms.png" width="80"><br>' +
+					'<img src="img/forms.png" width="60"><br>' +
 					'<button type="text" class="btn btn-primary" onClick="ViewForm(' + item.sub_id + ');">View</button>' +
 					'</center></div></div>');
 		});
 	});
+}
+
+function FillAccDec(){
+
 	
 	$.get("scripts/accdecform.php?uid=" + uid,function(data){
 		var json = $.parseJSON(data);
@@ -79,6 +86,38 @@ function FillPendingProc(){
 						'<button type="text" class="btn btn-primary" onClick="ViewForm2(' + item.sub_id + ');">View</button>' +
 						'</center></div></div>');
 			}
+		});
+	});
+}
+
+function FillPendingProc(){
+	$.get("scripts/getpendingprocess.php?uid=" + uid,function(data){
+		var json = $.parseJSON(data);
+		$("#pendproc").find(".row").html("");
+		$.each(json,function(i,item){
+			$.get("scripts/countproc.php?pid=" + item.process_id,function(datax){
+				$("#pendproc").find(".row").append('<div class="col-sm-2">' +
+				'<div class="notpend">'+
+				'<center>'+
+				'<span style="font-size:10px;">Name:' + item.processName + '</span><br>' +
+				'<span style="font-size:10px;">Owned:' + item.username + '</span><br>' +
+
+				'<span style="font-size:10px; color:red;">ID:' + item.rgid + '</span><br>'+
+				'<img src="img/proc.png"><br>' +
+				'<div id="p_' + item.rgid + '"></div>' +
+				'<a href="viewprocess.php?pid=' + item.process_id + '"><button type="button" class="btn btn-primary">View</button></a>' + 
+				'</center>' +
+				'</div>' +
+				'</div>');
+				
+				
+				if(item.tstatus == 0){
+					$("#p_" + item.rgid).append('<span>Progress: ' + item.stepNum + '/' + datax + '</span>');
+				}else if(item.tstatus == 1){
+					$("#p_" + item.rgid).append('<span>Finished!</span>');
+
+				}
+			});
 		});
 	});
 }

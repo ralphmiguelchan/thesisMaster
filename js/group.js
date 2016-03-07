@@ -1,4 +1,8 @@
+var gid = 0;
 $(document).ready(function(){
+if(gid == 0){
+	
+}else{
 	
 	$("#editGroupBtn").click(function(){
 		$.post("scripts/updategroup.php",$("#editGroupForm").serialize(),function(data){
@@ -16,6 +20,7 @@ $(document).ready(function(){
 
 	getGroupMembers();
 	getOwnedProcess();
+}
 });
 
 function getMembers(q){
@@ -68,16 +73,10 @@ function remMember(id){
 		getGroupMembers();
 	});
 }
-function addToGroup(id){
-	$.get("scripts/addtogroup.php?id=" + id + "&gid=" + gid,function(data){
-		
-		getOwnedProcess();
-		getGroups();
-	});
-}
+
 
 function remFromGroup(id){
-	$.get("scripts/addtogroup.php?id=" + id + "&gid=" + 0,function(data){
+	$.get("scripts/remfromgroup.php?id=" + id,function(data){
 		
 		getOwnedProcess();
 		getGroups();
@@ -102,8 +101,7 @@ function getGroups(){
 
 			rmain.append("<img src='img/proc.png' width='50'></img><br>");
 			rmain.append("<a href='editor.php?pid=" + item.process_id + "'>View</a>");
-			rmain.append("|<a href='javascript:delProc(\"" + item.process_id + "\");'>Delete</a></center>" + 
-					"<a href='javascript:remFromGroup(" + item.process_id + ");'><button type='text' class='btn btn-primary'>Remove Process </button></a>");
+			rmain.append("<a href='javascript:remFromGroup(" + item.process_id + ");'><button type='text' class='btn btn-primary'>Remove Process </button></a>");
 	});
 });
 }

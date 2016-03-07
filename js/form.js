@@ -21,7 +21,7 @@ function viewForm(){
 			lmain.append("<div class='col-sm-4 heh'><center><div id='proc_" + item.form_id + "'></div></center></div>");
 			var rmain = $("#proc_" + item.form_id);
 			
-			rmain.append("<span>" + item.formName + "</span><br>");
+			rmain.append("<span>Name:" + item.formName + "</span><br>");
 			rmain.append("<img src='img/forms.png' width='50'></img><br>");
 			rmain.append("<a href='editor.php?fid=" + item.form_id + "'>Edit</a>");
 			rmain.append("|<a href='javascript:delForm(\"" + item.form_id + "\");'>Delete</a>");
@@ -32,7 +32,7 @@ function viewForm(){
 function searchProc(q){
 	if(q == ""){
 		viewForm();
-	}else{
+	}else{	
 		$.get("scripts/getsearchprocform.php?q=" + q + "&uid=" + uid,function(data){
 			$("#main").find(".row").html("");
 					
@@ -46,7 +46,7 @@ function searchProc(q){
 						lmain.append("<div class='col-sm-4 heh'><center><div id='proc_" + item.form_id + "'></div></center></div>");
 						var rmain = $("#proc_" + item.form_id);
 						
-						rmain.append("<span>" + item.formName + "</span><br>");
+						rmain.append("<span>Name:" + item.formName + "</span><br>");
 						rmain.append("<img src='img/forms.png' width='50'></img><br>");
 						rmain.append("<a href='editor.php?fid=" + item.form_id + "'>Edit</a>");
 						rmain.append("|<a href='javascript:delForm(\"" + item.form_id + "\");'>Delete</a>");

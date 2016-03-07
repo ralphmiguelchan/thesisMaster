@@ -75,6 +75,10 @@ if(isset($_SESSION['uid'])){
 <script src="dist/sweetalert.min.js"></script> 
 <script src="js/dash.js"></script> 
 <script src="js/forms.js"></script> 
+ <link rel="stylesheet" href="js/tree/dist/themes/default/style.min.css" />
+ <link href="css/ui.easytree.css" rel="stylesheet" class="skins" type="text/css" />
+ <script src="js/treee.js"></script>
+   <script src="js/trees.js"></script>
 <script src="js/group.js"></script> 
 
 <!-- for the toggle switch -->
@@ -100,7 +104,11 @@ var ppub = "<?php echo $pub ?>";
 <meta http-equiv="Content-Type" content="text/html; charset=Cp1252">
 <title>Custeez Home</title>
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+
 <link rel="stylesheet" type="text/css" href="css/style.css">
+<link href="css/bootstrap-switch.css" rel="stylesheet">
+<script src="js/bootstrap-switch.js"></script>
+
 <link rel="stylesheet" type="text/css" href="css/jqu-min.css">
 </head>
 <body>
@@ -157,11 +165,7 @@ echo '<br><br><button type="button" class="btn btn-primary btn-resized" data-tog
 echo '</fieldset>';
 echo "<fieldset>
 <legend>Folders</legend>";
-echo '<a href="listproc.php"><button type="button" class="btn btn-primary btn-resized">Processes</button></a>';
-
-echo '<br><br><a href="listform.php"><button type="button" class="btn btn-primary btn-resized">Forms</button></a>';
-echo '<br><br><a href="listgroup.php"><button type="button" class="btn btn-primary btn-resized">Groups</button></a>';
-
+include("hey.php");
 }
 
 ?>
@@ -182,7 +186,7 @@ echo '<br><br><a href="listgroup.php"><button type="button" class="btn btn-prima
 <?php if(isset($_GET['pid'])){
 echo "<span id='pname'>Process: ".$name."</span><br>";
 echo "<span id='pdesc'>Description:".$desc."</span>";
-echo '<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editProc" style="margin: 15px;">Edit</button>';
+echo '<button type="button" class="btn btn-primary" data-toggle="modal" onClick="editBtn()" style="margin: 15px;">Edit</button>';
 }else if(isset($_GET['sid'])){
 	echo "<span id='sname'>Step: ".$name."</span>&nbsp;";
 	echo '<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editStep">Edit</button>';
@@ -225,16 +229,16 @@ include("steps.php");
       </div>
       <div class="modal-body">
        <form name="addProcForm" id="addProcForm" method="POST">
-        <label for="procName" required="required">Process Name:</label>
+        <label for="procName" id="procName" required="required">Process Name:</label>
         <input type="text" class="form-control" name="procName" />
-        <label for="procDetails" required="required">Process Details:</label>
-        <input type="text" class="form-control" name="procDetails" />
-         <label for="publicity">Process Publicity:</label>
-           <input type="radio" class="form-control" value="1" name="publicity">Public</input>
-           <input type="radio" class="form-control" value="2" name="publicity">Private</input>
+        <label for="procDetails" id="procDetails" required="required">Process Details:</label>
+        <input type="text" class="form-control" name="procDetails" /><br>
+         <label for="publicity">Private:</label>
+           <input type="checkbox" class="form-control" value="2" id="publicity" name="publicity"><br><br>
         <input type="hidden" name="id" value='<?php echo $_SESSION["uid"]; ?>' />
        </form>
        <button type="button" class="btn btn-primary" id="addProcBtn">Save</button>
+        <button type="button" class="btn btn-primary" id="addProcBtn2">Save(+)</button>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -292,24 +296,16 @@ include("steps.php");
         <label for="procName" required="required">Group Name:</label>
         <input type="text" class="form-control" name="groupname" />
         <label for="procDetails" required="required">Group Details:</label>
-        <input type="text" class="form-control" name="groupdetails" />
-         <label for="publicity">Group Publicity:</label>
-				<!-- toggle switch -->
-	         	<!-- <div class="bootstrap-switch bootstrap-switch-wrapper bootstrap-switch-id-switch-state bootstrap-switch-animate bootstrap-switch-off" style="width: 108px;height:5%;">
-		         	<div class="bootstrap-switch-container" style="width: 159px; margin-left: -53px;">
-			         	<span class="bootstrap-switch-handle-on bootstrap-switch-primary" style="width: 53px;">ON</span>
-			         	<span class="bootstrap-switch-label" style="width: 53px;">&nbsp;</span>
-			         	<span class="bootstrap-switch-handle-off bootstrap-switch-default" style="width: 53px;">OFF</span>
-			         	<input id="switch-state" type="checkbox" checked="">
-		         	</div>
-	         	</div> -->
-
-           <input type="radio" class="form-control" value="1" name="publicity">Public</input>
-           <input type="radio" class="form-control" value="2" name="publicity">Private</input>
+        <input type="text" class="form-control" name="groupdetails" /><br>
+         <label for="publicity">Private:</label>
+			
+           <input type="checkbox" class="form-control" value="2" id="publicity" name="publicity"><br><br>
         <input type="hidden" name="id" value='<?php echo $_SESSION["uid"]; ?>' />
         
        </form>
        <button type="button" class="btn btn-primary" id="addGroupBtn">Save</button>
+              <button type="button" class="btn btn-primary" id="addGroupBtn2">Save(+)</button>
+       
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -335,10 +331,9 @@ include("steps.php");
         <label for="procName">Process Name:</label>
         <input type="text" class="form-control" id="procName" name="procName" />
         <label for="procDetails">Process Details:</label>
-        <input type="text" class="form-control" id="procDetails" name="procDetails" />
-        <label for="publicity">Process Publicity:</label>
-           <input type="radio" class="form-control" value="1" id="publicity" name="publicity">Public</input>
-           <input type="radio" class="form-control" value="2" id="publicity" name="publicity">Private</input>
+        <input type="text" class="form-control" id="procDetails" name="procDetails" /><br>
+        <label for="publicity">Private:</label>
+           <input type="checkbox" class="form-control" value="2" id="publicity" name="publicity"><br><br>
         <input type="hidden" class="form-control" id="procId" name="procId" />
        </form>
        <button type="button" class="btn btn-primary" data-dismiss="modal" id="editProcBtn">Save</button>

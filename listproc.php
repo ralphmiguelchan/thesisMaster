@@ -76,6 +76,13 @@ if(isset($_SESSION['uid'])){
 <script src="js/dash.js"></script> 
 <script src="js/proc.js"></script>
 <script src="js/forms.js"></script> 
+ <link href="css/ui.easytree.css" rel="stylesheet" class="skins" type="text/css" />
+ <script src="js/treee.js"></script>
+   <script src="js/trees.js"></script>
+   <link href="css/bootstrap-switch.css" rel="stylesheet">
+<script src="js/bootstrap-switch.js"></script>	
+  
+
 
 <script>
 var pid = "<?php echo $pid; ?>";
@@ -87,6 +94,21 @@ var fid = "<?php echo $fid ?>";
 var pname = "<?php echo $name ?>";
 var pdesc = "<?php echo $desc ?>";
 var ppub = "<?php echo $pub ?>";
+
+function allowDrop(ev) {
+    ev.preventDefault();
+}
+
+function drag(ev) {
+    ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function drop(ev) {
+    ev.preventDefault();
+    var data = ev.dataTransfer.getData("text");
+    ev.target.appendChild(document.getElementById(data));
+}
+
 </script>
 <link rel="stylesheet" type="text/css" href="dist/sweetalert.css">
 <meta http-equiv="Content-Type" content="text/html; charset=Cp1252">
@@ -122,11 +144,11 @@ var ppub = "<?php echo $pub ?>";
 
   <div class="tab-content">
        <div id="dashboard" class="tab-pane fade">
-    <fieldset><legend>Notifications</legend>
+    <fieldset><legend>For Your Review</legend>
     <?php include("notif.php"); ?>
     </fieldset>
     <fieldset>
-<legend>Process Notifications</legend>
+<legend>Process Status</legend>
 <div id="pendproc">
 <div class="row">
 
@@ -137,7 +159,7 @@ var ppub = "<?php echo $pub ?>";
 </fieldset>	
 
 <fieldset>
-<legend>Approved/Declined</legend>
+<legend>Your Approved/Declined Items</legend>
 <div id="appdecform">
 <div class="row"></div>
 </div>
@@ -173,10 +195,7 @@ echo '<br><br><button type="button" class="btn btn-primary btn-resized" data-tog
 echo '</fieldset>';
 echo "<fieldset>
 <legend>Folders</legend>";
-echo '<a href="listproc.php"><button type="button" class="btn btn-primary btn-resized">Processes</button></a>';
-echo '<br><br><a href="listform.php"><button type="button" class="btn btn-primary btn-resized">Forms</button></a>';
-echo '<br><br><a href="listgroup.php"><button type="button" class="btn btn-primary btn-resized">Groups</button></a>';
-
+include("hey.php");
 }
 ?>
 </div>
@@ -255,6 +274,8 @@ include("steps.php");
         <input type="hidden" name="id" value='<?php echo $_SESSION["uid"]; ?>' />
        </form>
        <button type="button" class="btn btn-primary" id="addProcBtn">Save</button>
+               <button type="button" class="btn btn-primary" id="addProcBtn2">Save(+)</button>
+       
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -287,6 +308,8 @@ include("steps.php");
         
        </form>
        <button type="button" class="btn btn-primary" id="addGroupBtn">Save</button>
+                     <button type="button" class="btn btn-primary" id="addGroupBtn2">Save(+)</button>
+       
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

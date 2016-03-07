@@ -139,12 +139,12 @@ if(isset($_SESSION['uid'])){
   </ul>
 
   <div class="tab-content">
-    <div id="dashboard" class="tab-pane fade">
-    <fieldset><legend>Notifications</legend>
+    <div id="dashboard" class="tab-pane fade in active">
+    <fieldset><legend>For Your Review</legend>
     <?php include("notif.php"); ?>
     </fieldset>
     <fieldset>
-<legend>Process Notifications</legend>
+<legend>Process Status</legend>
 <div id="pendproc">
 <div class="row">
 
@@ -155,7 +155,7 @@ if(isset($_SESSION['uid'])){
 </fieldset>	
 
 <fieldset>
-<legend>Approved/Declined</legend>
+<legend>Your Approved/Declined Items</legend>
 <div id="appdecform">
 <div class="row"></div>
 </div>
@@ -163,9 +163,7 @@ if(isset($_SESSION['uid'])){
     </div>
    
     <div id="user" class="tab-pane fade in active">
-    <div id="main">
-    
-    	<div id="sideBarr">
+    <div id="sideBarr">
     	<div class='col-sm-1'></div>
      	<div class='col-sm-11'><br>
     	<fieldset>
@@ -175,6 +173,9 @@ if(isset($_SESSION['uid'])){
     	</fieldset>
     	</div>
     	</div>
+    <div id="mains">
+    
+    	
     	<fieldset>
     	<div class="col-sm-1"></div>
 		<div class="col-sm-9"><br>

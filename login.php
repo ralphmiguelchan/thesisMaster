@@ -2,8 +2,8 @@
 session_start();
 include("scripts/conn.php");
 if(isset($_POST['submit'])){
-$user = mysql_real_escape_string($_POST['userName']);
-$pass = mysql_real_escape_string($_POST['pass']);
+$user = $_POST['userName'];
+$pass = $_POST['pass'];
 
 $query = "SELECT * FROM users WHERE `username` = '$user' AND `password` = '$pass'";
 $result = $conn->query($query);
