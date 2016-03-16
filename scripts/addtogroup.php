@@ -4,7 +4,7 @@ include("conn.php");
 
 $id = $_GET['id'];
 $gid = $_GET['gid'];
-
+$b = $_GET['b'];
 $newid = 0;
 $rowid = 0;
 $formid = 0;
@@ -15,7 +15,7 @@ $result = $conn->query($query);
 if($result){
 	$newid = mysqli_insert_id($conn);
 	
-	$query = "UPDATE processes SET `group_id` = '$gid',`rgid` = '$rgid' WHERE `process_id` = '$newid'";
+	$query = "UPDATE processes SET `processName` = '$b', `group_id` = '$gid',`rgid` = '$rgid' WHERE `process_id` = '$newid'";
 	$result = $conn->query($query);
 	
 	$query = "SELECT * FROM steps WHERE `process_id` = '$id'";

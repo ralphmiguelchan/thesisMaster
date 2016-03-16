@@ -105,7 +105,7 @@ var ppub = "<?php echo $pub ?>";
 <nav class="navbar navbar-default colorednav">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">Custeez</a>
+      <a class="navbar-brand" href="index.php">Custeez</a>
     </div>
     <ul class="nav navbar-nav">
       <li ><a href="user.php">Home</a></li>
@@ -115,11 +115,11 @@ var ppub = "<?php echo $pub ?>";
 </nav>
 
 <ul class="nav nav-tabs">
-<li><a data-toggle="tab" href="#dashboard">Dashboard</a></li>
+<li><a href="dashboard.php">Dashboard</a></li>
 <?php 
 if(isset($_SESSION['uid'])){
 	echo '<li><a  href="editor.php">Editor</a></li>';
-	
+	echo '<li class="active"><a href="summary.php">Reports</a></li>';
 }
 ?>
   <li><a  href="user.php">Find & Use</a></li>
@@ -128,7 +128,9 @@ if(isset($_SESSION['uid'])){
   </ul>
 
   <div class="tab-content">
+  
     <div id="dashboard" class="tab-pane fade">
+    
     <fieldset><legend>For Your Review</legend>
     <?php include("notif.php"); ?>
     </fieldset>
@@ -166,7 +168,14 @@ if(isset($_SESSION['uid'])){
     <div id="main">
     <h1 id="formt">Form Title</h1>
     <div class="input-group">
-    <span class="input-group-addon">Count All Data With </span>
+    <span class="input-group-addon">
+    
+    <select id="heads">
+    
+    
+    </select>
+    
+    </span>
     <input type="text" class="form-control" id="search" name="search" />
     <span class="input-group-addon" id="cn">0</span>
     </div>
@@ -177,7 +186,9 @@ if(isset($_SESSION['uid'])){
       </tr>
     </thead>
     <tbody id="datum">
-   
+    <tr>
+    <td>Ralph Chan
+    </tr>
     </tbody>
   </table>
     	</div>

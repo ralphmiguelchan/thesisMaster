@@ -119,7 +119,7 @@ var ppub = "<?php echo $pub ?>";
 <nav class="navbar navbar-default colorednav">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">Custeez</a>
+      <a class="navbar-brand" href="index.php">Custeez</a>
     </div>
     <ul class="nav navbar-nav">
       <li class="active"><a href="index.php">Home</a></li>
@@ -133,13 +133,14 @@ var ppub = "<?php echo $pub ?>";
 <?php 
 if(isset($_SESSION['uid'])){
 	echo '<li><a  href="editor.php">Editor</a></li>';
+	echo '<li><a href="summary.php">Reports</a></li>';
 }
 ?>
   <li class="active"><a data-toggle="tab" href="#user">Find & Use</a></li>
   </ul>
 
   <div class="tab-content">
-    <div id="dashboard" class="tab-pane fade in active">
+    <div id="dashboard" class="tab-pane fade">
     <fieldset><legend>For Your Review</legend>
     <?php include("notif.php"); ?>
     </fieldset>

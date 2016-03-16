@@ -8,25 +8,27 @@ function fillUserForm(){
 			var innerdatum = $.parseJSON(item.formData);
 			var main = $("#form");
 			$.each(innerdatum,function(ii,itemm){
-				var rand = Math.floor((Math.random() * 99999) + 1);
+				var rand = "data";
 				$.each(itemm,function(j,elem){
 					if(elem.type == "text"){
+						var rands = Math.floor((Math.random() * 99999) + 1);
 						main.append("<li><br><div>" +
 								"<span><b>" + elem.title + ":</b></span><br>" + 
 								"<span><i>" + elem.desc + "</span><br>" + 
-								"<input type='text' class='form-control' name='text[" + rand + "][val]' />" +
-								"<input type='hidden' name='text[" + rand + "][title]' value='" + elem.title + "' />" + 
-								"<input type='hidden' name='text[" + rand + "][desc]' value='" + elem.desc + "' /></li>" +
-								"<input type='hidden' name='text[" + rand + "][type]' value='text' /></li>");
+								"<input type='text' class='form-control' name='text" + rands + "[" + rand + "][val]' />" +
+								"<input type='hidden' name='text" + rands + "[" + rand + "][title]' value='" + elem.title + "' />" + 
+								"<input type='hidden' name='text" + rands + "[" + rand + "][desc]' value='" + elem.desc + "' /></li>" +
+								"<input type='hidden' name='text" + rands + "[" + rand + "][type]' value='text' /></li>");
 
 					}else if(elem.type == "para"){
+						var rands = Math.floor((Math.random() * 99999) + 1);
 						main.append("<li><br><div>" +
 								"<span><b>" + elem.title + ":</b></span><br>" + 
 								"<span><i>" + elem.desc + "</span><br>" + 
-								"<textarea class='form-control' name='textarea[" + rand + "][val]'></textarea>" + 
-								"<input type='hidden' name='textarea[" + rand + "][title]' value='" + elem.title + "' />" + 
-								"<input type='hidden' name='textarea[" + rand + "][desc]' value='" + elem.desc + "' /></li>" +
-								"<input type='hidden' name='textarea[" + rand + "][type]' value='textarea' /></li>");
+								"<textarea class='form-control' name='textarea" + rands + "[" + rand + "][val]'></textarea>" + 
+								"<input type='hidden' name='textarea" + rands + "[" + rand + "][title]' value='" + elem.title + "' />" + 
+								"<input type='hidden' name='textarea" + rands + "[" + rand + "][desc]' value='" + elem.desc + "' /></li>" +
+								"<input type='hidden' name='textarea" + rands + "[" + rand + "][type]' value='textarea' /></li>");
 					}else if(elem.type == "file"){
 						main.append("<li><br><div>" +
 								"<span><b>" + elem.title + ":</b></span><br>" + 
@@ -44,27 +46,29 @@ function fillUserForm(){
 								"<input type='hidden' name='check[" + rand + "][type]' value='check' /></li>");
 						
 						$.each(elem.items,function(i,item){
-							$("#ch_" + rand).append("<input type='checkbox' name='check[" + rand + "][val][" + i + "]' value='" + item + "'>" + item + "</input><br>");
+							$("#ch_" + rand).append("<input type='checkbox' name='check[" + rand + "][val][]' value='" + item + "'>" + item + "</input><br>");
 						});
 					}else if(elem.type == "radio"){
-						main.append("<li><br><div id='ra_" + rand + "'>" +
+						var rands = Math.floor((Math.random() * 99999) + 1);
+						main.append("<li><br><div id='ra_" + rands + "'>" +
 								"<span><b>" + elem.title + ":</b></span><br>" + 
 								"<span><i>" + elem.desc + "</span><br>" + 
-								"<input type='hidden' name='radio[" + rand + "][title]' value='" + elem.title + "' />" + 
-								"<input type='hidden' name='radio[" + rand + "][desc]' value='" + elem.desc + "' /></li>" + 
-								"<input type='hidden' name='radio[" + rand + "][type]' value='radio' /></li>");
+								"<input type='hidden' name='radio" + rands + "[" + rand + "][title]' value='" + elem.title + "' />" + 
+								"<input type='hidden' name='radio" + rands + "[" + rand + "][desc]' value='" + elem.desc + "' /></li>" + 
+								"<input type='hidden' name='radio" + rands + "[" + rand + "][type]' value='radio' /></li>");
 						
 						$.each(elem.items,function(i,item){
-							$("#ra_" + rand).append("<input type='radio' name='radio[" + rand + "][val]' value='" + item + "'>" + item + "</input><br>");
+							$("#ra_" + rands).append("<input type='radio' name='radio" + rands + "[" + rand + "][val]' value='" + item + "'>" + item + "</input><br>");
 						});
 					}else if(elem.type == "select"){
+						var rands = Math.floor((Math.random() * 99999) + 1);
 						main.append("<li><br><div id='ra_" + rand + "'>" +
 								"<span><b>" + elem.title + ":</b></span><br>" + 
 								"<span><i>" + elem.desc + "</span><br>" + 
-								"<select id='se_" + rand + "' name='select[" + rand + "][val]'></select>" + 
-								"<input type='hidden' name='select[" + rand + "][title]' value='" + elem.title + "' />" + 
-								"<input type='hidden' name='select[" + rand + "][desc]' value='" + elem.desc + "' /></li>" + 
-								"<input type='hidden' name='select[" + rand + "][type]' value='select' /></li>");
+								"<select id='se_" + rand + "' name='select" + rands + "[" + rand + "][val]'></select>" + 
+								"<input type='hidden' name='select" + rands + "[" + rand + "][title]' value='" + elem.title + "' />" + 
+								"<input type='hidden' name='select" + rands + "[" + rand + "][desc]' value='" + elem.desc + "' /></li>" + 
+								"<input type='hidden' name='select" + rands + "[" + rand + "][type]' value='select' /></li>");
 						
 						$.each(elem.items,function(i,item){
 							$("#se_" + rand).append("<option value='" + item + "'>" + item + "</option>");

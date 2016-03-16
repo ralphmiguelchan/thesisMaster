@@ -85,7 +85,7 @@ width:350px;
 <nav class="navbar navbar-default colorednav">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">Custeez</a>
+      <a class="navbar-brand" href="index.php">Custeez</a>
     </div>
     <ul class="nav navbar-nav">
       <li><a href="index.php">Home</a></li>
@@ -105,7 +105,7 @@ width:350px;
 <label for="email">Email:</label>
 <input type="text" class="form-control" name="email" id="email" /><br>
 <label for="password">Password:</label>	
-<input type="text" class="form-control" name="password" id="password" /><br>
+<input type="password" class="form-control" name="password" id="password" /><br>
 <input type="submit" value="Login" id="submit" name="submit" class="btn btn-primary" />
 </form>
 <legend>Generate</legend>

@@ -1,3 +1,10 @@
+<?php 
+session_start();
+if(isset($_SESSION['uid']) || isset($_SESSION['guid'])){
+	header("location: user.php");
+}
+?>
+
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN">
 <html>
 <head>
@@ -28,7 +35,7 @@ border-color:black;
 <nav class="navbar navbar-default colorednav">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">Custeez</a>
+      <a class="navbar-brand" href="index.php">Custeez</a>
     </div>
     <ul class="nav navbar-nav">
       <li class="active"><a href="index.php">Home</a></li>

@@ -126,7 +126,7 @@ function drop(ev) {
 <nav class="navbar navbar-default colorednav">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">Custeez</a>
+      <a class="navbar-brand" href="index.php">Custeez</a>
     </div>
     <ul class="nav navbar-nav">
       <li ><a href="user.php">Home</a></li>
@@ -138,6 +138,8 @@ function drop(ev) {
 <ul class="nav nav-tabs">
 <li><a data-toggle="tab" href="#dashboard">Dashboard</a></li>
 <li class="active"><a data-toggle="tab" href="#maker">Editor</a></li>
+<li><a href="summary.php">Reports</a></li>
+
 <li><a href="user.php">Find & Use</a></li>
   
   </ul>
@@ -264,18 +266,18 @@ include("steps.php");
       </div>
       <div class="modal-body">
        <form name="addProcForm" id="addProcForm" method="POST">
-        <label for="procName">Process Name:</label>
+        <label for="procName" id="procName" required="required">Process Name:</label>
         <input type="text" class="form-control" name="procName" />
-        <label for="procDetails">Process Details:</label>
-        <input type="text" class="form-control" name="procDetails" />
-         <label for="publicity">Process Publicity:</label>
-           <input type="radio" class="form-control" value="1" name="publicity">Public</input>
-           <input type="radio" class="form-control" value="2" name="publicity">Private</input>
+        <label for="procDetails" id="procDetails" required="required">Process Details:</label>
+        <input type="text" class="form-control" name="procDetails" /><br>
+         <label for="publicity">Private:</label>
+          <div class="form-group" style="height:30px;">
+           <input type="checkbox" class="form-control" value="2" id="publicity" name="publicity"><br><br>
+          </div>
         <input type="hidden" name="id" value='<?php echo $_SESSION["uid"]; ?>' />
        </form>
        <button type="button" class="btn btn-primary" id="addProcBtn">Save</button>
-               <button type="button" class="btn btn-primary" id="addProcBtn2">Save(+)</button>
-       
+        <button type="button" class="btn btn-primary" id="addProcBtn2">Save & Add Another</button>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -285,6 +287,39 @@ include("steps.php");
   </div>
 </div>
 
+<div id="addExistingForm" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Add Existing Form</h4>
+      </div>
+      <div class="modal-body">
+      
+      <div id="formLists" style="overflow:auto; height:200px">
+      <div class="row">
+      
+      <div class='col-sm-3 heh'>
+      <center>
+      <span>Form Name</span>
+      <br><span>From Details</span>
+      <img src="img/forms.png" width="70" /><br>
+      <a href="viewform.php?sid=1">View</a> | <a href="">Use</a>
+      </div>
+</center>
+      </div>
+      </div>
+      
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
 
 <div id="addGroup" class="modal fade" role="dialog">
   <div class="modal-dialog">
@@ -297,18 +332,19 @@ include("steps.php");
       </div>
       <div class="modal-body">
        <form name="addGroupForm" id="addGroupForm" method="POST">
-        <label for="procName">Group Name:</label>
+        <label for="procName" required="required">Group Name:</label>
         <input type="text" class="form-control" name="groupname" />
-        <label for="procDetails">Group Details:</label>
-        <input type="text" class="form-control" name="groupdetails" />
-         <label for="publicity">Group Publicity:</label>
-           <input type="radio" class="form-control" value="1" name="publicity">Public</input>
-           <input type="radio" class="form-control" value="2" name="publicity">Private</input>
+        <label for="procDetails" required="required">Group Details:</label>
+        <input type="text" class="form-control" name="groupdetails" /><br>
+        <label for="publicity">Private:</label>
+          <div class="form-group" style="height:30px;">
+           <input type="checkbox" class="form-control" value="2" id="publicity" name="publicity"><br><br>
+          </div>
         <input type="hidden" name="id" value='<?php echo $_SESSION["uid"]; ?>' />
         
        </form>
        <button type="button" class="btn btn-primary" id="addGroupBtn">Save</button>
-                     <button type="button" class="btn btn-primary" id="addGroupBtn2">Save(+)</button>
+              <button type="button" class="btn btn-primary" id="addGroupBtn2">Save & Add Another</button>
        
       </div>
       <div class="modal-footer">

@@ -9,6 +9,8 @@ $sid = 0;
 $uid = 0;
 $fid = 0;
 $desc = "";
+$pnm = "";
+$rgid = 0;
 $pub = 0;
 if(isset($_SESSION['uid'])){
 	$uid = $_SESSION['uid'];
@@ -59,6 +61,7 @@ if(isset($_SESSION['uid'])){
 			$name = $row['stepName'];
 			$pid = $row['process_id'];
 		}
+
 	}else if(isset($_GET['fid'])){
 		$fid = $_GET['fid'];
 	}
@@ -119,7 +122,7 @@ var ppub = "<?php echo $pub ?>";
 <nav class="navbar navbar-default colorednav">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">Custeez</a>
+      <a class="navbar-brand" href="index.php">Custeez</a>
     </div>
     <ul class="nav navbar-nav">
       <li ><a href="user.php">Home</a></li>
@@ -131,6 +134,7 @@ var ppub = "<?php echo $pub ?>";
 <ul class="nav nav-tabs">
 <li><a href="dashboard.php">Dashboard</a></li>
 <li class="active"><a data-toggle="tab" href="#maker">Editor</a></li>
+<li><a href="summary.php">Reports</a></li>
 <li><a href="user.php">Find & Use</a></li>
   
   </ul>
@@ -188,6 +192,21 @@ echo "<span id='pname'>Process: ".$name."</span><br>";
 echo "<span id='pdesc'>Description:".$desc."</span>";
 echo '<button type="button" class="btn btn-primary" data-toggle="modal" onClick="editBtn()" style="margin: 15px;">Edit</button>';
 }else if(isset($_GET['sid'])){
+	
+	
+
+	$q = "SELECT * FROM processes WHERE `process_id` = '$pid'";
+	$r = $conn->query($q);
+	$rgid = 1;
+	if($q){
+		while($test = $r->fetch_assoc()){
+			$pnm = $test['processName'];
+			$rgid = $test['rgid'];
+		}
+	}
+	
+	echo "<span>Process Name: ".$pnm."</span><br>";
+	echo "<span>RGID: ".$rgid."</span><br>";
 	echo "<span id='sname'>Step: ".$name."</span>&nbsp;";
 	echo '<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editStep">Edit</button>';
 }
@@ -230,15 +249,17 @@ include("steps.php");
       <div class="modal-body">
        <form name="addProcForm" id="addProcForm" method="POST">
         <label for="procName" id="procName" required="required">Process Name:</label>
-        <input type="text" class="form-control" name="procName" />
+        <input type="text" class="form-control" id="procName" name="procName" />
         <label for="procDetails" id="procDetails" required="required">Process Details:</label>
-        <input type="text" class="form-control" name="procDetails" /><br>
+        <input type="text" class="form-control" id="procDetails" name="procDetails" /><br>
          <label for="publicity">Private:</label>
+          <div class="form-group" style="height:30px;">
            <input type="checkbox" class="form-control" value="2" id="publicity" name="publicity"><br><br>
+          </div>
         <input type="hidden" name="id" value='<?php echo $_SESSION["uid"]; ?>' />
        </form>
        <button type="button" class="btn btn-primary" id="addProcBtn">Save</button>
-        <button type="button" class="btn btn-primary" id="addProcBtn2">Save(+)</button>
+        <button type="button" class="btn btn-primary" id="addProcBtn2">Save & Add Another</button>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -294,17 +315,18 @@ include("steps.php");
       <div class="modal-body">
        <form name="addGroupForm" id="addGroupForm" method="POST">
         <label for="procName" required="required">Group Name:</label>
-        <input type="text" class="form-control" name="groupname" />
+        <input type="text" class="form-control" id="groupname" name="groupname" />
         <label for="procDetails" required="required">Group Details:</label>
-        <input type="text" class="form-control" name="groupdetails" /><br>
-         <label for="publicity">Private:</label>
-			
+        <input type="text" class="form-control" id="groupdetails" name="groupdetails" /><br>
+        <label for="publicity">Private:</label>
+          <div class="form-group" style="height:30px;">
            <input type="checkbox" class="form-control" value="2" id="publicity" name="publicity"><br><br>
+          </div>
         <input type="hidden" name="id" value='<?php echo $_SESSION["uid"]; ?>' />
         
        </form>
        <button type="button" class="btn btn-primary" id="addGroupBtn">Save</button>
-              <button type="button" class="btn btn-primary" id="addGroupBtn2">Save(+)</button>
+              <button type="button" class="btn btn-primary" id="addGroupBtn2">Save & Add Another</button>
        
       </div>
       <div class="modal-footer">

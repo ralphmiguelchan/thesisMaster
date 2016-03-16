@@ -24,7 +24,7 @@ function viewProc(){
 			rmain.append("<span style='color:red;'><i>" + item.processDetails + "</i></span><br>");
 			rmain.append("<span style='color:red;'>ID: " + item.rgid + "</span><br>");
 			rmain.append("<img src='img/proc.png' width='50'></img><br>");
-			rmain.append("<a href='editor.php?pid=" + item.process_id + "'>Edit</a>");
+			rmain.append("<a href='editor.php?pid=" + item.process_id + "'>View</a>");
 			rmain.append("|<a href='javascript:delProc(\"" + item.process_id + "\");'>Delete</a>");
 		});
 	});
@@ -48,7 +48,7 @@ rmain.append("<span>" + item.processName + "</span><br>");
 rmain.append("<span style='color:red;'><i>" + item.processDetails + "</i></span><br>");
 rmain.append("<span style='color:red;'>ID: " + item.rgid + "</span><br>");
 rmain.append("<img src='img/proc.png' width='50'></img><br>");
-rmain.append("<a href='editor.php?pid=" + item.process_id + "'>Edit</a>");
+rmain.append("<a href='editor.php?pid=" + item.process_id + "'>View</a>");
 rmain.append("|<a href='javascript:delProc(\"" + item.process_id + "\");'>Delete</a>");
 		});
 	});

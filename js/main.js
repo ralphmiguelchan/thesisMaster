@@ -3,6 +3,7 @@ $(document).ready(function(){
 		$("#addProc").find("#publicity").bootstrapSwitch();
 		$("#addGroup").find("#publicity").bootstrapSwitch();
 		$("#editProc").find("#publicity").bootstrapSwitch();
+		$("#editGroup").find("#publicity").bootstrapSwitch();
 	}catch($e){
 		
 	}
@@ -69,9 +70,9 @@ $(document).ready(function(){
 					text: "Added Successfully",   
 					type: "success",   
 					confirmButtonText: "Thanks" },function(){
-						$("#addProc").find("#procName").val("");
-						$("#addProc").find("#procDetails").val("");
-						$("#addProc").find("#publicity").val("");
+						$("#addProcForm").find("#procName").val("");
+						$("#addProcForm").find("#procDetails").val("");
+						$("#addProcForm").find("#publicity").val("");
 					});
 		});
 	});
@@ -386,8 +387,9 @@ function fillForm(){
 				$("#formApprover").val(item.approver_id);
 				var innerdatum = $.parseJSON(item.formData);
 				$.each(innerdatum,function(ii,itemm){
-					var rand = Math.floor((Math.random() * 99999) + 1);
+					
 					$.each(itemm,function(j,elem){
+						var rand = Math.floor((Math.random() * 99999) + 1);
 						if(elem.type == "text"){
 							addTextField(elem.title,elem.desc,rand);
 						}else if(elem.type == "para"){
@@ -416,8 +418,9 @@ function fillForm(){
 				
 				var innerdatum = $.parseJSON(item.formData);
 				$.each(innerdatum,function(ii,itemm){
-					var rand = Math.floor((Math.random() * 99999) + 1);
+					
 					$.each(itemm,function(j,elem){
+						var rand = Math.floor((Math.random() * 99999) + 1);
 						if(elem.type == "text"){
 							addTextField(elem.title,elem.desc,rand);
 						}else if(elem.type == "para"){
@@ -438,28 +441,112 @@ function fillForm(){
 	}
 }
 function delProc(id){
-	$.get("scripts/delproc.php?id=" + id,function(data,status){
-		viewProc();
-	});
+	swal({
+	    title: "Are you sure?",
+	    text: "You will not be able to recover this process.",
+	    type: "warning",
+	    showCancelButton: true,
+	    confirmButtonColor: '#DD6B55',
+	    confirmButtonText: 'Yes, I am sure!',
+	    cancelButtonText: "No, cancel it!",
+	    closeOnConfirm: false,
+	    closeOnCancel: false
+	 },
+	 function(isConfirm){
+
+	   if (isConfirm){
+		   swal("Deleted!", "successfully deleted!", "success");
+	     $.get("scripts/delproc.php?id=" + id,function(data,status){
+	 		viewProc();
+	 	});
+
+	    } else {
+	      swal("Cancelled", "Your process is safe.", "error");
+	         e.preventDefault();
+	    }
+	 });
 }
 
 
 function delForm(id){
-	$.get("scripts/delform.php?id=" + id,function(data,status){
-		viewForm();
-	});
+	swal({
+	    title: "Are you sure?",
+	    text: "You will not be able to recover this form.",
+	    type: "warning",
+	    showCancelButton: true,
+	    confirmButtonColor: '#DD6B55',
+	    confirmButtonText: 'Yes, I am sure!',
+	    cancelButtonText: "No, cancel it!",
+	    closeOnConfirm: false,
+	    closeOnCancel: false
+	 },
+	 function(isConfirm){
+
+	   if (isConfirm){
+	     swal("Deleted!", "successfully deleted!", "success");
+	     $.get("scripts/delform.php?id=" + id,function(data,status){
+	 		viewForm();
+	 	});
+
+	    } else {
+	      swal("Cancelled", "Your form is safe.", "error");
+	         e.preventDefault();
+	    }
+	 });
 }
 
 function delGroup(id){
-	$.get("scripts/delGroup.php?id=" + id,function(data,status){
-		viewGroup();
-	});
+	swal({
+	    title: "Are you sure?",
+	    text: "You will not be able to recover this group.",
+	    type: "warning",
+	    showCancelButton: true,
+	    confirmButtonColor: '#DD6B55',
+	    confirmButtonText: 'Yes, I am sure!',
+	    cancelButtonText: "No, cancel it!",
+	    closeOnConfirm: false,
+	    closeOnCancel: false
+	 },
+	 function(isConfirm){
+
+	   if (isConfirm){
+	     swal("Deleted!", "successfully deleted!", "success");
+	     $.get("scripts/delGroup.php?id=" + id,function(data,status){
+	 		viewGroup();
+	 	});
+
+	    } else {
+	      swal("Cancelled", "Your group is safe.", "error");
+	         e.preventDefault();
+	    }
+	 });
 }
 
 function delSteps(id){
-	$.get("scripts/delsteps.php?id=" + id,function(data,status){
-		getSteps();
-	});
+	swal({
+	    title: "Are you sure?",
+	    text: "You will not be able to recover this process.",
+	    type: "warning",
+	    showCancelButton: true,
+	    confirmButtonColor: '#DD6B55',
+	    confirmButtonText: 'Yes, I am sure!',
+	    cancelButtonText: "No, cancel it!",
+	    closeOnConfirm: false,
+	    closeOnCancel: false
+	 },
+	 function(isConfirm){
+
+	   if (isConfirm){
+	     swal("Deleted!", "successfully deleted!", "success");
+	     $.get("scripts/delsteps.php?id=" + id,function(data,status){
+	 		getSteps();
+	 	});
+
+	    } else {
+	      swal("Cancelled", "Your step is safe.", "error");
+	         e.preventDefault();
+	    }
+	 });
 }
 
 

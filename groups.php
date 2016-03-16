@@ -86,6 +86,8 @@ if(isset($_SESSION['uid'])){
 <script src="dist/sweetalert.min.js"></script> 
 <script src="js/dash.js"></script> 
 <script src="js/group.js"></script>
+<link href="css/bootstrap-switch.css" rel="stylesheet">
+<script src="js/bootstrap-switch.js"></script>
 <script>
 var pid = "<?php echo $pid; ?>";
 var uid = "<?php echo $uid ?>";
@@ -113,7 +115,7 @@ var ppub = "<?php echo $pub ?>";
 <nav class="navbar navbar-default colorednav">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">Custeez</a>
+      <a class="navbar-brand" href="index.php">Custeez</a>
     </div>
     <ul class="nav navbar-nav">
       <li ><a href="user.php">Home</a></li>
@@ -165,7 +167,7 @@ var ppub = "<?php echo $pub ?>";
      	 <legend>Manage Members</legend>
      	 <label for="memberSearch">Add:</label>
      	 <input type="text" id="memberSearch" class='form-control' />
-     	 <div id="memberadd" style="height:100px; overflow:auto;">
+     	 <div id="memberadd" style="width:250px; height:100px; overflow:auto;">
      	
      	 </div>
      	 <legend>Members</legend>
@@ -225,9 +227,9 @@ var ppub = "<?php echo $pub ?>";
         <input type="text" class="form-control" name="procName" />
         <label for="procDetails">Process Details:</label>
         <input type="text" class="form-control" name="procDetails" />
-         <label for="publicity">Process Publicity:</label>
-           <input type="radio" class="form-control" value="1" name="publicity">Public</input>
-           <input type="radio" class="form-control" value="2" name="publicity">Private</input>
+         <div class="form-group" style="height:30px;">
+           <input type="checkbox" class="form-control" value="2" id="publicity" name="publicity"><br><br>
+          </div>
         <input type="hidden" name="id" value='<?php echo $_SESSION["uid"]; ?>' />
                 <input type="hidden" name="gid" value='<?php echo $_GET["gid"]; ?>' />
         
@@ -257,9 +259,9 @@ var ppub = "<?php echo $pub ?>";
         <input type="text" class="form-control" id="procName" value='<?php echo $name; ?>' name="procName" />
         <label for="procDetails">Group Details:</label>
         <input type="text" class="form-control" id="procDetails" value='<?php echo $details; ?>' name="procDetails" />
-        <label for="publicity">Group Publicity:</label>
-           <input type="radio" class="form-control" value="1" id="publicity" name="publicity">Public</input>
-           <input type="radio" class="form-control" value="2" id="publicity" name="publicity">Private</input>
+         <div class="form-group" style="height:30px;">
+           <input type="checkbox" class="form-control" value="2" id="publicity" name="publicity"><br><br>
+          </div>
         <input type="hidden" class="form-control" id="procId" value='<?php echo $gid ?>' name="procId" />
        </form>
        <button type="button" class="btn btn-primary" data-dismiss="modal" id="editGroupBtn">Save</button>
