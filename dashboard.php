@@ -111,11 +111,11 @@ var ppub = "<?php echo $pub ?>";
   	<div class='col-sm-1'></div>
     <div class='col-sm-10'><br>
     <div id="dashboard" class="tab-pane fade in active">
-    <fieldset><legend>For Your Review</legend>
+    <fieldset><legend>For My Review</legend>
     <?php include("notif.php"); ?>
     </fieldset>
     <fieldset>
-<legend>Process Status</legend>
+<legend>My Process/es Status</legend>
 <div id="pendproc">
 <div class="row">
 
@@ -126,7 +126,7 @@ var ppub = "<?php echo $pub ?>";
 </fieldset>	
 
 <fieldset>
-<legend>Your Approved/Declined Items</legend>
+<legend>My Approved/Declined Forms</legend>
 <div id="appdecform">
 <div class="row"></div>
 </div>

@@ -591,7 +591,7 @@ function setWidth(){
 	
 	$("#main").width($("body").width() - sidewidth - 100);
 	$("#main").height(1000);
-}
+}/*how am I goign to change this?*/
 function addRadioField2(title,desc,id,elem){
 	
 	var main = $("#formData");
