@@ -8,46 +8,25 @@ if(isset($_SESSION['uid']) || isset($_SESSION['guid'])){
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN">
 <html>
 <head>
+
 <script src="js/jq.js"></script>
-<script src="js/b.js"></script>
+<script src="js/bootstrap.min.js"></script>
 
 <meta http-equiv="Content-Type" content="text/html; charset=Cp1252">
 <title>Custeez Home</title>
-<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 
-<style>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="css/style.css">
 
-
-.colored{
-background-color:black;
-color:white;
-}
-.colorednav{
-background-color:black;
-border-color:black;
-}
-</style>
 </head>
 <body>
 
-<div id="container">
+<div>
+<?php include("header/headerInitial.html");?>
+</div>
 
-<nav class="navbar navbar-default colorednav">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="index.php">Custeez</a>
-    </div>
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="index.php">Home</a></li>
-     <li> <a href="login.php">Login</a></li>
-     <li> <a href="guest.php">Guest</a></li>
-       <li> <a href="register.php">Register</a></li>
-       <li> <a href="faq.php">Info</a></li>
-    </ul>
-  </div>
-</nav>
+<div class="container" id="container">
 
-<center>
 	<div class="jumbotron" >
 		<h1>Custeez</h1>
 		<p>Customized Processes and Customized Forms Creator</p>
@@ -60,7 +39,11 @@ border-color:black;
 		<h1>Customized Form</h1>
 		<p> The website allows you to create your own forms for your needs similar to Google Forms or Formstack.</p>
 	</div>
-</center>
+	<div class="jumbotron">
+		<h1>Guest Account</h1>
+		<p> A user may create a temporary account that will be removed later on.</p>
+	</div>
+	
 </div>
 </body>
 </html>

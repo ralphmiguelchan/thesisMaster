@@ -70,7 +70,7 @@ if(isset($_SESSION['uid'])){
 <html>
 <head>
 <script src="js/jq.js"></script>
-<script src="js/b.js"></script>
+<script src="js/bootstrap.min.js"></script>
 <script src="js/main.js"></script>
 <script src="dist/sweetalert.min.js"></script> 
 <script src="js/dash.js"></script>
@@ -86,41 +86,26 @@ var ppub = "<?php echo $pub ?>";
 </script>
 <link rel="stylesheet" type="text/css" href="dist/sweetalert.css">
 <meta http-equiv="Content-Type" content="text/html; charset=Cp1252">
-<title>Custeez Home</title>
-<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<title>Custeez Dashboard</title>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <link rel="stylesheet" type="text/css" href="css/jqu-min.css">
 </style>
 </head>
 <body>
+<?php include("header/headerUser.html");?>
 
-<div id="container">
-
-
-<nav class="navbar navbar-default colorednav">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="index.php">Custeez</a>
-    </div>
-    <ul class="nav navbar-nav">
-      <li ><a href="user.php">Home</a></li>
-     <li> <a href="logout.php">Logout</a></li>
-    </ul>
-  </div>
-</nav>
-
+<div id="container" class="container" style="height: 100%;">
 <ul class="nav nav-tabs">
-<li class="active"><a data-toggle="tab" href="#dashboard">Dashboard</a></li>
-<?php 
-if(isset($_SESSION['uid'])){
-	echo '<li><a  href="editor.php">Editor</a></li>';
-	echo '<li><a href="summary.php">Reports</a></li>';
-}
-?>
-<li><a href="user.php">Find & Use</a></li>
-
-  
-  </ul>
+	<li id="dashTab" class="active"><a href="#dashboard">Dashboard</a></li>
+	<?php 
+	if(isset($_SESSION['uid'])){
+		echo '<li id="editorTab" class="hvr-overline-reveal"><a href="editor.php">Editor</a></li>';
+		echo '<li id="reportsTab" class="hvr-overline-reveal"><a href="summary.php">Reports</a></li>';
+	}
+	?>
+	  <li id="findUseTab" class="hvr-overline-reveal"><a href="user.php">Find & Use</a></li>
+</ul>
 
   <div class="tab-content">
   	<div class='col-sm-1'></div>
@@ -214,7 +199,7 @@ include("steps.php");
 </div>
 </div>
 
-
+<?php include("footer/footer.html");?>
 <!--  MODALS  -->
 
 

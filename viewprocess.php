@@ -70,7 +70,7 @@ if(isset($_SESSION['uid'])){
 <html>
 <head>
 <script src="js/jq.js"></script>
-<script src="js/b.js"></script>
+<script src="js/bootstrap.min.js"></script>
 <script src="js/main.js"></script>
 <script src="dist/sweetalert.min.js"></script> 
 <script>
@@ -86,39 +86,26 @@ var ppub = "<?php echo $pub ?>";
 </script>
 <link rel="stylesheet" type="text/css" href="dist/sweetalert.css">
 <meta http-equiv="Content-Type" content="text/html; charset=Cp1252">
-<title>Custeez Home</title>
-<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<title>Custeez View Process</title>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="css/style.css">
-<link rel="stylesheet" type="text/css" href="css/jqu-min.css">
 </style>
 </head>
 <body>
+<?php include("header/headerUser.html");?>
 
-<div id="container">
-
-
-<nav class="navbar navbar-default colorednav">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="index.php">Custeez</a>
-    </div>
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="index.php">Home</a></li>
-     <li> <a href="logout.php">Logout</a></li>
-    </ul>
-  </div>
-</nav>
+<div id="container" class="container">
 
 <ul class="nav nav-tabs">
-<li><a  href="dashboard.php">Dashboard</a></li>
-<?php 
-if(isset($_SESSION['uid'])){
-	echo '<li><a  href="editor.php">Editor</a></li>';
-	echo '<li><a href="summary.php">Reports</a></li>';
-}
-?>
-  <li class="active"><a data-toggle="tab" href="#user">Find & Use</a></li>
-  </ul>
+	<li id="dashTab" class="hvr-overline-reveal"><a href="dashboard.php">Dashboard</a></li>
+	<?php 
+	if(isset($_SESSION['uid'])){
+		echo '<li id="editorTab" class="hvr-overline-reveal"><a href="editor.php">Editor</a></li>';
+		echo '<li id="reportsTab" class="hvr-overline-reveal"><a href="summary.php">Reports</a></li>';
+	}
+	?>
+	  <li id="findUseTab" class="active"><a data-toggle="tab" href="#find&use">Find & Use</a></li>
+</ul>
 
   <div class="tab-content">
     <div id="dashboard" class="tab-pane fade">
@@ -126,51 +113,47 @@ if(isset($_SESSION['uid'])){
     <?php include("notif.php"); ?>
     </fieldset>
     <fieldset>
-<legend>Process Status</legend>
-<div id="pendproc">
-<div class="row">
-
-
-
-</div>
-</div>
-</fieldset>	
-
-<fieldset>
-<legend>Your Approved/Declined Items</legend>
-<div id="appdecform">
-<div class="row"></div>
-</div>
-</fieldset>
+		<legend>Process Status</legend>
+		<div id="pendproc">
+			<div class="row">
+			
+			</div>
+		</div>
+	</fieldset>	
+	<fieldset>
+		<legend>Your Approved/Declined Items</legend>
+		<div id="appdecform">
+			<div class="row"></div>
+		</div>
+	</fieldset>
     </div>
    
     <div id="user" class="tab-pane fade in active">
-    <div id="sideBarr">
-    	<div class='col-sm-1'></div>
-     	<div class='col-sm-11'><br>
-    	<fieldset>
-    	<legend>Search</legend>
-    	<input type="text" name="searchBar" class="form-control" id="searchBar" />
-    	<?php include("search.php"); ?>
-    	</fieldset>
-    	</div>
-    	</div>
-    <div id="mains" style="overflow: auto;">
+	    
+	    <div id="sideBarr" class="col-sm-5"><br><br><br><br>
+	    	<fieldset>
+	    	<legend>Search</legend>
+	    	<input type="text" name="searchBar" class="form-control" id="searchBar" />
+	    	<div style="width: 665px;">
+	    	<?php include("search.php"); ?>
+	    	</div>
+	    	</fieldset>
+	    </div>
+	    <div id="mains" class="col-sm-7"  style="overflow: auto;">
     	
-    	<fieldset>
-    	<div class="col-sm-1"></div>
-		<div class="col-sm-9"><br>
-    	<legend>Process Name: <?php echo $name; ?><br><br>
-    	Description: <?php echo $details; ?></legend>
-    	<div id="stepss">
-    	<ul id="stepup">
+	    	<fieldset>
+			<div class="col-sm-12"><br>
+	    	<legend>Process Name: <?php echo $name; ?><br><br>
+	    	Description: <?php echo $details; ?></legend>
+	    	<div id="stepss">
+	    	<ul id="stepup">
+	    	
+	    	</ul>
+	    	</div>
+	    	</div>
+	    	</fieldset>
     	
-    	</ul>
-    	</div>
-    	</div>
-    	</fieldset>
-    	
-	</div>
+		</div>
     </div>
     
 </div>

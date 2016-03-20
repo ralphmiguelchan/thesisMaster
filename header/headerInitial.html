@@ -1,0 +1,59 @@
+<nav id="navbar" class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-header">
+	    <a id="navLogo" href="index.php" class="hvr-underline-reveal active" style="width: 100%;">
+	    	<img class="navbar-brand" style="height: 60px;" src="img/custeezlogo.png">
+	    </a>
+    </div>
+    <ul class="nav navbar-nav">
+     <li id="navPageOne" class="hvr-underline-reveal"> <a href="faq.php">Info</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right" style="padding-right: 30px;">
+     <li class="dropdown">
+     	<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Login<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+        	<li id="navPageTwo" class=""><a href="login.php">As User</a></li>
+            <li id="navPageThree" class="" ><a href="guestlogin.php">As Guest</a></li>
+         </ul>
+      </li>
+      <li class="dropdown">
+     	<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Register<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+        	<li id="navPageFour" class=""><a href="register.php">As User</a></li>
+            <li id="navPageFive" class=""><a href="guestregister.php">As Guest(Temporary)</a></li>
+         </ul>
+      </li>
+    </ul>
+</nav>
+
+<script>
+function getCurrentLocation(url) {
+    var index = url.lastIndexOf("/") + 1;
+    var filenameWithExtension = url.substr(index);
+    var filename = filenameWithExtension.split(".")[0];
+    return filename;                                    
+}
+
+var currentURL = window.location.pathname;
+var currentLocation = getCurrentLocation(currentURL);
+
+if(currentLocation == "index"){
+	document.getElementById("navLogo").style.background.color = '#080808';
+	
+} else if (currentLocation == "faq") {
+	$("#navPageOne").addClass("active");
+	
+} else if (currentLocation == "login") {
+	$("#navPageTwo").addClass("active");
+	
+} else if (currentLocation == "guestlogin") {
+	$("#navPageThree").addClass("active");
+	
+} else if (currentLocation == "register") {
+	$("#navPageFour").addClass("active");
+	
+} else if (currentLocation == "guestregister") {
+	$("#navPageFive").addClass("active");
+	
+}
+
+</script>

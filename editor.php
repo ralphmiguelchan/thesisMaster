@@ -73,25 +73,15 @@ if(isset($_SESSION['uid'])){
 <html>
 <head>
 <script src="js/jq.js"></script>
-<script src="js/b.js"></script>
+<script src="js/bootstrap.min.js"></script>
 <script src="js/main.js"></script>
 <script src="dist/sweetalert.min.js"></script> 
 <script src="js/dash.js"></script> 
 <script src="js/forms.js"></script> 
- <link rel="stylesheet" href="js/tree/dist/themes/default/style.min.css" />
- <link href="css/ui.easytree.css" rel="stylesheet" class="skins" type="text/css" />
- <script src="js/treee.js"></script>
-   <script src="js/trees.js"></script>
+<script src="js/treee.js"></script>
+<script src="js/trees.js"></script>
 <script src="js/group.js"></script> 
-
-<!-- for the toggle switch -->
-<!-- <link href="css/bootstrap-switch.css" rel="stylesheet"> -->
-<!-- <link href="css/bootstrap.min.css" rel="stylesheet"> -->
-<!-- <script src="js/bootstrap-switch.js"></script> -->
-<!-- <script src="js/jquery.min.js"></script> -->
-<!-- <link href="css/highlight.css" rel="stylesheet"> -->
-<!-- <link href="css/main.css" rel="stylesheet"> -->
-<!-- <link href="http://getbootstrap.com/assets/css/docs.min.css" rel="stylesheet"> -->
+<script src="js/bootstrap-switch.js"></script>
 
 <script>
 var pid = "<?php echo $pid; ?>";
@@ -105,43 +95,29 @@ var ppub = "<?php echo $pub ?>";
 </script>
 <link rel="stylesheet" type="text/css" href="dist/sweetalert.css">
 <meta http-equiv="Content-Type" content="text/html; charset=Cp1252">
-<title>Custeez Home</title>
-<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-
+<title>Custeez Form Editor</title>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <link href="css/bootstrap-switch.css" rel="stylesheet">
-<script src="js/bootstrap-switch.js"></script>
-
 <link rel="stylesheet" type="text/css" href="css/jqu-min.css">
+<link rel="stylesheet" href="js/tree/dist/themes/default/style.min.css" />
+<link href="css/ui.easytree.css" rel="stylesheet" class="skins" type="text/css" />
 </head>
 <body>
+<?php include("header/headerUser.html");?>
 
-<div id="container">
-
-
-<nav class="navbar navbar-default colorednav">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="index.php">Custeez</a>
-    </div>
-    <ul class="nav navbar-nav">
-      <li ><a href="user.php">Home</a></li>
-     <li> <a href="logout.php">Logout</a></li>
-    </ul>
-  </div>
-</nav>
+<div id="container" class="container">
 
 <ul class="nav nav-tabs">
-<li><a href="dashboard.php">Dashboard</a></li>
-<li class="active"><a data-toggle="tab" href="#maker">Editor</a></li>
-<li><a href="summary.php">Reports</a></li>
-<li><a href="user.php">Find & Use</a></li>
-  
-  </ul>
+	<li id="dashTab" class="hvr-overline-reveal"><a href="dashboard.php">Dashboard</a></li>
+	<li id="editorTab" class="active"><a href="#maker">Editor</a></li>
+	<li id="reportsTab" class="hvr-overline-reveal"><a href="summary.php">Reports</a></li>
+	<li id="findUseTab" class="hvr-overline-reveal"><a data-toggle="tab" href="#find&use">Find & Use</a></li>
+</ul>
 
   <div class="tab-content" style="height: 100%;">
     <div id="maker" class="tab-pane fade in active">
-      <div id="sideBar">
+      <div id="sideBar" class="col-sm-6">
       <div class='col-sm-1'></div>
       <div class='col-sm-11'><br>
 

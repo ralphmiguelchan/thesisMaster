@@ -70,7 +70,7 @@ if(isset($_SESSION['uid'])){
 <html>
 <head>
 <script src="js/jq.js"></script>
-<script src="js/b.js"></script>
+<script src="js/bootstrap.min.js"></script>
 <script src="js/main.js"></script>
 <script src="dist/sweetalert.min.js"></script> 
 <script src="js/dash.js"></script> 
@@ -84,40 +84,26 @@ var pname = "<?php echo $name ?>";
 var pdesc = "<?php echo $desc ?>";
 var ppub = "<?php echo $pub ?>";
 </script>
-<link rel="stylesheet" type="text/css" href="dist/sweetalert.css">
 <meta http-equiv="Content-Type" content="text/html; charset=Cp1252">
-<title>Custeez Home</title>
-<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<title>Custeez Find & Use</title>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <link rel="stylesheet" type="text/css" href="css/jqu-min.css">
 </style>
 </head>
 <body>
-
-<div id="container">
-
-
-<nav class="navbar navbar-default colorednav">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="index.php">Custeez</a>
-    </div>
-    <ul class="nav navbar-nav">
-      <li ><a href="user.php">Home</a></li>
-     <li> <a href="logout.php">Logout</a></li>
-    </ul>
-  </div>
-</nav>
+<?php include("header/headerUser.html");?>
+<div id="container" class="container">
 
 <ul class="nav nav-tabs">
-<li><a href="dashboard.php">Dashboard</a></li>
+<li id="dashTab" class="hvr-overline-reveal"><a href="dashboard.php">Dashboard</a></li>
 <?php 
 if(isset($_SESSION['uid'])){
-	echo '<li><a  href="editor.php">Editor</a></li>';
-	echo '<li><a href="summary.php">Reports</a></li>';
+	echo '<li id="editorTab" class="hvr-overline-reveal"><a href="editor.php">Editor</a></li>';
+	echo '<li id="reportsTab" class="hvr-overline-reveal"><a href="summary.php">Reports</a></li>';
 }
 ?>
-  <li class="active"><a data-toggle="tab" href="#user">Find & Use</a></li>
+  <li id="findUseTab" class="active"><a data-toggle="tab" href="#user">Find & Use</a></li>
   </ul>
 
   <div class="tab-content">
@@ -149,9 +135,7 @@ if(isset($_SESSION['uid'])){
     	<fieldset>
     	<br><br><br>
     	<div class="col-sm-1"></div>
-    	<div class="col-sm-10"><legend>Search</legend></div>
-    	<div class="col-sm-2"></div>
-    	<div class="col-sm-8">
+    	<div class="col-sm-7"><legend>Search</legend>
     	<input type="text" name="searchBar" class="form-control" id="searchBar" />
     	</div>
     	<div class="col-sm-12">
@@ -168,6 +152,8 @@ if(isset($_SESSION['uid'])){
     </div>
     
 </div>
+
+<?php include("footer/footer.html");?>
 
 
 <!--  MODALS  -->
@@ -287,7 +273,5 @@ if(isset($_SESSION['uid'])){
 </div>
 
 <!--  END MODALS -->
-
-
 </body>
 </html>
