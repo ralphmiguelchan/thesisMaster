@@ -6,7 +6,7 @@ $(document).ready(function(){
 	});
 });
 function viewGroup(){
-	setWidth();
+	
 	
 	$.get("scripts/getgro.php?id=" + uid,function(data,status){
 		$("#main").find(".row").html("");

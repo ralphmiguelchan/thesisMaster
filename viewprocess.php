@@ -96,68 +96,41 @@ var ppub = "<?php echo $pub ?>";
 
 <div id="container" class="container">
 
-<ul class="nav nav-tabs">
-	<li id="dashTab" class="hvr-overline-reveal"><a href="dashboard.php">Dashboard</a></li>
-	<?php 
-	if(isset($_SESSION['uid'])){
-		echo '<li id="editorTab" class="hvr-overline-reveal"><a href="editor.php">Editor</a></li>';
-		echo '<li id="reportsTab" class="hvr-overline-reveal"><a href="summary.php">Reports</a></li>';
-	}
-	?>
-	  <li id="findUseTab" class="active"><a data-toggle="tab" href="#find&use">Find & Use</a></li>
-</ul>
-
-  <div class="tab-content">
-    <div id="dashboard" class="tab-pane fade">
-    <fieldset><legend>For Your Review</legend>
-    <?php include("notif.php"); ?>
-    </fieldset>
-    <fieldset>
-		<legend>Process Status</legend>
-		<div id="pendproc">
-			<div class="row">
-			
-			</div>
-		</div>
-	</fieldset>	
-	<fieldset>
-		<legend>Your Approved/Declined Items</legend>
-		<div id="appdecform">
-			<div class="row"></div>
-		</div>
-	</fieldset>
-    </div>
-   
-    <div id="user" class="tab-pane fade in active">
-	    
-	    <div id="sideBarr" class="col-sm-5"><br><br><br><br>
-	    	<fieldset>
-	    	<legend>Search</legend>
-	    	<input type="text" name="searchBar" class="form-control" id="searchBar" />
-	    	<div style="width: 665px;">
-	    	<?php include("search.php"); ?>
-	    	</div>
-	    	</fieldset>
+	<ul class="nav nav-tabs">
+		<li id="dashTab" class="hvr-overline-reveal"><a href="dashboard.php">Dashboard</a></li>
+		<?php 
+		if(isset($_SESSION['uid'])){
+			echo '<li id="editorTab" class="hvr-overline-reveal"><a href="editor.php">Editor</a></li>';
+			echo '<li id="reportsTab" class="hvr-overline-reveal"><a href="summary.php">Reports</a></li>';
+		}
+		?>
+		  <li id="findUseTab" class="active"><a href="#find&use">Find & Use</a></li>
+	</ul>
+	<div class="tab-content">
+	    <div id="user" class="tab-pane fade in active" style="display: flex;">
+		    <div id="sideBar" class="col-sm-3">
+		    	<fieldset>
+			    	<legend>Search</legend>
+			    	<input type="text" name="searchBar" class="form-control" id="searchBar" />
+			    	<?php include("search.php"); ?>
+		    	</fieldset>
+		    	<div id="main" class="col-sm-9">
+		    	<fieldset>
+			    	<legend>Process Name: <?php echo $name; ?><br><br>
+			    	Description: <?php echo $details; ?></legend>
+			    	<div id="stepss">
+				    	<ul id="stepup">
+				    	
+				    	</ul>
+			    	</div>
+		    	</fieldset>
+				</div>
+		    </div>
+		    
 	    </div>
-	    <div id="mains" class="col-sm-7"  style="overflow: auto;">
-    	
-	    	<fieldset>
-			<div class="col-sm-12"><br>
-	    	<legend>Process Name: <?php echo $name; ?><br><br>
-	    	Description: <?php echo $details; ?></legend>
-	    	<div id="stepss">
-	    	<ul id="stepup">
-	    	
-	    	</ul>
-	    	</div>
-	    	</div>
-	    	</fieldset>
-    	
-		</div>
-    </div>
-    
+	</div>
 </div>
-
+<?php include("footer/footer.html");?>
 
 <!--  MODALS  -->
 

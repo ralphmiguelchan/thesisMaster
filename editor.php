@@ -110,16 +110,16 @@ var ppub = "<?php echo $pub ?>";
 
 <ul class="nav nav-tabs">
 	<li id="dashTab" class="hvr-overline-reveal"><a href="dashboard.php">Dashboard</a></li>
-	<li id="editorTab" class="active"><a href="#maker">Editor</a></li>
+	<li id="editorTab" class="active"><a data-toggle="tab" href="#maker">Editor</a></li>
 	<li id="reportsTab" class="hvr-overline-reveal"><a href="summary.php">Reports</a></li>
-	<li id="findUseTab" class="hvr-overline-reveal"><a data-toggle="tab" href="#find&use">Find & Use</a></li>
+	<li id="findUseTab" class="hvr-overline-reveal"><a href="user.php">Find & Use</a></li>
 </ul>
 
+
   <div class="tab-content" style="height: 100%;">
-    <div id="maker" class="tab-pane fade in active">
-      <div id="sideBar" class="col-sm-6">
-      <div class='col-sm-1'></div>
-      <div class='col-sm-11'><br>
+    <div id="maker" class="tab-pane fade in active col-sm-12" style="display: flex;">
+      <div id="sideBar" class="col-sm-3">
+      	<div class="col-sm-11"><br>
 
 <?php if(isset($_GET['pid'])){
 
@@ -153,18 +153,32 @@ include("hey.php");
 </div>
 
 
-<div id="main">
+<div id="main" class="col-sm-9">
 <div id='ginto'>
 
 </div>
-<div class="col-sm-1"></div>
-<div class="col-sm-10"><br>
+<div class="col-sm-12"><br>
 <fieldset>
 <legend>
 
 
 <?php if(isset($_GET['pid'])){
+	$pd = $_GET['pid'];
 echo "<span id='pname'>Process: ".$name."</span><br>";
+$g = "SELECT * FROM processes WHERE `process_id` = '$pd'";
+$r = $conn->query($g);
+$d = 0;
+while($s = $r->fetch_assoc()){
+	$d = $s['group_id'];
+}
+
+$h = "SELECT * FROM groups WHERE `group_id` = '$d'";
+$v = $conn->query($h);
+$gr = "none";
+while($b = $v->fetch_assoc()){
+	$gr = $b['groupName'];
+}
+echo "<span id='pdesc'>You are in group:".$gr."</span><br>";
 echo "<span id='pdesc'>Description:".$desc."</span>";
 echo '<button type="button" class="btn btn-primary" data-toggle="modal" onClick="editBtn()" style="margin: 15px;">Edit</button>';
 }else if(isset($_GET['sid'])){
@@ -181,7 +195,8 @@ echo '<button type="button" class="btn btn-primary" data-toggle="modal" onClick=
 		}
 	}
 	
-	echo "<span>Process Name: ".$pnm."</span><br>";
+	echo "<span id='pdesc'>Process Name: ".$pnm."</span><br>";
+	echo "<span>You are in group:".$gr."</span>";
 	echo "<span>RGID: ".$rgid."</span><br>";
 	echo "<span id='sname'>Step: ".$name."</span>&nbsp;";
 	echo '<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editStep">Edit</button>';
@@ -207,7 +222,7 @@ include("steps.php");
 </div>
 </div>
 </div>
-
+<?php include("footer/footer.html");?>
 
 <!--  MODALS  -->
 
@@ -234,7 +249,7 @@ include("steps.php");
           	$("#publicity").onText('Private');
           	$("#publicity").offText('Public');
           </script>
-           <input type="checkbox" class="form-control" value="2" id="publicity" name="publicity"><br><br>
+           <input type="checkbox" class="form-control" value="2" id="publicity" data-on-text="Private" data-off-text="Public" name="publicity"><br><br>
           </div>
         <input type="hidden" name="id" value='<?php echo $_SESSION["uid"]; ?>' />
        </form>
@@ -266,7 +281,7 @@ include("steps.php");
         <input type="text" class="form-control" id="groupdetails" name="groupdetails" /><br>
         <label for="publicity">Private:</label>
           <div class="form-group" style="height:30px;">
-           <input type="checkbox" class="form-control" value="2" id="publicity" name="publicity"><br><br>
+           <input type="checkbox" class="form-control" value="2" id="publicity" data-on-text="Private" data-off-text="Public" name="publicity"><br><br>
           </div>
         <input type="hidden" name="id" value='<?php echo $_SESSION["uid"]; ?>' />
         
@@ -301,7 +316,7 @@ include("steps.php");
         <label for="procDetails">Process Details:</label>
         <input type="text" class="form-control" id="procDetails" name="procDetails" /><br>
         <label for="publicity">Private:</label>
-           <input type="checkbox" class="form-control" value="2" id="publicity" name="publicity"><br><br>
+           <input type="checkbox" class="form-control" value="2" id="publicity" data-on-text="Private" data-off-text="Public" name="publicity"><br><br>
         <input type="hidden" class="form-control" id="procId" name="procId" />
        </form>
        <button type="button" class="btn btn-primary" data-dismiss="modal" id="editProcBtn">Save</button>

@@ -70,15 +70,14 @@ if(isset($_SESSION['uid'])){
 <html>
 <head>
 <script src="js/jq.js"></script>
-<script src="js/b.js"></script>
+<script src="js/bootstrap.min.js"></script>
 <script src="js/main.js"></script>
 <script src="dist/sweetalert.min.js"></script> 
 <script src="js/dash.js"></script> 
 <script src="js/form.js"></script>
- <link rel="stylesheet" href="js/tree/dist/themes/default/style.min.css" />
- <link href="css/ui.easytree.css" rel="stylesheet" class="skins" type="text/css" />
- <script src="js/treee.js"></script>
-   <script src="js/trees.js"></script>
+<script src="js/bootstrap-switch.js"></script>
+<script src="js/treee.js"></script>
+<script src="js/trees.js"></script>
   
 <script>
 var pid = "<?php echo $pid; ?>";
@@ -93,67 +92,31 @@ var ppub = "<?php echo $pub ?>";
 </script>
 <link rel="stylesheet" type="text/css" href="dist/sweetalert.css">
 <meta http-equiv="Content-Type" content="text/html; charset=Cp1252">
-<title>Custeez Home</title>
-<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<title>Custeez Form List</title>
+<link rel="stylesheet" href="js/tree/dist/themes/default/style.min.css" />
+<link href="css/ui.easytree.css" rel="stylesheet" class="skins" type="text/css" />
+<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <link rel="stylesheet" type="text/css" href="css/jqu-min.css">
 <link href="css/bootstrap-switch.css" rel="stylesheet">
-<script src="js/bootstrap-switch.js"></script>
-</style>
+
 </head>
 <body>
 
-<div id="container">
+<?php include ('header/headerUser.html');?>
 
-
-<nav class="navbar navbar-default colorednav">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="index.php">Custeez</a>
-    </div>
-    <ul class="nav navbar-nav">
-      <li ><a href="user.php">Home</a></li>
-     <li> <a href="logout.php">Logout</a></li>
-    </ul>
-  </div>
-</nav>
+<div id="container" class="container">
 
 <ul class="nav nav-tabs">
-<li><a data-toggle="tab" href="#dashboard">Dashboard</a></li>
-<li class="active"><a data-toggle="tab" href="#maker">Editor</a></li>
-<li><a href="summary.php">Reports</a></li>
-<li><a href="user.php">Find & Use</a></li>
-  
-  </ul>
+	<li id="dashTab" class="hvr-overline-reveal"><a href="dashboard.php">Dashboard</a></li>
+	<li id="editorTab" class="active"><a data-toggle="tab" href="#maker">Editor</a></li>
+	<li id="reportsTab" class="hvr-overline-reveal"><a href="summary.php">Reports</a></li>
+	<li id="findUseTab" class="hvr-overline-reveal"><a href="user.php">Find & Use</a></li>
+</ul>
 
   <div class="tab-content">
-       <div id="dashboard" class="tab-pane fade">
-    <fieldset><legend>For Your Review</legend>
-    <?php include("notif.php"); ?>
-    </fieldset>
-    <fieldset>
-<legend>Process Status</legend>
-<div id="pendproc">
-<div class="row">
-
-
-
-</div>
-</div>
-</fieldset>	
-
-<fieldset>
-<legend>Your Approved/Declined Items</legend>
-<div id="appdecform">
-<div class="row"></div>
-</div>
-</fieldset>
-    </div>
-   
-    <div id="maker" class="tab-pane fade in active">
-      <div id="sideBar">
-      <div class='col-sm-1'></div>
-      <div class='col-sm-11'><br>
+    <div id="maker" class="tab-pane fade in active col-sm-12" style="display: flex;">
+      <div id="sideBar" class="col-sm-3">
 
 <?php if(isset($_GET['pid'])){
 
@@ -184,15 +147,12 @@ include("hey.php");
 
 ?>
 </div>
-</div>
 
-
-<div id="main">
-<div class="col-sm-1"></div>
-<div class="col-sm-10"><br>
+<div id="main" class="col-sm-9">
+<div class="col-sm-12"><br>
 <fieldset><legend>Form List</legend>
 <label for="searchForm">Search:</label>
-<input type="text" id="searchForm" class='form-control' name="searchForm" /><br>
+<input type="text" id="searchForm" class='form-control' name="searchForm" /><br><br>
 <legend>Result</legend><br>
 <div id="res">
 <div class="row">
@@ -231,7 +191,7 @@ include("steps.php");
 </div>
 </div>
 
-
+<?php include("footer/footer.html");?>
 <!--  MODALS  -->
 
 
@@ -253,7 +213,7 @@ include("steps.php");
         <input type="text" class="form-control" name="procDetails" /><br>
          <label for="publicity">Private:</label>
           <div class="form-group" style="height:30px;">
-           <input type="checkbox" class="form-control" value="2" id="publicity" name="publicity"><br><br>
+           <input type="checkbox" class="form-control" value="2" id="publicity" data-on-text="Private" data-off-text="Public" name="publicity"><br><br>
           </div>
         <input type="hidden" name="id" value='<?php echo $_SESSION["uid"]; ?>' />
        </form>
@@ -319,7 +279,7 @@ include("steps.php");
         <input type="text" class="form-control" name="groupdetails" /><br>
         <label for="publicity">Private:</label>
           <div class="form-group" style="height:30px;">
-           <input type="checkbox" class="form-control" value="2" id="publicity" name="publicity"><br><br>
+           <input type="checkbox" class="form-control" value="2" id="publicity" data-on-text="Private" data-off-text="Public" name="publicity"><br><br>
           </div>
         <input type="hidden" name="id" value='<?php echo $_SESSION["uid"]; ?>' />
         
