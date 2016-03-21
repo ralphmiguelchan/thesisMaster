@@ -60,7 +60,7 @@ body {
 	background-color: #ddd;
 }
 .hvr-overline-reveal {
-  disinline-block;
+  display: inline-block;
   vertical-align: middle;
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
@@ -123,6 +123,7 @@ body {
 	
 #sideBar{
 	float:left;
+	width:250px;
 	height:inherit;
 	background-color:#eeeeee;
 }
@@ -139,6 +140,11 @@ body {
 	width:150px;
 	border:1px solid #DEDCDC;
 	height:150px;
+}
+#sideBarr{
+	float:right;
+	width:250px;
+background-color:#DEDCDC;
 }
 .showcontrol{
 display:inline;
@@ -167,14 +173,17 @@ margin-left:10px;
 width:100%;
 }
 #main{
-float:right;
+float:left;
 background-color:#eeeeee;
 margin-left:2%;
 margin-right:2%;
-width: 72%;
-height: 100%;	
+width: auto;
+height: 100%;
 }
-
+#mains{
+background-color:#eeeeee;
+height: 100%;
+}
 
 #side{
 width:250px;

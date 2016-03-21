@@ -27,6 +27,5 @@ session_destroy();
 </div>
 </center>
 </div>
-<?php include("footer/footer.html");?>
 </body>
 </html>

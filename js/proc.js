@@ -6,7 +6,7 @@ $(document).ready(function(){
 	});
 });
 function viewProc(){
-	
+	setWidth();
 	$.get("scripts/getproc.php?id=" + uid,function(data,status){
 		$("#main").find(".row").html("");
 		

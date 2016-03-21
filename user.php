@@ -131,11 +131,11 @@ if(isset($_SESSION['uid'])){
     </div>
    
     <div id="user" class="tab-pane fade in active">
-    <div id="main" style="width: 95%;">
+    <div id="main">
     	<fieldset>
     	<br><br><br>
     	<div class="col-sm-1"></div>
-    	<div class="col-sm-10"><legend>Search</legend>
+    	<div class="col-sm-7"><legend>Search</legend>
     	<input type="text" name="searchBar" class="form-control" id="searchBar" />
     	</div>
     	<div class="col-sm-12">

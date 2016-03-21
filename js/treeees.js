@@ -7,109 +7,38 @@ $(function(){
 		});
 });
 
-function searchForm(q){	
-	$("#cn").html("");
-	var ty = $("#heads").val();
-	if(q == ""){
-		$.get("scripts/getsearchform.php?q=" + q + "&fid=" + fid,function(data){
-			
-			var json = $.parseJSON(data);
-			var header = $("#header");
+function searchForm(q){
+	$.get("scripts/getsearchform.php?q=" + q + "&fid=" + fid,function(data){
+		var json = $.parseJSON(data);
+		var header = $("#header");
+		header.html("");
+		$.each(json,function(i,item){
+			var datum = $.parseJSON(item.subFormData);
 			header.html("");
-			$.each(json,function(i,item){
-				var datum = $.parseJSON(item.subFormData);
-				header.html("");
-				header.append("<th>Owner</th>");
-				$.each(datum,function(ii,itemm){
-					$.each(itemm,function(iii,itemmm){
-						
-							
-								header.append("<th>" + itemmm.title + "</th>");
-							
-						
-					});
-				});
-			});
-			
-			var dat = $("#datum");
-			dat.html("");
-			
-			$.each(json,function(i,item){
-				dat.append("<tr id='" + i + "'></tr>");
-				var mix = $("#" + i);
-				var datum = $.parseJSON(item.subFormData);
-				mix.append("<td>" + item.username + "</td>");
-				$.each(datum,function(ii,itemm){
-					$.each(itemm,function(iii,itemmm){
-						
-								mix.append("<td>" + itemmm.val + "</td>");
-						
-					});
-				});
-			});
-			$("#cn").html($('#datum tr').length);
-		});
-	}else{
-		$.get("scripts/getsearchform.php?q=" + q + "&fid=" + fid,function(data){
-			
-			var json = $.parseJSON(data);
-			var header = $("#header");
-			header.html("");
-			$.each(json,function(i,item){
-				var datum = $.parseJSON(item.subFormData);
-				header.html("");
-				$.each(datum,function(ii,itemm){
-					$.each(itemm,function(iii,itemmm){
-						if(itemmm.title == ty){
-							if((itemmm.val).constructor === Array){
-								$.each(itemmm.val,function(t,e){
-									if(e == q){
-										header.append("<th>Owner</th>");
-										header.append("<th>" + itemmm.title + "</th>");
-									}
-								});
-							}else{
-								if(itemmm.val == q){
-									header.append("<th>Owner</th>");
-									header.append("<th>" + itemmm.title + "</th>");
-								}
-							}
-						}
-					});
-				});
-			});
-			
-			var dat = $("#datum");
-			dat.html("");
-			
-			$.each(json,function(i,item){
-				dat.append("<tr id='" + i + "'></tr>");
-				var mix = $("#" + i);
-				var datum = $.parseJSON(item.subFormData);
-				$.each(datum,function(ii,itemm){
-					$.each(itemm,function(iii,itemmm){
-						if(itemmm.title == ty){
-							if((itemmm.val).constructor === Array){
-								$.each(itemmm.val,function(t,e){
-									if(e == q){
-										mix.append("<td>" + item.username + "</td>");
-										mix.append("<td>" + q + "</td>");
-										$("#cn").html($('#datum tr').length);
-									}
-								});
-							}else{
-								if(itemmm.val == q){
-									mix.append("<td>" + item.username + "</td>");
-									mix.append("<td>" + itemmm.val + "</td>");
-									$("#cn").html($('#datum tr').length);
-								}
-							}
-						}
-					});
+			$.each(datum,function(ii,itemm){
+				$.each(itemm,function(iii,itemmm){
+					header.append("<th>" + itemmm.title + "</th>");
 				});
 			});
 		});
-	}
+		
+		var dat = $("#datum");
+		dat.html("");
+		$.each(json,function(i,item){
+			dat.append("<tr id='" + i + "'></tr>");
+			var mix = $("#" + i);
+			var datum = $.parseJSON(item.subFormData);
+			$.each(datum,function(ii,itemm){
+				$.each(itemm,function(iii,itemmm){
+					mix.append("<td>" + itemmm.val + "</td>");
+				});
+			});
+		});
+		
+		$.get("scripts/countsearchform.php?q=" + q + "&fid=" + fid,function(data){
+			$("#cn").html(data);
+		});
+	});
 }
 
 function viewGroupTree(){
@@ -185,18 +114,13 @@ function getSummary(id){
 		var header = $("#header");
 		header.html("");
 		$.each(json,function(i,item){
-			if(i == 0){
-				var datum = $.parseJSON(item.subFormData);
-				header.html("");
-				$("#heads").html("");
-				header.append("<th>Owner</th>");
-				$.each(datum,function(ii,itemm){
-					$.each(itemm,function(iii,itemmm){
-						header.append("<th>" + itemmm.title + "</th>");
-						$("#heads").append("<option value='" + itemmm.title + "'>" + itemmm.title + "</option>");
-					});
+			var datum = $.parseJSON(item.subFormData);
+			header.html("");
+			$.each(datum,function(ii,itemm){
+				$.each(itemm,function(iii,itemmm){
+					header.append("<th>" + itemmm.title + "</th>");
 				});
-			}
+			});
 		});
 		
 		var dat = $("#datum");
@@ -205,19 +129,13 @@ function getSummary(id){
 			dat.append("<tr id='" + i + "'></tr>");
 			var mix = $("#" + i);
 			var datum = $.parseJSON(item.subFormData);
-			mix.append("<td>" + item.username + "</td>");
 			$.each(datum,function(ii,itemm){
 				$.each(itemm,function(iii,itemmm){
-					if((itemmm.val).constructor === Array){
-						
-						mix.append("<td>" + (itemmm.val).join(",") + "</td>");
-					}else{
-						mix.append("<td>" + itemmm.val + "</td>");
-					}
+					mix.append("<td>" + itemmm.val + "</td>");
 				});
 			});
 		});
-		$("#cn").html($('#datum tr').length);
+		
 	});
 }
 function viewProcTree(){

@@ -81,7 +81,7 @@ if(isset($_SESSION['uid'])){
 <html>
 <head>
 <script src="js/jq.js"></script>
-<script src="js/bootstrap.min.js"></script>
+<script src="js/b.js"></script>
 <script src="js/main.js"></script>
 <script src="dist/sweetalert.min.js"></script> 
 <script src="js/dash.js"></script> 
@@ -102,28 +102,64 @@ var ppub = "<?php echo $pub ?>";
 <link rel="stylesheet" type="text/css" href="dist/sweetalert.css">
 <meta http-equiv="Content-Type" content="text/html; charset=Cp1252">
 <title>Custeez Home</title>
-<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <link rel="stylesheet" type="text/css" href="css/jqu-min.css">
 </style>
 </head>
 <body>
-<?php include ('header/headerUser.html');?>
 
-<div id="container" class="container">
+<div id="container">
+
+
+<nav class="navbar navbar-default colorednav">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="index.php">Custeez</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li ><a href="user.php">Home</a></li>
+     <li> <a href="logout.php">Logout</a></li>
+    </ul>
+  </div>
+</nav>
 
 <ul class="nav nav-tabs">
-	<li id="dashTab" class="hvr-overline-reveal"><a href="dashboard.php">Dashboard</a></li>
-	<li id="editorTab" class="active"><a data-toggle="tab" href="#maker">Editor</a></li>
-	<li id="reportsTab" class="hvr-overline-reveal"><a href="summary.php">Reports</a></li>
-	<li id="findUseTab" class="hvr-overline-reveal"><a href="user.php">Find & Use</a></li>
-</ul>
-   
-    
-  <div class="tab-content">
-    <div id="maker" class="tab-pane fade in active col-sm-12" style="display: flex;">
-      <div id="sideBar" class="col-sm-3">
+<li><a data-toggle="tab" href="#dashboard">Dashboard</a></li>
+<li class="active"><a data-toggle="tab" href="#maker">Editor</a></li>
+<li><a href="user.php">Find & Use</a></li>
+  
+  </ul>
 
+  <div class="tab-content">
+       <div id="dashboard" class="tab-pane fade">
+    <fieldset><legend>For Your Review</legend>
+    <?php include("notif.php"); ?>
+    </fieldset>
+    <fieldset>
+<legend>Process Status</legend>
+<div id="pendproc">
+<div class="row">
+
+
+
+</div>
+</div>
+</fieldset>	
+
+<fieldset>
+<legend>Your Approved/Declined Items</legend>
+<div id="appdecform">
+<div class="row"></div>
+</div>
+</fieldset>
+    </div>
+    
+   
+    <div id="maker" class="tab-pane fade in active">
+      <div id="sideBar">
+      <div class='col-sm-1'></div>
+      <div class='col-sm-11'><br>
      	 <fieldset><legend>Add</legend>
      	 <button type="button" class="btn btn-primary btn-resized" data-toggle="modal" data-target="#addProc">Add Process</button>
      	 <br><br><a href="editor.php"><button type="button" class="btn btn-primary btn-resized">Back</button></a>
@@ -143,10 +179,12 @@ var ppub = "<?php echo $pub ?>";
      	 </div>
      	 </fieldset>
      	 </div>
+	</div>
 
 
-<div id="main" class="col-sm-9">
-<div class="col-sm-12"><br>
+<div id="main">
+<div class="col-sm-1"></div>
+<div class="col-sm-10"><br>
 <fieldset>
 <legend>
 <span id='tit'>Group Name: <?php echo $name ?></span>&nbsp;<button class='btn btn-primary' style="margin: 15px;" data-toggle="modal" data-target="#editGroup">Edit</button><br>
@@ -190,7 +228,7 @@ var ppub = "<?php echo $pub ?>";
         <label for="procDetails">Process Details:</label>
         <input type="text" class="form-control" name="procDetails" />
          <div class="form-group" style="height:30px;">
-           <input type="checkbox" class="form-control" value="2" id="publicity" data-on-text="Private" data-off-text="Public" name="publicity"><br><br>
+           <input type="checkbox" class="form-control" value="2" id="publicity" name="publicity"><br><br>
           </div>
         <input type="hidden" name="id" value='<?php echo $_SESSION["uid"]; ?>' />
                 <input type="hidden" name="gid" value='<?php echo $_GET["gid"]; ?>' />
@@ -222,7 +260,7 @@ var ppub = "<?php echo $pub ?>";
         <label for="procDetails">Group Details:</label>
         <input type="text" class="form-control" id="procDetails" value='<?php echo $details; ?>' name="procDetails" />
          <div class="form-group" style="height:30px;">
-           <input type="checkbox" class="form-control" value="2" id="publicity" data-on-text="Private" data-off-text="Public" name="publicity"><br><br>
+           <input type="checkbox" class="form-control" value="2" id="publicity" name="publicity"><br><br>
           </div>
         <input type="hidden" class="form-control" id="procId" value='<?php echo $gid ?>' name="procId" />
        </form>

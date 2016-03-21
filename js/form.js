@@ -7,7 +7,7 @@ $(document).ready(function(){
 	});
 });
 function viewForm(){
-	
+	setWidth();
 	$.get("scripts/getforms.php?id=" + uid,function(data,status){
 		$("#main").find(".row").html("");
 		
