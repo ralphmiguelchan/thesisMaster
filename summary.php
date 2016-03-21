@@ -113,77 +113,52 @@ var ppub = "<?php echo $pub ?>";
 	  <li id="findUseTab" class="hvr-overline-reveal"><a href="user.php">Find & Use</a></li>
 </ul>
 
-  <div class="tab-content">
-  
-    <div id="dashboard" class="tab-pane fade">
-    
-    <fieldset><legend>For Your Review</legend>
-    <?php include("notif.php"); ?>
-    </fieldset>
-    <fieldset>
-<legend>Process Status</legend>
-<div id="pendproc">
-<div class="row">
-
-
-
-</div>
-</div>
-</fieldset>	
-
-<fieldset>
-<legend>Your Approved/Declined Items</legend>
-<div id="appdecform">
-<div class="row"></div>
-</div>
-</fieldset>
-    </div>
-   
-    <div id="summary" class="tab-pane fade in active">
-    <div id="sideBar">
-    <div id="jstree" style="height:350px;">
-        <ul>
-                 <li class="isFolder">
-                <a href="listform.php">Forms</a>
-                <ul id="forms">
-                </ul>
-            </li>
-        </ul>
-    </div>
-    </div>
-    <div id="main">
-    <h1 id="formt">Form Title</h1>
-    <div class="input-group">
-    <span class="input-group-addon">
-    
-    <select id="heads">
-    
-    
-    </select>
-    
-    </span>
-    <input type="text" class="form-control" id="search" name="search" />
-    <span class="input-group-addon" id="cn">0</span>
-    </div>
-<table class="table">
-    <thead>
-      <tr id="header">
-       
-      </tr>
-    </thead>
-    <tbody id="datum">
-    <tr>
-    <td>Ralph Chan
-    </tr>
-    </tbody>
-  </table>
+  <div class="tab-content"> 
+    <div id="summary" class="tab-pane fade in active" style="display: flex;">
+	    <div id="sideBar" class="col-sm-3">
+		    <div id="jstree" style="height:350px;">
+		        <ul>
+		            <li class="isFolder">
+		                <a href="listform.php">Forms</a>
+		                <ul id="forms">
+		                </ul>
+		            </li>
+		        </ul>
+		    </div>
+	    </div>
+	    <div id="main">
+		    <h1 id="formt">No Form Selected</h1>
+		    <div class="input-group">
+			    <span class="input-group-addon">
+			    
+			    <select id="heads">
+			    
+			    
+			    </select>
+			    
+			    </span>
+			    <input type="text" class="form-control" id="search" name="search" />
+			    <span class="input-group-addon" id="cn">0</span>
+		    </div>
+			<table class="table">
+			    <thead>
+			      <tr id="header">
+			       
+			      </tr>
+			    </thead>
+			    <tbody id="datum">
+			    <tr>
+			    <td>
+			    </tr>
+			    </tbody>
+		  </table>
     	</div>
 	</div>
     </div>
     
 </div>
 
-
+<?php include("footer/footer.html");?>
 <!--  MODALS  -->
 
 

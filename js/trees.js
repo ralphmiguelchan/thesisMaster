@@ -14,7 +14,7 @@ function viewGroupTree(){
 
 		$.each(datum,function(i,item){
 			$("#group").append("<li class='jstree-drop' id='g_" + item.group_id + "'><a href='groups.php?gid=" + item.group_id + "'>" + item.groupName + "</a></li>");
-			viewProc();
+			
 		});
 	});
 	
@@ -35,10 +35,28 @@ function dropping(event, nodes, isSourceNode, source, isTargetNode, target, canD
 }
 
 function addToGroup(id,gid){
-	gid = gid.replace("g_","");
-	$.get("scripts/addtogroup.php?id=" + id + "&gid=" + gid,function(data){
-		document.location = "groups.php?gid=" + gid;
-	});
+	swal({
+		  title: "Change Process Name",
+		  text: "Input new process name.",
+		  type: "input",
+		  showCancelButton: true,
+		  closeOnConfirm: false,
+		  animation: "slide-from-top",
+		  inputPlaceholder: "Write process name"
+		},
+		function(inputValue){
+		  if (inputValue === false) return false;
+
+		  if (inputValue === "") {
+		    swal.showInputError("You need to write something!");
+		    return false
+		  }
+		  swal("Success!", "New process name: " + inputValue, "success");
+		  gid = gid.replace("g_","");
+			$.get("scripts/addtogroup.php?id=" + id + "&gid=" + gid + "&b=" + inputValue,function(data){
+				document.location = "groups.php?gid=" + gid;
+			});
+		});
 }
 
 function dropped(event, nodes, isSourceNode, source, isTargetNode, target) {
@@ -66,12 +84,16 @@ function viewFormTree(){
 	});
 }
 function activate(){
-	easyTree = $('#jstree').easytree({
-        enableDnd: true,
-        canDrop: canDrop,
-        dropped: dropped,
-        dropping: dropping
-    });
+	try{
+		easyTree = $('#jstree').easytree({
+	        enableDnd: true,
+	        canDrop: canDrop,
+	        dropped: dropped,
+	        dropping: dropping
+	    });
+	}catch(e){
+		
+	}
 }
 function viewProcTree(){
 	
