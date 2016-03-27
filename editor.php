@@ -107,121 +107,109 @@ var ppub = "<?php echo $pub ?>";
 <?php include("header/headerUser.html");?>
 
 <div id="container" class="container">
-
-<ul class="nav nav-tabs">
-	<li id="dashTab" class="hvr-overline-reveal"><a href="dashboard.php">Dashboard</a></li>
-	<li id="editorTab" class="active"><a data-toggle="tab" href="#maker">Editor</a></li>
-	<li id="reportsTab" class="hvr-overline-reveal"><a href="summary.php">Reports</a></li>
-	<li id="findUseTab" class="hvr-overline-reveal"><a href="user.php">Find & Use</a></li>
-</ul>
-
-
-  <div class="tab-content" style="height: 100%;">
-    <div id="maker" class="tab-pane fade in active col-sm-12" style="display: flex;">
-      <div id="sideBar" class="col-sm-3">
-      	<div class="col-sm-11"><br>
-
-<?php if(isset($_GET['pid'])){
-
-	echo "<fieldset><legend>Add</legend>";
-echo '<button type="button" class="btn btn-primary btn-resized" data-toggle="modal" data-target="#addStep">Add Step</button>';
-echo '<br><br><button type="button" class="btn btn-primary btn-resized" data-toggle="modal" data-target="#addExistingForm">Add Existing Form</button>';
-
-echo '<br><br><a href="editor.php"><button type="button" class="btn btn-primary btn-resized">Back</button></a>';
-
-echo '</fieldset>';
-}else if(isset($_GET['sid'])){
-	echo "<fieldset><legend>Add</legend>";
-echo '<a href="editor.php?pid='.$pid.'"><button type="button" class="btn btn-primary btn-resized">Back</button></a>';
-
-echo '</fieldset>';
-}else if(isset($_GET['fid'])){
+	<ul class="nav nav-tabs">
+		<li id="dashTab" class="hvr-overline-reveal"><a href="dashboard.php">Dashboard</a></li>
+		<li id="editorTab" class="active"><a href="#maker">Editor</a></li>
+		<li id="reportsTab" class="hvr-overline-reveal"><a href="summary.php">Reports</a></li>
+		<li id="findUseTab" class="hvr-overline-reveal"><a href="user.php">Find & Use</a></li>
+	</ul>
 	
-}else{
-	echo "<fieldset><legend>Add</legend>";
-echo '<button type="button" class="btn btn-primary btn-resized" data-toggle="modal" data-target="#addProc">Add Process</button>';
-echo '<br><br><button type="button" class="btn btn-primary btn-resized" data-toggle="modal" data-target="#addGroup">Add Group</button><br><br>';
-
-echo '</fieldset>';
-echo "<fieldset>
-<legend>Folders</legend>";
-include("hey.php");
-}
-
-?>
-</div>
-</div>
-
-
-<div id="main" class="col-sm-9">
-<div id='ginto'>
-
-</div>
-<div class="col-sm-12"><br>
-<fieldset>
-<legend>
-
-
-<?php if(isset($_GET['pid'])){
-	$pd = $_GET['pid'];
-echo "<span id='pname'>Process: ".$name."</span><br>";
-$g = "SELECT * FROM processes WHERE `process_id` = '$pd'";
-$r = $conn->query($g);
-$d = 0;
-while($s = $r->fetch_assoc()){
-	$d = $s['group_id'];
-}
-
-$h = "SELECT * FROM groups WHERE `group_id` = '$d'";
-$v = $conn->query($h);
-$gr = "none";
-while($b = $v->fetch_assoc()){
-	$gr = $b['groupName'];
-}
-echo "<span id='pdesc'>You are in group:".$gr."</span><br>";
-echo "<span id='pdesc'>Description:".$desc."</span>";
-echo '<button type="button" class="btn btn-primary" data-toggle="modal" onClick="editBtn()" style="margin: 15px;">Edit</button>';
-}else if(isset($_GET['sid'])){
+	    <div id="maker" class="tab-pane fade in active col-sm-12" style="display: flex;">
+	      <div id="sideBar" class="col-sm-3">
+	      	<div class="col-sm-11"><br>
+				<?php if(isset($_GET['pid'])){
+				
+					echo "<fieldset><legend>Add</legend>";
+				echo '<button type="button" class="btn btn-primary btn-resized" data-toggle="modal" data-target="#addStep">Add Step</button>';
+				echo '<br><br><button type="button" class="btn btn-primary btn-resized" data-toggle="modal" data-target="#addExistingForm">Add Existing Form</button>';
+				
+				echo '<br><br><a href="editor.php"><button type="button" class="btn btn-primary btn-resized">Back</button></a>';
+				
+				echo '</fieldset>';
+				}else if(isset($_GET['sid'])){
+					echo "<fieldset><legend>Add</legend>";
+				echo '<a href="editor.php?pid='.$pid.'"><button type="button" class="btn btn-primary btn-resized">Back</button></a>';
+				
+				echo '</fieldset>';
+				}else if(isset($_GET['fid'])){
+					
+				}else{
+					echo "<fieldset><legend>Add</legend>";
+				echo '<button type="button" class="btn btn-primary btn-resized" data-toggle="modal" data-target="#addProc">Add Process</button>';
+				echo '<br><br><button type="button" class="btn btn-primary btn-resized" data-toggle="modal" data-target="#addGroup">Add Group</button><br><br>';
+				
+				echo '</fieldset>';
+				echo "<fieldset>
+				<legend>Folders</legend>";
+				include("hey.php");
+				}
+				
+				?>
+			</div>
+		</div>
 	
 	
-
-	$q = "SELECT * FROM processes WHERE `process_id` = '$pid'";
-	$r = $conn->query($q);
-	$rgid = 1;
-	if($q){
-		while($test = $r->fetch_assoc()){
-			$pnm = $test['processName'];
-			$rgid = $test['rgid'];
-		}
-	}
-	
-	echo "<span id='pdesc'>Process Name: ".$pnm."</span><br>";
-	echo "<span>You are in group:".$gr."</span>";
-	echo "<span>RGID: ".$rgid."</span><br>";
-	echo "<span id='sname'>Step: ".$name."</span>&nbsp;";
-	echo '<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editStep">Edit</button>';
-}
-
-?>
-
-</legend>
-<?php if(isset($_GET['pid'])){
-include("steps.php");
-}else if(isset($_GET['sid']) || isset($_GET['fid'])){
-	include("formmaker.php");
-}
-
-?>
-
-</fieldset>
-</div>
-
-</div>
-
-
-</div>
-</div>
-</div>
+			<div id="main" class="col-sm-9">
+				<div id='ginto'>
+				
+				</div>
+				<div class="col-sm-12"><br>
+					<fieldset>
+					<legend>
+					<?php if(isset($_GET['pid'])){
+						$pd = $_GET['pid'];
+					echo "<span id='pname'>Process: ".$name."</span><br>";
+					$g = "SELECT * FROM processes WHERE `process_id` = '$pd'";
+					$r = $conn->query($g);
+					$d = 0;
+					while($s = $r->fetch_assoc()){
+						$d = $s['group_id'];
+					}
+					
+					$h = "SELECT * FROM groups WHERE `group_id` = '$d'";
+					$v = $conn->query($h);
+					$gr = "none";
+					while($b = $v->fetch_assoc()){
+						$gr = $b['groupName'];
+					}
+					echo "<span id='pdesc'>You are in group:".$gr."</span><br>";
+					echo "<span id='pdesc'>Description:".$desc."</span>";
+					echo '<button type="button" class="btn btn-primary" data-toggle="modal" onClick="editBtn()" style="margin: 15px;">Edit</button>';
+					}else if(isset($_GET['sid'])){
+						
+						
+					
+						$q = "SELECT * FROM processes WHERE `process_id` = '$pid'";
+						$r = $conn->query($q);
+						$rgid = 1;
+						if($q){
+							while($test = $r->fetch_assoc()){
+								$pnm = $test['processName'];
+								$rgid = $test['rgid'];
+							}
+						}
+						
+						echo "<span id='pdesc'>Process Name: ".$pnm."</span><br>";
+						echo "<span>You are in group:".$gr."</span>";
+						echo "<span>RGID: ".$rgid."</span><br>";
+						echo "<span id='sname'>Step: ".$name."</span>&nbsp;";
+						echo '<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editStep">Edit</button>';
+					}
+					
+					?>
+					</legend>
+					<?php if(isset($_GET['pid'])){
+					include("steps.php");
+					}else if(isset($_GET['sid']) || isset($_GET['fid'])){
+						include("formmaker.php");
+					}
+					
+					?>
+			</fieldset>
+				</div>
+			</div>
+		</div>
+	</div>
 <?php include("footer/footer.html");?>
 
 <!--  MODALS  -->

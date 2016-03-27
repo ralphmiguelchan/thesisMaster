@@ -95,41 +95,47 @@ var ppub = "<?php echo $pub ?>";
 <body>
 <?php include("header/headerUser.html");?>
 
-<div id="container" class="container" style="height: 100%;">
-<ul class="nav nav-tabs">
-	<li id="dashTab" class="active"><a href="#dashboard">Dashboard</a></li>
-	<?php 
-	if(isset($_SESSION['uid'])){
-		echo '<li id="editorTab" class="hvr-overline-reveal"><a href="editor.php">Editor</a></li>';
-		echo '<li id="reportsTab" class="hvr-overline-reveal"><a href="summary.php">Reports</a></li>';
-	}
-	?>
-	  <li id="findUseTab" class="hvr-overline-reveal"><a href="user.php">Find & Use</a></li>
-</ul>
+<div id="container" class="container">
+	<ul class="nav nav-tabs">
+		<li id="dashTab" class="active"><a href="#dashboard">Dashboard</a></li>
+		<?php 
+		if(isset($_SESSION['uid'])){
+			echo '<li id="editorTab" class="hvr-overline-reveal"><a href="editor.php">Editor</a></li>';
+			echo '<li id="reportsTab" class="hvr-overline-reveal"><a href="summary.php">Reports</a></li>';
+		}
+		?>
+		  <li id="findUseTab" class="hvr-overline-reveal"><a href="user.php">Find & Use</a></li>
+	</ul>
 
   <div class="tab-content">
   	<div class='col-sm-1'></div>
     <div class='col-sm-10'><br>
     <div id="dashboard" class="tab-pane fade in active">
     <fieldset><legend>For My Review</legend>
+    <div style="overflow: auto;height: 200px;">
     <?php include("notif.php"); ?>
+    </div>
     </fieldset>
     <fieldset>
-<legend>My Process/es Status</legend>
-<div id="pendproc">
-<div class="row">
-
-
-
-</div>
-</div>
+<legend>My Process/es' Status</legend>
+	<div style="overflow: auto;height: 200px;">
+		<div id="pendproc">
+			<div class="row">
+			
+			
+			
+			</div>
+		</div>
+	</div>
 </fieldset>	
 
 <fieldset>
 <legend>My Approved/Declined Forms</legend>
-<div id="appdecform">
-<div class="row"></div>
-</div>
+	<div style="overflow: auto;height: 200px;">
+		<div id="appdecform">
+			<div class="row"></div>
+		</div>
+	</div>
 </fieldset>
     </div></div>
    
