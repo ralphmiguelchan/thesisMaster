@@ -1048,6 +1048,10 @@ function addRadioItem(){
 	imain.append("<div id='c_" + rand + "'><input type='radio' name='item[]' value='" + title + "'>" + title + "<button type='button' class='btn btn-primary' onClick='removeItem(\"c_" + rand + "\");'>(X)</button></input></div>");
 	main.find("#control").toggleClass("hidecontrol");
 }
+function hideRadioItem(){
+	var main = $("#addRadio");
+	main.find("#control").toggleClass("hidecontrol");
+}
 function addRadioItem2(){
 	var main = $("#editRadio");
 	var title = main.find("#controlData").val();
@@ -1056,6 +1060,10 @@ function addRadioItem2(){
 	var rand = Math.floor((Math.random() * 99999) + 1);
 	
 	imain.append("<div id='c_" + rand + "'><input type='radio' name='item[]' value='" + title + "'>" + title + "<button type='button' class='btn btn-primary' onClick='removeItem(\"c_" + rand + "\");'>(X)</button></input></div>");
+	main.find("#control").toggleClass("hidecontrol");
+}
+function hideRadioItem2(){
+	var main = $("#editRadio");
 	main.find("#control").toggleClass("hidecontrol");
 }
 function removeSelectItem(){
@@ -1076,6 +1084,10 @@ function addCheckItem(){
 	imain.append("<div id='c_" + rand + "'><input type='checkbox' name='item[]' value='" + title + "'>" + title + "<button type='button' class='btn btn-primary' onClick='removeItem(\"c_" + rand + "\");'>(X)</button></input></div>");
 	main.find("#control").toggleClass("hidecontrol");
 }
+function hideCheckItem(){
+	var main = $("#addCheck");
+	main.find("#control").toggleClass("hidecontrol");
+}
 function addSelectItem(){
 	var main = $("#addSelect");
 	var title = main.find("#controlData").val();
@@ -1084,6 +1096,10 @@ function addSelectItem(){
 	var rand = Math.floor((Math.random() * 99999) + 1);
 	
 	imain.append("<option id='c_" + rand + "' value='" + title + "'>" + title + "</option>");
+	main.find("#control").toggleClass("hidecontrol");
+}
+function hideSelectItem(){
+	var main = $("#addSelect");
 	main.find("#control").toggleClass("hidecontrol");
 }
 function addSelectItem2(){
@@ -1096,6 +1112,10 @@ function addSelectItem2(){
 	imain.append("<option id='c_" + rand + "' value='" + title + "'>" + title + "</option>");
 	main.find("#control").toggleClass("hidecontrol");
 }
+function hideSelectItem2(){
+	var main = $("#editSelect");
+	main.find("#control").toggleClass("hidecontrol");
+}
 function addCheckItem2(){
 	var main = $("#editCheck");
 	var title = main.find("#controlData").val();
@@ -1105,6 +1125,10 @@ function addCheckItem2(){
 	
 	imain.append("<div id='c_" + rand + "'><input type='checkbox' name='item[]' value='" + title + "'>" + title + "<button type='button' class='btn btn-primary' onClick='removeItem(\"c_" + rand + "\");'>(X)</button></input></div>");
 	
+	main.find("#control").toggleClass("hidecontrol");
+}
+function hideCheckItem2(){
+	var main = $("#editCheck");
 	main.find("#control").toggleClass("hidecontrol");
 }
 function removeItem(obj){

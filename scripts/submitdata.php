@@ -14,11 +14,9 @@ foreach( $_POST as $stuff ) {
     if( is_array( $stuff ) ) {
     	
     	foreach($stuff as $line){
-    		if($line['type'] == "file"){
-    			
-    		}else{
+
     			array_push($arrays,$stuff);
-    		}
+    	
     	}
     } else {
         

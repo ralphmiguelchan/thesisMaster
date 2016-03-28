@@ -227,7 +227,10 @@
         <fieldset><legend>Add</legend>
         <div id="control" class="hidecontrol">
         <label for="controlData">Title:</label>
-        <input type="text" class="form-control" id="controlData" /><br><button type="button" style="float:right;" class="btn btn-primary" onClick="addCheckItem();">Add</button>
+        <input type="text" class="form-control" id="controlData" /><br>
+                <button type="button" style="float:right;" class="btn btn-primary" onClick="hideCheckItem();">Close</button>
+        
+        <button type="button" style="float:right;" class="btn btn-primary" onClick="addCheckItem();">Add</button>
         </div>
         </fieldset>
         <br>
@@ -268,7 +271,10 @@
         <fieldset><legend>Add</legend>
         <div id="control" class="hidecontrol">
         <label for="controlData">Title:</label>
-        <input type="text" class="form-control" id="controlData" /><br><button type="button" style="float:right;" class="btn btn-primary" onClick="addCheckItem2();">Add</button>
+        <input type="text" class="form-control" id="controlData" /><br>
+        <button type="button" style="float:right;" class="btn btn-primary" onClick="hideCheckItem2();">Close</button>
+        <button type="button" style="float:right;" class="btn btn-primary" onClick="addCheckItem2();">Add</button>&nbsp;
+		
         </div>
         </fieldset>
         <br>
@@ -308,7 +314,9 @@
         <fieldset><legend>Add</legend>
         <div id="control" class="hidecontrol">
         <label for="controlData">Title:</label>
-        <input type="text" class="form-control" id="controlData" /><br><button type="button" style="float:right;" class="btn btn-primary" onClick="addRadioItem();">Add</button>
+        <input type="text" class="form-control" id="controlData" /><br>
+        <button type="button" style="float:right;" class="btn btn-primary" onClick="hideRadioItem();">Close</button>
+        <button type="button" style="float:right;" class="btn btn-primary" onClick="addRadioItem();">Add</button>
         </div>
         </fieldset>
         <br>
@@ -349,7 +357,10 @@
         <fieldset><legend>Add</legend>
         <div id="control" class="hidecontrol">
         <label for="controlData">Title:</label>
-        <input type="text" class="form-control" id="controlData" /><br><button type="button" style="float:right;" class="btn btn-primary" onClick="addRadioItem2();">Add</button>
+        <input type="text" class="form-control" id="controlData" /><br>
+                <button type="button" style="float:right;" class="btn btn-primary" onClick="hideRadioItem2();">Close</button>
+        
+        <button type="button" style="float:right;" class="btn btn-primary" onClick="addRadioItem2();">Add</button>
         </div>
         </fieldset>
         <br>
@@ -389,7 +400,9 @@
         <fieldset><legend>Add</legend>
         <div id="control" class="hidecontrol">
         <label for="controlData">Title:</label>
-        <input type="text" class="form-control" id="controlData" /><br><button type="button" style="float:right;" class="btn btn-primary" onClick="addSelectItem();">Add</button>
+        <input type="text" class="form-control" id="controlData" /><br>
+         <button type="button" style="float:right;" class="btn btn-primary" onClick="hideSelectItem();">Close</button>
+        <button type="button" style="float:right;" class="btn btn-primary" onClick="addSelectItem();">Add</button>
         </div>
         </fieldset>
         <br>
@@ -430,7 +443,9 @@
         <fieldset><legend>Add</legend>
         <div id="control" class="hidecontrol">
         <label for="controlData">Title:</label>
-        <input type="text" class="form-control" id="controlData" /><br><button type="button" style="float:right;" class="btn btn-primary" onClick="addSelectItem2();">Add</button>
+        <input type="text" class="form-control" id="controlData" /><br>
+         <button type="button" style="float:right;" class="btn btn-primary" onClick="hideSelectItem2();">Close</button>
+        <button type="button" style="float:right;" class="btn btn-primary" onClick="addSelectItem2();">Add</button>
         </div>
         </fieldset>
         <br>

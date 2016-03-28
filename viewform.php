@@ -75,6 +75,9 @@ if(isset($_SESSION['uid'])){
 <script src="js/main.js"></script>
 <script src="dist/sweetalert.min.js"></script> 
 <script src="js/ms.js"></script>
+ <script type="text/javascript" src="js/jq.js"></script>
+    <script type="text/javascript" src="js/jquery.uploadify.min.js"></script>
+<link rel="stylesheet" type="text/css" href="css/uploadify.css">
 <script>
 var pid = "<?php echo $pid; ?>";
 var uid = "<?php echo $uid ?>";

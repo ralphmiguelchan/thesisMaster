@@ -138,26 +138,29 @@ function ViewForm2(id){
 								"<span style='color:red;'>" + itemmm.desc + "</span><br>" +
 								"<input type='text' class='form-control' value='" + itemmm.val + "' disabled/><hr>");
 					}else if(itemmm.type == "textarea"){
-						$("#fields").append("<div class='form-group'>" +
+						$("#fields2").append("<div class='form-group'>" +
 								"<span>" + itemmm.title + ":</span><br>" + 
 								"<span style='color:red;'>" + itemmm.desc + "</span><br>" +
 								"<textarea class='form-control' disabled>" + itemmm.val + "</textarea><hr>");
 					}else if(itemmm.type == "check"){
-						$("#fields").append("<div id='c_" + iii + "' class='form-group'>" +
+						var rands = Math.floor((Math.random() * 99999) + 1);
+						$("#fields2").append("<div id='c_" + rands + "' class='form-group'>" +
 								"<span>" + itemmm.title + ":</span><br>" + 
 								"<span style='color:red;'>" + itemmm.desc + "</span><br>");
 						
 						$.each(itemmm.val,function(g,s){
-							$("#c_" + iii).append("<input type='checkbox' class='form-control' checked disabled>" + s + "</input><br>");
+							$("#c_" + rands).append("<input type='checkbox' class='form-control' checked disabled>" + s + "</input><br>");
 						});
-						$("#c_" + iii).append("<hr>");
+						$("#c_" + rands).append("<hr>");
 					}else if(itemmm.type == "radio"){
-						$("#fields").append("<div id='c_" + iii + "' class='form-group'>" +
+						var rands = Math.floor((Math.random() * 99999) + 1);
+						$("#fields2").append("<div id='c_" + rands + "' class='form-group'>" +
 								"<span>" + itemmm.title + ":</span><br>" + 
 								"<span style='color:red;'>" + itemmm.desc + "</span><br>" + 
 								"<input type='radio' value='" + itemmm.val + "' disabled checked/>" + itemmm.val + "</input><hr>");
 					}else if(itemmm.type == "select"){
-						$("#fields").append("<div id='c_" + iii + "' class='form-group'>" +
+						var rands = Math.floor((Math.random() * 99999) + 1);
+						$("#fields2").append("<div id='c_" + rands + "' class='form-group'>" +
 								"<span>" + itemmm.title + ":</span><br>" + 
 								"<span style='color:red;'>" + itemmm.desc + "</span><br>" + 
 								"<select class='form-control' disabled>" +
@@ -192,22 +195,30 @@ function ViewForm(id){
 								"<span>" + itemmm.title + ":</span><br>" + 
 								"<span style='color:red;'>" + itemmm.desc + "</span><br>" +
 								"<textarea class='form-control' disabled>" + itemmm.val + "</textarea><hr>");
+					}else if(itemmm.type == "file"){
+						$("#fields").append("<div class='form-group'>" +
+								"<span>" + itemmm.title + ":</span><br>" + 
+								"<span style='color:red;'>" + itemmm.desc + "</span><br>" +
+								"<a href='http://localhost/" + itemmm.val + "' target='_blank'><button type='button' class='btn btn-primary'>Open File</button></a><hr>");
 					}else if(itemmm.type == "check"){
-						$("#fields").append("<div id='c_" + iii + "' class='form-group'>" +
+						var rands = Math.floor((Math.random() * 99999) + 1);
+						$("#fields").append("<div id='c_" + rands + "' class='form-group'>" +
 								"<span>" + itemmm.title + ":</span><br>" + 
 								"<span style='color:red;'>" + itemmm.desc + "</span><br>");
 						
 						$.each(itemmm.val,function(g,s){
-							$("#c_" + iii).append("<input type='checkbox' class='form-control' checked disabled>" + s + "</input><br>");
+							$("#c_" + rands).append("<input type='checkbox' class='form-control' checked disabled>" + s + "</input><br>");
 						});
-						$("#c_" + iii).append("<hr>");
+						$("#c_" + rands).append("<hr>");
 					}else if(itemmm.type == "radio"){
-						$("#fields").append("<div id='c_" + iii + "' class='form-group'>" +
+						var rands = Math.floor((Math.random() * 99999) + 1);
+						$("#fields").append("<div id='c_" + rands + "' class='form-group'>" +
 								"<span>" + itemmm.title + ":</span><br>" + 
 								"<span style='color:red;'>" + itemmm.desc + "</span><br>" + 
 								"<input type='radio' value='" + itemmm.val + "' disabled checked/>" + itemmm.val + "</input><hr>");
 					}else if(itemmm.type == "select"){
-						$("#fields").append("<div id='c_" + iii + "' class='form-group'>" +
+						var rands = Math.floor((Math.random() * 99999) + 1);
+						$("#fields").append("<div id='c_" + rands + "' class='form-group'>" +
 								"<span>" + itemmm.title + ":</span><br>" + 
 								"<span style='color:red;'>" + itemmm.desc + "</span><br>" + 
 								"<select class='form-control' disabled>" +

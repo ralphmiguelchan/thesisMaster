@@ -10,6 +10,7 @@ $uid = 0;
 $fid = 0;
 $desc = "";
 $pnm = "";
+$gr = "none";
 $rgid = 0;
 $pub = 0;
 if(isset($_SESSION['uid'])){
@@ -190,7 +191,7 @@ var ppub = "<?php echo $pub ?>";
 						}
 						
 						echo "<span id='pdesc'>Process Name: ".$pnm."</span><br>";
-						echo "<span>You are in group:".$gr."</span>";
+						echo "<span>You are in group:".$gr."</span><br>";
 						echo "<span>RGID: ".$rgid."</span><br>";
 						echo "<span id='sname'>Step: ".$name."</span>&nbsp;";
 						echo '<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editStep">Edit</button>';

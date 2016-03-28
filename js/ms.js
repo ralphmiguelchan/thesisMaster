@@ -30,23 +30,34 @@ function fillUserForm(){
 								"<input type='hidden' name='textarea" + rands + "[" + rand + "][desc]' value='" + elem.desc + "' /></li>" +
 								"<input type='hidden' name='textarea" + rands + "[" + rand + "][type]' value='textarea' /></li>");
 					}else if(elem.type == "file"){
+						var rands = Math.floor((Math.random() * 99999) + 1);
 						main.append("<li><br><div>" +
 								"<span><b>" + elem.title + ":</b></span><br>" + 
 								"<span><i>" + elem.desc + "</span><br>" + 
-								"<input type='file' id='file' name='file[" + rand + "][val]'>" + 
-								"<input type='hidden' name='file[" + rand + "][title]' value='" + elem.title + "' />" + 
-								"<input type='hidden' name='file[" + rand + "][desc]' value='" + elem.desc + "' /></li>" +
-								"<input type='hidden' name='file[" + rand + "][type]' value='file' /></li>");
+								"<input type='file' id='file_" + rands + "' name='file" + rands + "[" + rand + "][file]'>" + 
+								"<input type='hidden' name='file" + rands + "[" + rand + "][title]' value='" + elem.title + "' />" + 
+								"<input type='hidden' name='file" + rands + "[" + rand + "][desc]' value='" + elem.desc + "' /></li>" +
+								"<input type='hidden' name='file" + rands + "[" + rand + "][type]' value='file' /></li>");
+						$('#file_' + rands).uploadify({
+							
+				            'swf'      : 'scripts/uploadify.swf',
+				            'uploader' : 'scripts/uploadify.php',
+				            
+				            'onUploadSuccess' : function(file, data, response) {
+				            	main.append("<input type='hidden' name='file" + rands + "[" + rand + "][val]' value='" + data + "' /></li>");
+				            }	
+				        });
 					}else if(elem.type == "check"){
-						main.append("<li><br><div id='ch_" + rand + "'>" +
+						var rands = Math.floor((Math.random() * 99999) + 1);
+						main.append("<li><br><div id='ch_" + rands + "'>" +
 								"<span><b>" + elem.title + ":</b></span><br>" + 
 								"<span><i>" + elem.desc + "</span><br>" + 
-								"<input type='hidden' name='check[" + rand + "][title]' value='" + elem.title + "' />" + 
-								"<input type='hidden' name='check[" + rand + "][desc]' value='" + elem.desc + "' /></li>" + 
-								"<input type='hidden' name='check[" + rand + "][type]' value='check' /></li>");
+								"<input type='hidden' name='check" + rands + "[" + rand + "][title]' value='" + elem.title + "' />" + 
+								"<input type='hidden' name='check" + rands + "[" + rand + "][desc]' value='" + elem.desc + "' /></li>" + 
+								"<input type='hidden' name='check" + rands + "[" + rand + "][type]' value='check' /></li>");
 						
 						$.each(elem.items,function(i,item){
-							$("#ch_" + rand).append("<input type='checkbox' name='check[" + rand + "][val][]' value='" + item + "'>" + item + "</input><br>");
+							$("#ch_" + rands).append("<input type='checkbox' name='check" + rands + "[" + rand + "][val][]' value='" + item + "'>" + item + "</input><br>");
 						});
 					}else if(elem.type == "radio"){
 						var rands = Math.floor((Math.random() * 99999) + 1);
@@ -62,16 +73,16 @@ function fillUserForm(){
 						});
 					}else if(elem.type == "select"){
 						var rands = Math.floor((Math.random() * 99999) + 1);
-						main.append("<li><br><div id='ra_" + rand + "'>" +
+						main.append("<li><br><div id='see_" + rands + "'>" +
 								"<span><b>" + elem.title + ":</b></span><br>" + 
 								"<span><i>" + elem.desc + "</span><br>" + 
-								"<select id='se_" + rand + "' name='select" + rands + "[" + rand + "][val]'></select>" + 
+								"<select id='se_" + rands + "' name='select" + rands + "[" + rand + "][val]'></select>" + 
 								"<input type='hidden' name='select" + rands + "[" + rand + "][title]' value='" + elem.title + "' />" + 
 								"<input type='hidden' name='select" + rands + "[" + rand + "][desc]' value='" + elem.desc + "' /></li>" + 
 								"<input type='hidden' name='select" + rands + "[" + rand + "][type]' value='select' /></li>");
 						
 						$.each(elem.items,function(i,item){
-							$("#se_" + rand).append("<option value='" + item + "'>" + item + "</option>");
+							$("#se_" + rands).append("<option value='" + item + "'>" + item + "</option>");
 						});					
 						}
 				});
