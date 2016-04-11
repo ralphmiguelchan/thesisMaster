@@ -19,7 +19,7 @@ function searchForm(q){
 			$.each(json,function(i,item){
 				var datum = $.parseJSON(item.subFormData);
 				header.html("");
-				header.append("<th>Owner</th>");
+				header.append("<th>Respondent</th>");
 				$.each(datum,function(ii,itemm){
 					$.each(itemm,function(iii,itemmm){
 						
@@ -42,7 +42,11 @@ function searchForm(q){
 				$.each(datum,function(ii,itemm){
 					$.each(itemm,function(iii,itemmm){
 						
-								mix.append("<td>" + itemmm.val + "</td>");
+								if(itemmm.type == "file"){
+									mix.append("<td><a href='http://localhost/" + itemmm.val + "'><button type='button' class='btn btn-primary'>Open</button></a></td>");
+								}else{
+									mix.append("<td>" + itemmm.val + "</td>");
+								}
 						
 					});
 				});
@@ -64,13 +68,13 @@ function searchForm(q){
 							if((itemmm.val).constructor === Array){
 								$.each(itemmm.val,function(t,e){
 									if(e == q){
-										header.append("<th>Owner</th>");
+										header.append("<th>Respondent</th>");
 										header.append("<th>" + itemmm.title + "</th>");
 									}
 								});
 							}else{
-								if(itemmm.val == q){
-									header.append("<th>Owner</th>");
+								if(((itemmm.val).toLowerCase().indexOf(q) >= 0)){
+									header.append("<th>Respondent</th>");
 									header.append("<th>" + itemmm.title + "</th>");
 								}
 							}
@@ -98,9 +102,13 @@ function searchForm(q){
 									}
 								});
 							}else{
-								if(itemmm.val == q){
+								if(((itemmm.val).toLowerCase().indexOf(q) >= 0)){
 									mix.append("<td>" + item.username + "</td>");
-									mix.append("<td>" + itemmm.val + "</td>");
+									if(itemmm.type == "file"){
+										mix.append("<td><a href='http://localhost/" + itemmm.val + "'><button type='button' class='btn btn-primary'>Open</button></a></td>");
+									}else{
+										mix.append("<td>" + itemmm.val + "</td>");
+									}
 									$("#cn").html($('#datum tr').length);
 								}
 							}
@@ -189,7 +197,7 @@ function getSummary(id){
 				var datum = $.parseJSON(item.subFormData);
 				header.html("");
 				$("#heads").html("");
-				header.append("<th>Owner</th>");
+				header.append("<th>Respondent</th>");
 				$.each(datum,function(ii,itemm){
 					$.each(itemm,function(iii,itemmm){
 						header.append("<th>" + itemmm.title + "</th>");
@@ -211,6 +219,8 @@ function getSummary(id){
 					if((itemmm.val).constructor === Array){
 						
 						mix.append("<td>" + (itemmm.val).join(",") + "</td>");
+					}else if(itemmm.type == "file"){
+						mix.append("<td><a href='http://localhost/" + itemmm.val + "'><button type='button' class='btn btn-primary'>Open</button></a></td>");
 					}else{
 						mix.append("<td>" + itemmm.val + "</td>");
 					}

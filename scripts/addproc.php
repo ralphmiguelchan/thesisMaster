@@ -2,7 +2,7 @@
 session_start();
 include("conn.php");
 $obj = json_decode($_POST['myData']);
-$pub = 0;
+$pub = 1;
 $name = ($obj->procName);
 $details = ($obj->procDetails);
 $id = ($obj->id);

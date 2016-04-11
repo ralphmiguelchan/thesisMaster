@@ -51,6 +51,21 @@ function FillPendingForm(){
 	});
 }
 
+function delSelectedSub(){
+	$(":checkbox").each(function(){
+	if(this.checked == true){
+		$.get("scripts/delsubform.php?sub=" + this.value,function(data){
+			swal({   
+				title: "Deleted!",   
+				text: "All Selected Items Have Been Deleted!",   
+				type: "success",   
+				confirmButtonText: "Thanks" },function(){
+					$("#appdecform").find(".row").html("");
+				});
+		});
+	}
+	});
+}
 function FillAccDec(){
 
 	
@@ -66,16 +81,21 @@ function FillAccDec(){
 						'<span style="font-size:10px; color:green;">Accepted!</span><br>'+
 						'<img src="img/forms.png" width="80"><br>' +
 						'<button type="text" class="btn btn-primary" onClick="ViewForm2(' + item.sub_id + ');">View</button>' +
-						'</center></div></div>');
+						'Delete <input type="checkbox" value="' + item.sub_id + '">' +	
+
+				'</center></div></div>');
 			}else if(item.substatus == 2){
 				$("#appdecform").find(".row").append('<div class="col-sm-2">' +
 						'<div class="notpend">'+
+						'Delete <input type="checkbox" value="' + item.sub_id + '">' +	
 						'<center>'+
 						'<span style="font-size:10px;">' + item.formName + '</span><br>' +
 						'<span style="font-size:10px; color:red;">Declined!</span><br>'+
 						'<img src="img/forms.png" width="80"><br>' +
 						'<button type="text" class="btn btn-primary" onClick="ViewForm2(' + item.sub_id + ');">View</button>' +
-						'</center></div></div>');
+						'Delete <input type="checkbox" value="' + item.sub_id + '">' +	
+
+				'</center></div></div>');
 			}else{
 				$("#appdecform").find(".row").append('<div class="col-sm-2">' +
 						'<div class="notpend">'+
@@ -84,7 +104,9 @@ function FillAccDec(){
 						'<span style="font-size:10px; color:green;">Accepted!</span><br>'+
 						'<img src="img/forms.png" width="80"><br>' +
 						'<button type="text" class="btn btn-primary" onClick="ViewForm2(' + item.sub_id + ');">View</button>' +
-						'</center></div></div>');
+						'Delete <input type="checkbox" value="' + item.sub_id + '">' +	
+
+				'</center></div></div>');
 			}
 		});
 	});
@@ -244,6 +266,8 @@ function accept(id){
 			type: "success",   
 			confirmButtonText: "Thanks" },function(){
 				$("#viewform").modal('hide');
+				$("#notif").find(".row").html("");
+				
 			});
 	});
 }
@@ -255,6 +279,7 @@ function decline(id){
 			type: "success",   
 			confirmButtonText: "Thanks" },function(){
 				$("#viewform").modal('hide');
+				$("#notif").find(".row").html("");
 			});
 	});
 }

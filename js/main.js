@@ -134,14 +134,18 @@ $(document).ready(function(){
 		
 		var title = main.find("#title").val();
 		var desc = main.find("#desc").val();
-		
+		var req;
+		if($(main.find("#req")).prop("checked")){
+			req = main.find("#req").val();
+		}
+		var eval = main.find("#eval").val();
 		var rand = Math.floor((Math.random() * 99999) + 1);
 		
 		var id = rand;
 		var check = $("#li_" + id).val();
 		
 		if(check == null){
-			addTextField(title,desc,id);
+			addTextField(title,desc,id,req,eval);
 		}
 	});
 	
@@ -154,9 +158,12 @@ $(document).ready(function(){
 		
 		var id = rand;
 		var check = $("#li_" + id).val();
-		
+		var req;
+		if($(main.find("#req")).prop("checked")){
+			req = main.find("#req").val();
+		}
 		if(check == null){
-			addFileField(title,desc,id);
+			addFileField(title,desc,id,req);
 		}
 	});
 	
@@ -165,14 +172,17 @@ $(document).ready(function(){
 		
 		var title = main.find("#title").val();
 		var desc = main.find("#desc").val();
-		
+		var req;
+		if($(main.find("#req")).prop("checked")){
+			req = main.find("#req").val();
+		}
 		var rand = Math.floor((Math.random() * 99999) + 1);
 		
 		var id = rand;
 		var check = $("#li_" + id).val();
 		
 		if(check == null){
-			addParaField(title,desc,id);
+			addParaField(title,desc,id,req);
 		}
 	});
 
@@ -186,9 +196,12 @@ $(document).ready(function(){
 		
 		var id = rand;
 		var check = $("#li_" + id).val();
-		
+		var req;
+		if($(main.find("#req")).prop("checked")){
+			req = main.find("#req").val();
+		}
 		if(check == null){
-			addSelectField(title,desc,id);
+			addSelectField(title,desc,id,req);
 		}
 	});
 	
@@ -203,9 +216,12 @@ $(document).ready(function(){
 		
 		var id = rand;
 		var check = $("#li_" + id).val();
-		
+		var req;
+		if($(main.find("#req")).prop("checked")){
+			req = main.find("#req").val();
+		}
 		if(check == null){
-			addCheckField(title,desc,id);
+			addCheckField(title,desc,id,req);
 		}
 	});
 	
@@ -219,9 +235,12 @@ $(document).ready(function(){
 		
 		var id = rand;
 		var check = $("#li_" + id).val();
-		
+		var req;
+		if($(main.find("#req")).prop("checked")){
+			req = main.find("#req").val();
+		}
 		if(check == null){
-			addRadioField(title,desc,id);
+			addRadioField(title,desc,id,req);
 		}
 	});
 	$("#editStepBtn").click(function(){
@@ -242,7 +261,14 @@ $(document).ready(function(){
 		var desc = main.find("#desc").val();
 		var id = main.find("#id").val();
 		
-		editField(title,desc,id);
+		var req;
+		if($(main.find("#req")).prop("checked")){
+			req = main.find("#req").val();
+		}
+		var eval = main.find("#eval").val();
+		var rand = Math.floor((Math.random() * 99999) + 1);
+		
+		editField(title,desc,id,req,eval);
 	});
 	
 	$("#editCheckBtn").click(function(){
@@ -251,8 +277,24 @@ $(document).ready(function(){
 		var title = main.find("#title").val();
 		var desc = main.find("#desc").val();
 		var id = main.find("#id").val();
+		var req;
+		if($(main.find("#req")).prop("checked")){
+			req = main.find("#req").val();
+		}
+		editCheckField(title,desc,id,req);
+	});
+	
+	$("#editFileBtn").click(function(){
+		var main = $("#editFile");
 		
-		editCheckField(title,desc,id);
+		var title = main.find("#title").val();
+		var desc = main.find("#desc").val();
+		var id = main.find("#id").val();
+		var req;
+		if($(main.find("#req")).prop("checked")){
+			req = main.find("#req").val();
+		}
+		editFileField(title,desc,id,req);
 	});
 	
 	$("#editSelectBtn").click(function(){
@@ -261,8 +303,11 @@ $(document).ready(function(){
 		var title = main.find("#title").val();
 		var desc = main.find("#desc").val();
 		var id = main.find("#id").val();
-		
-		editSelectField(title,desc,id);
+		var req;
+		if($(main.find("#req")).prop("checked")){
+			req = main.find("#req").val();
+		}
+		editSelectField(title,desc,id,req);
 	});
 	
 	$("#editRadioBtn").click(function(){
@@ -271,8 +316,11 @@ $(document).ready(function(){
 		var title = main.find("#title").val();
 		var desc = main.find("#desc").val();
 		var id = main.find("#id").val();
-		
-		editRadioField(title,desc,id);
+		var req;
+		if($(main.find("#req")).prop("checked")){
+			req = main.find("#req").val();
+		}
+		editRadioField(title,desc,id,req);
 	});
 	
 	$("#editParaBtn").click(function(){
@@ -281,9 +329,13 @@ $(document).ready(function(){
 		var title = main.find("#title").val();
 		var desc = main.find("#desc").val();
 		var id = main.find("#id").val();
-		
-		editParaField(title,desc,id);
+		var req;
+		if($(main.find("#req")).prop("checked")){
+			req = main.find("#req").val();
+		}
+		editParaField(title,desc,id,req);
 	});
+	
 	$("#searchBar").keyup(function(event){
 			$("#proc").find(".row").html("");
 			$("#groups").find(".row").html("");
@@ -344,18 +396,69 @@ function fillEditProc(){
 	main.find("#publicity").val(ppub);
 }
 function subBtn(){
-	var json = $("#frm").serialize();
-	$.post("scripts/submitdata.php", json, function(data){
-		$.get("scripts/getproid.php?sid=" + sid,function(datas,status){
-			swal({   
-				title: "Submitted!",   
-				text: "Submitted Successfully",   
-				type: "success",   
-				confirmButtonText: "Thanks" },function(){
-					document.location = "viewprocess.php?pid=" + datas;
-				});
-		});
-	});
+	var textcheck = false;
+	var paracheck = false;
+	var filecheck = false;
+	var $val=0;
+	$("input.required").each(function(){
+        if (($(this).val())== ""){
+              $(this).addClass("error");
+              $val = 1
+        }
+        else{
+            $(this).removeClass("error");
+        }
+      
+    });
+	
+	 $("select.required").each(function(){
+	        if (($(this).val())== ""){
+	              $(this).addClass("error");
+	              $val = 1
+	        }
+	        else{
+	            $(this).removeClass("error");
+	        }
+	      
+	    });
+	 
+	 $("textarea.required").each(function(){
+	        if (($(this).val())== ""){
+	              $(this).addClass("error");
+	              $val = 1
+	        }
+	        else{
+	            $(this).removeClass("error");
+	        }
+	      
+	    });
+	 $("file.required").each(function(){
+	        if (($(this).val())== ""){
+	              $(this).addClass("error");
+	              $val = 1
+	        }
+	        else{
+	            $(this).removeClass("error");
+	        }
+	      
+	    });
+	 if ($val > 0) {
+	        alert('Please enter the hightlighted values');
+	        return false;
+	    }else{
+	    	var json = $("#frm").serialize();
+	    	$.post("scripts/submitdata.php", json, function(data){
+	    		$.get("scripts/getproid.php?sid=" + sid,function(datas,status){
+	    			swal({   
+	    				title: "Submitted!",   
+	    				text: "Submitted Successfully",   
+	    				type: "success",   
+	    				confirmButtonText: "Thanks" },function(){
+	    					document.location = "viewprocess.php?pid=" + datas;
+	    				});
+	    		});
+	    	})
+	    }
 }
 function editProc(title,desc){
 	$.post("scripts/updateproc.php",$("#editProcForm").serialize(),function(data,status){
@@ -391,17 +494,17 @@ function fillForm(){
 					$.each(itemm,function(j,elem){
 						var rand = Math.floor((Math.random() * 99999) + 1);
 						if(elem.type == "text"){
-							addTextField(elem.title,elem.desc,rand);
+							addTextField(elem.title,elem.desc,rand,elem.req,elem.eval);
 						}else if(elem.type == "para"){
-							addParaField(elem.title,elem.desc,rand);
+							addParaField(elem.title,elem.desc,rand,elem.req);
 						}else if(elem.type == "check"){
-							addCheckField2(elem.title,elem.desc,rand,elem);
+							addCheckField2(elem.title,elem.desc,rand,elem,elem.req);
 						}else if(elem.type == "radio"){
-							addRadioField2(elem.title,elem.desc,rand,elem);
+							addRadioField2(elem.title,elem.desc,rand,elem,elem.req);
 						}else if(elem.type == "select"){
-							addSelectField2(elem.title,elem.desc,rand,elem);
+							addSelectField2(elem.title,elem.desc,rand,elem,elem.req);
 						}else if(elem.type == "file"){
-							addFileField(elem.title,elem.desc,rand);
+							addFileField(elem.title,elem.desc,rand,elem.req);
 						}
 					});
 				});
@@ -422,17 +525,17 @@ function fillForm(){
 					$.each(itemm,function(j,elem){
 						var rand = Math.floor((Math.random() * 99999) + 1);
 						if(elem.type == "text"){
-							addTextField(elem.title,elem.desc,rand);
+							addTextField(elem.title,elem.desc,rand,elem.req,elem.eval);
 						}else if(elem.type == "para"){
-							addParaField(elem.title,elem.desc,rand);
+							addParaField(elem.title,elem.desc,rand,elem.req);
 						}else if(elem.type == "check"){
-							addCheckField2(elem.title,elem.desc,rand,elem);
+							addCheckField2(elem.title,elem.desc,rand,elem,elem.req);
 						}else if(elem.type == "radio"){
-							addRadioField2(elem.title,elem.desc,rand,elem);
+							addRadioField2(elem.title,elem.desc,rand,elem,elem.req);
 						}else if(elem.type == "select"){
-							addSelectField2(elem.title,elem.desc,rand,elem);
+							addSelectField2(elem.title,elem.desc,rand,elem,elem.req);
 						}else if(elem.type == "file"){
-							addFileField(elem.title,elem.desc,rand);
+							addFileField(elem.title,elem.desc,rand,elem.req);
 						}
 					});
 				});
@@ -676,8 +779,10 @@ function setWidth(){
 	$("#main").width($("body").width() - sidewidth - 100);
 	$("#main").height(1000);
 }
-function addRadioField2(title,desc,id,elem){
-	
+function addRadioField2(title,desc,id,elem,req){
+	if(typeof req === 'undefined'){
+		req = 0;
+	}
 	var main = $("#formData");
 	
 	main.append("<li id=\"li_" + id + "\"></li>");
@@ -692,6 +797,8 @@ function addRadioField2(title,desc,id,elem){
 	formain.append('<span><a href="javascript:editRadio(\'' + id + '\');">Edit</a>|<span><a href="javascript:deleteField(\'' + id + '\');">Delete</a></span><br>');
 	formain.append('<span id="desclabel_' + id + '">' + desc + '</span>');
 	formain.append('<input type="hidden" class="form-control" id="txt_' + id + '" value="' + title + '" name="radio[' + id + '][title]" />');
+	formain.append('<input type="hidden" class="form-control" id="req_' + id + '" value="' + req + '" name="radio[' + id + '][req]" />');
+
 	formain.append('<input type="hidden" class="form-control" id="desc_' + id + '" value="' + desc + '" name="radio[' + id + '][desc]" />');
 	formain.append('<input type="hidden" class="form-control" id="type_' + id + '" value="radio" name="radio[' + id + '][type]" />');
 	formain.append('<br><b>Items: </b>');
@@ -707,8 +814,10 @@ function addRadioField2(title,desc,id,elem){
 	limain.append("<br>");
 	
 }
-function addCheckField2(title,desc,id,elem){
-	
+function addCheckField2(title,desc,id,elem,req){
+	if(typeof req === 'undefined'){
+		req = 0;
+	}
 	var main = $("#formData");
 	
 	main.append("<li id=\"li_" + id + "\"></li>");
@@ -725,6 +834,8 @@ function addCheckField2(title,desc,id,elem){
 	formain.append('<input type="hidden" class="form-control" id="txt_' + id + '" value="' + title + '" name="check[' + id + '][title]" />');
 	formain.append('<input type="hidden" class="form-control" id="desc_' + id + '" value="' + desc + '" name="check[' + id + '][desc]" />');
 	formain.append('<input type="hidden" class="form-control" id="type_' + id + '" value="check" name="check[' + id + '][type]" />');
+	formain.append('<input type="hidden" class="form-control" id="req_' + id + '" value="' + req + '" name="check[' + id + '][req]" />');
+
 	formain.append('<br><b>Items: </b>');
 	formain.append("<div id='citems_" + id + "'></div>")
 	
@@ -739,7 +850,10 @@ function addCheckField2(title,desc,id,elem){
 	
 }
 
-function addCheckField(title,desc,id){
+function addCheckField(title,desc,id,req){
+	if(typeof req === 'undefined'){
+		req = 0;
+	}
 	
 	var main = $("#formData");
 	
@@ -757,6 +871,8 @@ function addCheckField(title,desc,id){
 	formain.append('<input type="hidden" class="form-control" id="txt_' + id + '" value="' + title + '" name="check[' + id + '][title]" />');
 	formain.append('<input type="hidden" class="form-control" id="desc_' + id + '" value="' + desc + '" name="check[' + id + '][desc]" />');
 	formain.append('<input type="hidden" class="form-control" id="type_' + id + '" value="check" name="check[' + id + '][type]" />');
+	formain.append('<input type="hidden" class="form-control" id="req_' + id + '" value="' + req + '" name="check[' + id + '][req]" />');
+
 	formain.append('<br><b>Items: </b>');
 	formain.append("<div id='citems_" + id + "'></div>")
 	
@@ -771,8 +887,10 @@ function addCheckField(title,desc,id){
 	
 }
 
-function addRadioField(title,desc,id){
-	
+function addRadioField(title,desc,id,req){
+	if(typeof req === 'undefined'){
+		req = 0;
+	}
 	var main = $("#formData");
 	
 	main.append("<li id=\"li_" + id + "\"></li>");
@@ -789,6 +907,7 @@ function addRadioField(title,desc,id){
 	formain.append('<input type="hidden" class="form-control" id="txt_' + id + '" value="' + title + '" name="radio[' + id + '][title]" />');
 	formain.append('<input type="hidden" class="form-control" id="desc_' + id + '" value="' + desc + '" name="radio[' + id + '][desc]" />');
 	formain.append('<input type="hidden" class="form-control" id="type_' + id + '" value="radio" name="radio[' + id + '][type]" />');
+	formain.append('<input type="hidden" class="form-control" id="req_' + id + '" value="' + req + '" name="radio[' + id + '][req]" />');
 	formain.append('<br><b>Items: </b>');
 	formain.append("<div id='ritems_" + id + "'></div>")
 	
@@ -803,8 +922,10 @@ function addRadioField(title,desc,id){
 	
 }
 
-function addSelectField2(title,desc,id,elem){
-	
+function addSelectField2(title,desc,id,elem,req){
+	if(typeof req === 'undefined'){
+		req = 0;
+	}
 	var main = $("#formData");
 	
 	main.append("<li id=\"li_" + id + "\"></li>");
@@ -819,6 +940,8 @@ function addSelectField2(title,desc,id,elem){
 	formain.append('<span><a href="javascript:editSelect(\'' + id + '\');">Edit</a>|<span><a href="javascript:deleteField(\'' + id + '\');">Delete</a></span><br>');
 	formain.append('<span id="desclabel_' + id + '">' + desc + '</span>');
 	formain.append('<input type="hidden" class="form-control" id="txt_' + id + '" value="' + title + '" name="select[' + id + '][title]" />');
+	formain.append('<input type="hidden" class="form-control" id="req_' + id + '" value="' + req + '" name="select[' + id + '][req]" />');
+
 	formain.append('<input type="hidden" class="form-control" id="desc_' + id + '" value="' + desc + '" name="select[' + id + '][desc]" />');
 	formain.append('<input type="hidden" class="form-control" id="type_' + id + '" value="select" name="select[' + id + '][type]" />');
 	formain.append('<br><b>Items: </b>');
@@ -836,8 +959,10 @@ function addSelectField2(title,desc,id,elem){
 	
 }
 
-function addSelectField(title,desc,id){
-	
+function addSelectField(title,desc,id,req){
+	if(typeof req === 'undefined'){
+		req = 0;
+	}
 	var main = $("#formData");
 	
 	main.append("<li id=\"li_" + id + "\"></li>");
@@ -853,6 +978,7 @@ function addSelectField(title,desc,id){
 	formain.append('<span id="desclabel_' + id + '">' + desc + '</span>');
 	formain.append('<input type="hidden" class="form-control" id="txt_' + id + '" value="' + title + '" name="select[' + id + '][title]" />');
 	formain.append('<input type="hidden" class="form-control" id="desc_' + id + '" value="' + desc + '" name="select[' + id + '][desc]" />');
+	formain.append('<input type="hidden" class="form-control" id="req_' + id + '" value="' + req + '" name="select[' + id + '][req]" />');
 	formain.append('<input type="hidden" class="form-control" id="type_' + id + '" value="select" name="select[' + id + '][type]" />');
 	formain.append('<br><b>Items: </b>');
 	formain.append("<select id='sitems_" + id + "'></select>");
@@ -870,11 +996,20 @@ function addSelectField(title,desc,id){
 }
 
 
-function editField(title,desc,id){
+function editField(title,desc,id,req,eval){
 	$("#lbl_" + id).html(title + ": ");
 	$("#desclabel_" + id).html(desc);
 	$("#txt_" + id).val(title);
 	$("#desc_" + id).val(desc);
+	$("#req_" + id).val(req);
+	$("#eval_" + id).val(eval);
+}
+function editFileField(title,desc,id,req){
+	$("#lbl_" + id).html(title + ": ");
+	$("#desclabel_" + id).html(desc);
+	$("#txt_" + id).val(title);
+	$("#desc_" + id).val(desc);
+	$("#req_" + id).val(req);
 }
 function editParaField(title,desc,id){
 	$("#lbl_" + id).html(title + ": ");
@@ -882,11 +1017,12 @@ function editParaField(title,desc,id){
 	$("#txt_" + id).val(title);
 	$("#desc_" + id).val(desc);
 }
-function editCheckField(title,desc,id){
+function editCheckField(title,desc,id,req){
 	$("#lbl_" + id).html(title + ": ");
 	$("#desclabel_" + id).html(desc);
 	$("#txt_" + id).val(title);
 	$("#desc_" + id).val(desc);
+	$("#req_" + id).val(req);
 	
 	var main = $("#editCheck");
 	
@@ -901,12 +1037,12 @@ function editCheckField(title,desc,id){
 }
 
 
-function editSelectField(title,desc,id){
+function editSelectField(title,desc,id,req){
 	$("#lbl_" + id).html(title + ": ");
 	$("#desclabel_" + id).html(desc);
 	$("#txt_" + id).val(title);
 	$("#desc_" + id).val(desc);
-	
+	$("#req_" + id).val(req);
 	var main = $("#editSelect");
 	
 	var mainitems = $("#sitems_" + id);
@@ -926,12 +1062,12 @@ function deleteField(id){
 	$("#li_" + id).remove();
 }
 //end delete fields
-function editRadioField(title,desc,id){
+function editRadioField(title,desc,id,req){
 	$("#lbl_" + id).html(title + ": ");
 	$("#desclabel_" + id).html(desc);
 	$("#txt_" + id).val(title);
 	$("#desc_" + id).val(desc);
-	
+	$("#req_" + id).val(req);
 	var main = $("#editRadio");
 	
 	var mainitems = $("#ritems_" + id);
@@ -944,7 +1080,11 @@ function editRadioField(title,desc,id){
 	});
 }
 
-function addFileField(title,desc,id){
+function addFileField(title,desc,id,req){
+	if(typeof req === 'undefined'){
+		req = 0;
+	}
+
 	var main = $("#formData");
 	main.append("<li id=\"li_" + id + "\"></li>");
 	var limain = main.find("#li_" + id);
@@ -952,16 +1092,24 @@ function addFileField(title,desc,id){
 	var formain = limain.find("#frmgroup");
 	
 	formain.append("<label for='txt_" + id + "' id='lbl_" + id + "'>" + title + ": </label>");
-	formain.append('<span><a href="javascript:editTxt(\'' + id + '\');">Edit</a>|<span><a href="javascript:deleteField(\'' + id + '\');">Delete</a></span><br>');
+	formain.append('<span><a href="javascript:editFile(\'' + id + '\');">Edit</a>|<span><a href="javascript:deleteField(\'' + id + '\');">Delete</a></span><br>');
 	formain.append('<span id="desclabel_' + id + '">' + desc + '</span>');
 	formain.append('<input type="file" disabled/>');
 	formain.append('<input type="hidden" class="form-control" id="txt_' + id + '" value="' + title + '" name="file[' + id + '][title]" />');
 	formain.append('<input type="hidden" class="form-control" id="desc_' + id + '" value="' + desc + '" name="file[' + id + '][desc]" />');
 	formain.append('<input type="hidden" class="form-control" id="type_' + id + '" value="file" name="file[' + id + '][type]" />');
-	
+	formain.append('<input type="hidden" class="form-control" id="req_' + id + '" value="' + req + '" name="file[' + id + '][req]" />');
+
 	limain.append("<br>");
 }
-function addTextField(title,desc,id){
+function addTextField(title,desc,id,req,eval){
+	
+	if(typeof req === 'undefined'){
+		req = 0;
+	}
+	if(typeof eval === 'undefined'){
+		eval = "text";
+	}
 	
 	var main = $("#formData");
 	
@@ -980,7 +1128,8 @@ function addTextField(title,desc,id){
 	formain.append('<input type="hidden" class="form-control" id="txt_' + id + '" value="' + title + '" name="txt[' + id + '][title]" />');
 	formain.append('<input type="hidden" class="form-control" id="desc_' + id + '" value="' + desc + '" name="txt[' + id + '][desc]" />');
 	formain.append('<input type="hidden" class="form-control" id="type_' + id + '" value="text" name="txt[' + id + '][type]" />');
-	
+	formain.append('<input type="hidden" class="form-control" id="eval_' + id + '" value="' + eval + '" name="txt[' + id + '][eval]" />');
+	formain.append('<input type="hidden" class="form-control" id="req_' + id + '" value="' + req + '" name="txt[' + id + '][req]" />');
 	limain.append("<br>");
 	
 	clearAddText();
@@ -991,7 +1140,11 @@ function clearAddText(){
 	$("#addText").find("#desc").val("");
 }
 
-function addParaField(title,desc,id){
+function addParaField(title,desc,id,req){
+	
+	if(typeof req === 'undefined'){
+		req = 0;
+	}
 	
 	var main = $("#formData");
 	
@@ -1004,13 +1157,14 @@ function addParaField(title,desc,id){
 	var formain = limain.find("#frmgroup");
 	
 	formain.append("<label for='txt_" + id + "' id='lbl_" + id + "'>" + title + ": </label>");
-	formain.append('<span><a href="javascript:editTxt(\'' + id + '\');">Edit</a>|<span><a href="javascript:deleteField(\'' + id + '\');">Delete</a></span><br>');
+	formain.append('<span><a href="javascript:editPara(\'' + id + '\');">Edit</a>|<span><a href="javascript:deleteField(\'' + id + '\');">Delete</a></span><br>');
 	formain.append('<span id="desclabel_' + id + '">' + desc + '</span>');
 	formain.append('<textarea class="form-control"></textarea>');
 	formain.append('<input type="hidden" class="form-control" id="txt_' + id + '" value="' + title + '" name="para[' + id + '][title]" />');
 	formain.append('<input type="hidden" class="form-control" id="desc_' + id + '" value="' + desc + '" name="para[' + id + '][desc]" />');
 	formain.append('<input type="hidden" class="form-control" id="type_' + id + '" value="para" name="para[' + id + '][type]" />');
-	
+	formain.append('<input type="hidden" class="form-control" id="req_' + id + '" value="' + req + '" name="para[' + id + '][req]" />');
+
 	limain.append("<br>");
 	
 }
@@ -1138,8 +1292,16 @@ function editPara(id){
 	var title = $("#txt_" + id).val();
 	var desc = $("#desc_" + id).val();
 	
+	var eval = $("#eval_" + id).val();
+	var req = $("#req_" + id).val();
+	
 	var main = $("#editPara");
-	main.find("#id").val(id);
+	if(req == "2"){
+		$(main.find("#req")).prop("checked",true);
+		}else{
+			$(main.find("#req")).prop("checked",false);
+		}
+	main.find("#eval").val(eval);	main.find("#id").val(id);
 	main.find("#title").val(title);
 	main.find("#desc").val(desc);
 	
@@ -1149,20 +1311,52 @@ function editPara(id){
 function editTxt(id){
 	var title = $("#txt_" + id).val();
 	var desc = $("#desc_" + id).val();
+	var eval = $("#eval_" + id).val();
+	var req = $("#req_" + id).val();
 	
 	var main = $("#editTxt");
+	if(req == "2"){
+		$(main.find("#req")).prop("checked",true);
+		}else{
+			$(main.find("#req")).prop("checked",false);
+		}
+	main.find("#eval").val(eval);
 	main.find("#id").val(id);
 	main.find("#title").val(title);
 	main.find("#desc").val(desc);
+	main.modal('show');
+}
+
+function editFile(id){
+	var title = $("#txt_" + id).val();
+	var desc = $("#desc_" + id).val();
+	var req = $("#req_" + id).val();
 	
+	var main = $("#editFile");
+	if(req == "2"){
+		$(main.find("#req")).prop("checked",true);
+		}else{
+			$(main.find("#req")).prop("checked",false);
+		}
+	main.find("#id").val(id);
+	main.find("#title").val(title);
+	main.find("#desc").val(desc);
 	main.modal('show');
 }
 
 function editCheck(id){
 	var title = $("#txt_" + id).val();
 	var desc = $("#desc_" + id).val();
+	var eval = $("#eval_" + id).val();
+	var req = $("#req_" + id).val();
 	
 	var main = $("#editCheck");
+	if(req == "2"){
+		$(main.find("#req")).prop("checked",true);
+		}else{
+			$(main.find("#req")).prop("checked",false);
+		}
+	main.find("#eval").val(eval);
 	main.find("#id").val(id);
 	main.find("#title").val(title);
 	main.find("#desc").val(desc);
@@ -1183,7 +1377,16 @@ function editSelect(id){
 	var title = $("#txt_" + id).val();
 	var desc = $("#desc_" + id).val();
 	
+	var eval = $("#eval_" + id).val();
+	var req = $("#req_" + id).val();
+	
 	var main = $("#editSelect");
+	if(req == "2"){
+		$(main.find("#req")).prop("checked",true);
+		}else{
+			$(main.find("#req")).prop("checked",false);
+		}
+	main.find("#eval").val(eval);
 	main.find("#id").val(id);
 	main.find("#title").val(title);
 	main.find("#desc").val(desc);
@@ -1205,7 +1408,16 @@ function editRadio(id){
 	var title = $("#txt_" + id).val();
 	var desc = $("#desc_" + id).val();
 	
+	var eval = $("#eval_" + id).val();
+	var req = $("#req_" + id).val();
+	
 	var main = $("#editRadio");
+	if(req == "2"){
+		$(main.find("#req")).prop("checked",true);
+		}else{
+			$(main.find("#req")).prop("checked",false);
+		}
+	main.find("#eval").val(eval);
 	main.find("#id").val(id);
 	main.find("#title").val(title);
 	main.find("#desc").val(desc);

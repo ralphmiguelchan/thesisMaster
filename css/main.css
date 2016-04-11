@@ -17,6 +17,7 @@ body {
 .bs-docs-masthead h1 {
   font-weight: 500;
 }
+.error { border: 2px solid red; }
 .page-header {
   text-align: left;
 }

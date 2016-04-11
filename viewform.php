@@ -94,6 +94,8 @@ var ppub = "<?php echo $pub ?>";
 <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <link rel="stylesheet" type="text/css" href="css/jqu-min.css">
+<style>
+.error { border: 2px solid red; }
 </style>
 </head>
 <body>
@@ -121,8 +123,8 @@ var ppub = "<?php echo $pub ?>";
 		    	<input type="text" name="searchBar" class="form-control" id="searchBar" />
 		    	    	<?php include("search.php"); ?>
 		    	</fieldset>
-		    	<div id="main" class="col-sm-9">
-				<div class="col-sm-12"><br>	
+		    	<div id="main"  style="overflow:auto;" class="col-sm-9">
+				<div  class="col-sm-12"><br>	
 		    		<fieldset>
 			    	<legend>Form Name: <?php echo $name; ?><br><br>
 			    	Description: <?php echo $details; ?></legend>

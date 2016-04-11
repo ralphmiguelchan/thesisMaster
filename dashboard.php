@@ -130,7 +130,7 @@ var ppub = "<?php echo $pub ?>";
 </fieldset>	
 
 <fieldset>
-<legend>My Approved/Declined Forms</legend>
+<legend>My Approved/Declined Forms <button type="button" class="btn btn-primary" onClick="delSelectedSub();">Delete Selected</button></legend>
 	<div style="overflow: auto;height: 200px;">
 		<div id="appdecform">
 			<div class="row"></div>

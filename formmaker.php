@@ -56,11 +56,19 @@
         <label for="title">Question Title:</label>
         <input type="text" class="form-control" name="txt[1][title]" id="title" />
         <label for="desc">Question Description:</label>
-        <input type="text" class="form-control" name="txt[1][desc]" id="desc" />
-       </form>
-       <button type="button" class="btn btn-primary" data-dismiss="modal" id="addTextBtn">Save</button>
+        <input type="text" class="form-control" name="txt[1][desc]" id="desc" /><br>
+        <label for="eval">Type:</label>
+        <select class="form-control" name="txt[1][eval]" id="eval">
+        <option value="email">Email</option>
+        <option value="number">Number</option>
+        <option value="text">Text</option>
+        </select>
+        
+       </form>       
       </div>
       <div class="modal-footer">
+        Required: <input type="checkbox" id="req" name="txt[1][req]" value="2" />
+      	<button type="button" class="btn btn-primary" data-dismiss="modal" id="addTextBtn">Save</button>
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div>
@@ -85,9 +93,38 @@
          <label for="desc">Question Description:</label>
         <input type="text" class="form-control" name="file[1][desc]" id="desc" />
        </form>
-       <button type="button" class="btn btn-primary" data-dismiss="modal" id="addFileBtn">Save</button>
       </div>
       <div class="modal-footer">
+             <button type="button" class="btn btn-primary" data-dismiss="modal" id="addFileBtn">Save</button>
+      
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div id="editFile" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Edit File</h4>
+      </div>
+      <div class="modal-body">
+       <form name="datas" id="datas" method="POST">
+        <label for="title">Question Title:</label>
+        <input type="text" class="form-control" name="file[1][title]" id="title" />
+         <label for="desc">Question Description:</label>
+        <input type="text" class="form-control" name="file[1][desc]" id="desc" />
+        <input type="hidden" name="file[1][id]" id="id" />
+       </form>
+      </div>
+      <div class="modal-footer">
+             <button type="button" class="btn btn-primary" data-dismiss="modal" id="editFileBtn">Save</button>
+      
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div>
@@ -138,11 +175,21 @@
         <input type="text" class="form-control" name="txt[1][title]" id="title" />
         <label for="desc">Question Description:</label>
         <input type="text" class="form-control" name="txt[1][desc]" id="desc" />
-        <input type="hidden" class="form-control" id="id" />
+        <input type="hidden" class="form-control" id="id" /><br>
+         <label for="eval">Type:</label>
+        <select class="form-control" name="txt[1][eval]" id="eval">
+        <option value="email">Email</option>
+        <option value="number">Number</option>
+                <option value="text">Text</option>
+        
+        </select>
        </form>
-       <button type="button" class="btn btn-primary" data-dismiss="modal" id="editTxtBtn">Save</button>
+       
       </div>
       <div class="modal-footer">
+              Required: <input type="checkbox" id="req" name="txt[1][req]" value="2" />
+      
+      <button type="button" class="btn btn-primary" data-dismiss="modal" id="editTxtBtn">Save</button>
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div>
@@ -166,9 +213,12 @@
         <label for="desc">Question Description:</label>
         <input type="text" class="form-control" name="txt[1][desc]" id="desc" />
        </form>
-       <button type="button" class="btn btn-primary" data-dismiss="modal" id="addParaBtn">Save</button>
       </div>
       <div class="modal-footer">
+             Required: <input type="checkbox" value="2" id="req" name="txt[1][req]" />
+      
+             <button type="button" class="btn btn-primary" data-dismiss="modal" id="addParaBtn">Save</button>
+      
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div>
@@ -191,11 +241,13 @@
         <input type="text" class="form-control" name="txt[1][title]" id="title" />
         <label for="desc">Question Description:</label>
         <input type="text" class="form-control" name="txt[1][desc]" id="desc" />
-        <input type="hidden" class="form-control" id="id" />
+        <input type="hidden" class="form-control" id="id" /><br>
        </form>
-       <button type="button" class="btn btn-primary" data-dismiss="modal" id="editParaBtn">Save</button>
       </div>
       <div class="modal-footer">
+              Required: <input type="checkbox" value="2" id="req" name="txt[1][req]" />
+             <button type="button" class="btn btn-primary" data-dismiss="modal" id="editParaBtn">Save</button>
+      
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div>
@@ -282,6 +334,7 @@
        </form>
       </div>
       <div class="modal-footer">
+      
       <button type="button" class="btn btn-primary" data-dismiss="modal" id="editCheckBtn">Save</button>
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
@@ -324,6 +377,7 @@
        </form>
       </div>
       <div class="modal-footer">
+      
       <button type="button" class="btn btn-primary" data-dismiss="modal" id="addRadioBtn">Save</button>
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
@@ -368,6 +422,7 @@
        </form>
       </div>
       <div class="modal-footer">
+      
       <button type="button" class="btn btn-primary" data-dismiss="modal" id="editRadioBtn">Save</button>
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
@@ -410,6 +465,8 @@
        </form>
       </div>
       <div class="modal-footer">
+                  Required: <input type="checkbox" value="2" id="req" name="txt[1][req]" /> 
+      
       <button type="button" class="btn btn-primary" data-dismiss="modal" id="addSelectBtn">Save</button>
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
@@ -453,6 +510,8 @@
        </form>
       </div>
       <div class="modal-footer">
+                  Required: <input type="checkbox" value="2" id="req" name="txt[1][req]" /> 
+      
       <button type="button" class="btn btn-primary" data-dismiss="modal" id="editSelectBtn">Save</button>
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>

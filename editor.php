@@ -253,6 +253,42 @@ var ppub = "<?php echo $pub ?>";
   </div>
 </div>
 
+
+<div id="addExistingForm" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Add Existing Form</h4>
+      </div>
+      <div class="modal-body">
+      
+      <div id="formLists" style="overflow:auto; height:200px">
+      <div class="row">
+      
+      <div class='col-sm-3 heh'>
+      <center>
+      <span>Form Name</span>
+      <br><span>From Details</span>
+      <img src="img/forms.png" width="70" /><br>
+      <a href="viewform.php?sid=1">View</a> | <a href="">Use</a>
+      </div>
+</center>
+      </div>
+      </div>
+      
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
 <div id="addGroup" class="modal fade" role="dialog">
   <div class="modal-dialog">
 

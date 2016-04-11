@@ -126,7 +126,7 @@ var ppub = "<?php echo $pub ?>";
 		        </ul>
 		    </div>
 	    </div>
-	    <div id="main">
+	    <div id="main" style="overflow:auto;">
 		    <h1 id="formt">No Form Selected</h1>
 		    <div class="input-group">
 			    <span class="input-group-addon">
