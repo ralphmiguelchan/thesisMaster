@@ -1,0 +1,1 @@
+For multiple custom crosshairs, create the crosshair files like this: crosshair.png, crosshair_pick.png; crosshair2.png, crosshair2_pick.png

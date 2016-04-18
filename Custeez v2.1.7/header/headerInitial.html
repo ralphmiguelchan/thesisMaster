@@ -1,0 +1,52 @@
+<nav id="navbar" class="navbar navbar-custom navbar-fixed-top">
+    <div class="navbar-header">
+	    <a id="navLogo" href="index.php" class="hvr-underline-reveal active" style="width: 100%;">
+	    	<img id="firstImg" class="navbar-brand" style="height: 10%;" src="img/custeezlogo2.png">
+	    </a>
+    </div>
+    <ul class="nav navbar-nav">
+     <li id="navPageOne" class="hvr-underline-reveal"> <a href="faq.php">Info</a></li>
+    </ul>
+    <ul class="nav navbar-text">
+     <li>Custeez</li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right" style="padding-right: 30px;">
+     <li class="dropdown">
+     	<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Login<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+        	<li id="navPageTwo" class=""><a href="login.php">As User</a></li>
+            <li id="navPageThree" class="" ><a href="guestlogin.php">As Guest</a></li>
+         </ul>
+      </li>
+      <li class="dropdown">
+     	<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Register<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+        	<li id="navPageFour" class=""><a href="register.php">As User</a></li>
+            <li id="navPageFive" class=""><a href="guestregister.php">As Guest(Temporary)</a></li>
+         </ul>
+      </li>
+    </ul>
+</nav>
+
+<script>
+$( window ).scroll(function() {
+	var position = $(window).scrollTop();
+		if (position == 0) {
+			$('#navbar').css({"background-color":"#1A0315","opacity":".9","color":"#fff"});
+			$('#navbar a').css('color','#fff');
+			$('#navLogo img').attr('src','img/custeezlogo2.png');
+			$('.navbar-text').css('color','#fff');
+		} else {
+			$('#navbar').css({"background-color":"#fff","opacity":"1","color":"#1A0315"});
+			$('#navbar a').css('color','#1A0315');
+			$('#navLogo img').attr('src','img/custeezlogo1.png');
+			$('.navbar-text').css('color','#1A0315');
+		}
+		
+		if(position > document.getElementById('firstImg').height){
+			$('#arrow').css('visibility','hidden');
+		} else {
+			$('#arrow').css('visibility','visible');
+		}
+	});
+</script>
