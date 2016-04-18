@@ -37,13 +37,13 @@ if(isset($_SESSION['uid'])){
 <body>
 	<?php include("header/headerInitial.html");?>
 	<div id="container" class="container">
-		<div id="loginDiv">
+		<div id="loginDiv" style="margin-top: 10%;">
 			<fieldset>
 			<legend>Login</legend>
 				<form name="loginForm" method="POST">
 				
 				<label for="userName">Username:</label>
-				<input type="text" class="form-control" name="userName" id="userName" />
+				<input type="text" class="form-control" name="userName" id="userName" /><br>
 				
 				<label for="pass">Password:</label>
 				<input type="password" class="form-control" name="pass" id="pass" /><br>

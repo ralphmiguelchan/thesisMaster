@@ -112,7 +112,7 @@ var ppub = "<?php echo $pub ?>";
 		<li id="dashTab" class="hvr-overline-reveal"><a href="dashboard.php">Dashboard</a></li>
 		<li id="editorTab" class="active"><a href="#maker">Editor</a></li>
 		<li id="reportsTab" class="hvr-overline-reveal"><a href="summary.php">Reports</a></li>
-		<li id="findUseTab" class="hvr-overline-reveal"><a href="user.php">Find & Use</a></li>
+		<li id="findUseTab" class="hvr-overline-reveal"><a href="user.php">Find &amp; Use</a></li>
 	</ul>
 	
 	    <div id="maker" class="tab-pane fade in active col-sm-12" style="display: flex;">
@@ -243,7 +243,7 @@ var ppub = "<?php echo $pub ?>";
         <input type="hidden" name="id" value='<?php echo $_SESSION["uid"]; ?>' />
        </form>
        <button type="button" class="btn btn-primary" id="addProcBtn">Save</button>
-        <button type="button" class="btn btn-primary" id="addProcBtn2">Save & Add Another</button>
+        <button type="button" class="btn btn-primary" id="addProcBtn2">Save &amp; Add Another</button>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -312,7 +312,7 @@ var ppub = "<?php echo $pub ?>";
         
        </form>
        <button type="button" class="btn btn-primary" id="addGroupBtn">Save</button>
-              <button type="button" class="btn btn-primary" id="addGroupBtn2">Save & Add Another</button>
+              <button type="button" class="btn btn-primary" id="addGroupBtn2">Save &amp;&amp; Add Another</button>
        
       </div>
       <div class="modal-footer">

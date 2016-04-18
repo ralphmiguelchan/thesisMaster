@@ -116,7 +116,7 @@ var ppub = "<?php echo $pub ?>";
 	<li id="dashTab" class="hvr-overline-reveal"><a href="dashboard.php">Dashboard</a></li>
 	<li id="editorTab" class="active"><a data-toggle="tab" href="#maker">Editor</a></li>
 	<li id="reportsTab" class="hvr-overline-reveal"><a href="summary.php">Reports</a></li>
-	<li id="findUseTab" class="hvr-overline-reveal"><a href="user.php">Find & Use</a></li>
+	<li id="findUseTab" class="hvr-overline-reveal"><a href="user.php">Find &amp;&amp; Use</a></li>
 </ul>
    
     

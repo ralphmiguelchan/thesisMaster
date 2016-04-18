@@ -6,8 +6,8 @@
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 html {
   font-family: sans-serif;
-  -webkit-text-size-adjust: 100%;
-      -ms-text-size-adjust: 100%;
+  font-weight: bold;
+  font-size: 8%;
 }
 body {
   margin: 0;
@@ -1097,7 +1097,7 @@ textarea {
   line-height: inherit;
 }
 a {
-  color: #337ab7;
+  color: #000;
   text-decoration: none;
 }
 a:hover,
@@ -1583,30 +1583,10 @@ pre code {
   overflow-y: scroll;
 }
 .container {
-  padding-top: 40px;
-  padding-right: 15px;
-  padding-left: 15px;
-  margin-bottom: 0px;
-  margin-right: auto;
-  margin-left: auto;
   background-color: #fff;
   height: auto;
   min-height: 100%;
-}
-@media (min-width: 768px) {
-  .container {
-    width: 750px;
-  }
-}
-@media (min-width: 992px) {
-  .container {
-    width: 970px;
-  }
-}
-@media (min-width: 1200px) {
-  .container {
-    width: 1170px;
-  }
+  width: 100%;
 }
 .container-fluid {
   padding-right: 15px;
@@ -3585,10 +3565,11 @@ tbody.collapse.in {
   min-width: 160px;
   padding: 5px 0;
   margin: 2px 0 0;
-  font-size: 14px;
+  font-size: 16px;
   text-align: left;
   list-style: none;
-  background-color: #fff;
+  background-color: #535353;
+  opacity: .8;
   -webkit-background-clip: padding-box;
           background-clip: padding-box;
   border: 1px solid #ccc;
@@ -3613,7 +3594,7 @@ tbody.collapse.in {
   clear: both;
   font-weight: normal;
   line-height: 1.42857143;
-  color: #333;
+  color: #fff;
   white-space: nowrap;
 }
 .dropdown-menu > li > a:hover,
@@ -4041,7 +4022,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav > li > a:hover,
 .nav > li > a:focus {
   text-decoration: none;
-  background-color: #000;
+  background-color: #6e3667;
   color: #C2FD20;
 }
 .nav > li.disabled > a {
@@ -4057,8 +4038,9 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav .open > a,
 .nav .open > a:hover,
 .nav .open > a:focus {
-  background-color: #eee;
-  border-color: #337ab7;
+  background-color: #6e3667;
+  border-color: #6e3667;
+  color: #C2FD20;
 }
 .nav .nav-divider {
   height: 1px;
@@ -4381,7 +4363,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .navbar-nav > li > a {
   padding-top: 15px;
   padding-bottom: 15px;
-  line-height: 30px;
+  line-height: 50px;
 }
 @media (max-width: 767px) {
   .navbar-nav .open .dropdown-menu {

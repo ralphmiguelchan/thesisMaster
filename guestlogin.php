@@ -65,7 +65,7 @@ function mailme($email,$name,$x){
 	<?php include("header/headerInitial.html")?>
 	<div id="container" class="container">
 	
-		<div id="loginDiv">
+		<div id="loginDiv" style="margin-top: 10%;">
 			<fieldset>
 			<legend>Login</legend>
 				<form name="loginForm" method="POST">

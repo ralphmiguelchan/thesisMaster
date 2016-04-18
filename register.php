@@ -31,15 +31,15 @@ if(isset($_SESSION['uid'])){
 <?php include("header/headerInitial.html");?>
 
 	<div id="container" class="container">
-		<div id="loginDiv">
+		<div id="loginDiv" style="margin-top: 10%;">
 			<fieldset>
 			<legend>Register as User</legend>
 			<form name="loginForm" method="POST">
 			
 			<label for="userName">Username:</label>
-			<input type="text" class="form-control" name="userName" id="userName" />
+			<input type="text" class="form-control" name="userName" id="userName" /><br>
 			<label for="pass">Password:</label>
-			<input type="password" class="form-control" name="pass" id="pass" />
+			<input type="password" class="form-control" name="pass" id="pass" /><br>
 			<label for="email">Email:</label>
 			<input type="text" class="form-control" name="email" id="email" /><br>
 			

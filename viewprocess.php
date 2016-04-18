@@ -104,7 +104,7 @@ var ppub = "<?php echo $pub ?>";
 			echo '<li id="reportsTab" class="hvr-overline-reveal"><a href="summary.php">Reports</a></li>';
 		}
 		?>
-		  <li id="findUseTab" class="active"><a href="#find&use">Find & Use</a></li>
+		  <li id="findUseTab" class="active"><a href="#find&use">Find &amp; Use</a></li>
 	</ul>
 	<div class="tab-content">
 	    <div id="user" class="tab-pane fade in active" style="display: flex;">
@@ -152,8 +152,8 @@ var ppub = "<?php echo $pub ?>";
         <label for="procDetails">Process Details:</label>
         <input type="text" class="form-control" name="procDetails" />
          <label for="publicity">Process Publicity:</label>
-           <input type="radio" class="form-control" value="1" name="publicity">Public</input>
-           <input type="radio" class="form-control" value="2" name="publicity">Private</input>
+           <input type="radio" class="form-control" value="1" name="publicity">Public
+           <input type="radio" class="form-control" value="2" name="publicity">Private
         <input type="hidden" name="id" value='<?php echo $_SESSION["uid"]; ?>' />
        </form>
        <button type="button" class="btn btn-primary" id="addProcBtn">Save</button>
@@ -182,8 +182,8 @@ var ppub = "<?php echo $pub ?>";
         <label for="procDetails">Process Details:</label>
         <input type="text" class="form-control" id="procDetails" name="procDetails" />
         <label for="publicity">Process Publicity:</label>
-           <input type="radio" class="form-control" value="1" id="publicity" name="publicity">Public</input>
-           <input type="radio" class="form-control" value="2" id="publicity" name="publicity">Private</input>
+           <input type="radio" class="form-control" value="1" id="publicity" name="publicity">Public
+           <input type="radio" class="form-control" value="2" id="publicity" name="publicity">Private
         <input type="hidden" class="form-control" id="procId" name="procId" />
        </form>
        <button type="button" class="btn btn-primary" data-dismiss="modal" id="editProcBtn">Save</button>

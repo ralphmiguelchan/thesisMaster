@@ -144,7 +144,7 @@ function drop(ev) {
 	<li id="dashTab" class="hvr-overline-reveal"><a href="dashboard.php">Dashboard</a></li>
 	<li id="editorTab" class="active"><a data-toggle="tab" href="#maker">Editor</a></li>
 	<li id="reportsTab" class="hvr-overline-reveal"><a href="summary.php">Reports</a></li>
-	<li id="findUseTab" class="hvr-overline-reveal"><a href="user.php">Find & Use</a></li>
+	<li id="findUseTab" class="hvr-overline-reveal"><a href="user.php">Find &amp; Use</a></li>
 </ul>
 
  <div class="tab-content">
@@ -252,7 +252,7 @@ include("steps.php");
         <input type="hidden" name="id" value='<?php echo $_SESSION["uid"]; ?>' />
        </form>
        <button type="button" class="btn btn-primary" id="addProcBtn">Save</button>
-        <button type="button" class="btn btn-primary" id="addProcBtn2">Save & Add Another</button>
+        <button type="button" class="btn btn-primary" id="addProcBtn2">Save &amp;&amp; Add Another</button>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -319,7 +319,7 @@ include("steps.php");
         
        </form>
        <button type="button" class="btn btn-primary" id="addGroupBtn">Save</button>
-              <button type="button" class="btn btn-primary" id="addGroupBtn2">Save & Add Another</button>
+              <button type="button" class="btn btn-primary" id="addGroupBtn2">Save &amp; Add Another</button>
        
       </div>
       <div class="modal-footer">
@@ -348,8 +348,8 @@ include("steps.php");
         <label for="procDetails">Process Details:</label>
         <input type="text" class="form-control" id="procDetails" name="procDetails" />
         <label for="publicity">Process Publicity:</label>
-           <input type="radio" class="form-control" value="1" id="publicity" name="publicity">Public</input>
-           <input type="radio" class="form-control" value="2" id="publicity" name="publicity">Private</input>
+           <input type="radio" class="form-control" value="1" id="publicity" name="publicity">Public
+           <input type="radio" class="form-control" value="2" id="publicity" name="publicity">Private
         <input type="hidden" class="form-control" id="procId" name="procId" />
        </form>
        <button type="button" class="btn btn-primary" data-dismiss="modal" id="editProcBtn">Save</button>

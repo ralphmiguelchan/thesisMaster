@@ -1,11 +1,14 @@
-<nav id="navbar" class="navbar navbar-inverse navbar-fixed-top">
+<nav id="navbar" class="navbar navbar-custom navbar-fixed-top">
     <div class="navbar-header">
 	    <a id="navLogo" href="index.php" class="hvr-underline-reveal active" style="width: 100%;">
-	    	<img class="navbar-brand" style="height: 60px;" src="img/custeezlogo.png">
+	    	<img id="firstImg" class="navbar-brand" style="height: 10%;" src="img/custeezlogo2.png">
 	    </a>
     </div>
     <ul class="nav navbar-nav">
      <li id="navPageOne" class="hvr-underline-reveal"> <a href="faq.php">Info</a></li>
+    </ul>
+    <ul class="nav navbar-text">
+     <li>Custeez</li>
     </ul>
     <ul class="nav navbar-nav navbar-right" style="padding-right: 30px;">
      <li class="dropdown">
@@ -26,34 +29,24 @@
 </nav>
 
 <script>
-function getCurrentLocation(url) {
-    var index = url.lastIndexOf("/") + 1;
-    var filenameWithExtension = url.substr(index);
-    var filename = filenameWithExtension.split(".")[0];
-    return filename;                                    
-}
-
-var currentURL = window.location.pathname;
-var currentLocation = getCurrentLocation(currentURL);
-
-if(currentLocation == "index"){
-	document.getElementById("navLogo").style.background.color = '#080808';
-	
-} else if (currentLocation == "faq") {
-	$("#navPageOne").addClass("active");
-	
-} else if (currentLocation == "login") {
-	$("#navPageTwo").addClass("active");
-	
-} else if (currentLocation == "guestlogin") {
-	$("#navPageThree").addClass("active");
-	
-} else if (currentLocation == "register") {
-	$("#navPageFour").addClass("active");
-	
-} else if (currentLocation == "guestregister") {
-	$("#navPageFive").addClass("active");
-	
-}
-
+$( window ).scroll(function() {
+	var position = $(window).scrollTop();
+		if (position == 0) {
+			$('#navbar').css({"background-color":"#1A0315","opacity":".9","color":"#fff"});
+			$('#navbar a').css('color','#fff');
+			$('#navLogo img').attr('src','img/custeezlogo2.png');
+			$('.navbar-text').css('color','#fff');
+		} else {
+			$('#navbar').css({"background-color":"#fff","opacity":"1","color":"#1A0315"});
+			$('#navbar a').css('color','#1A0315');
+			$('#navLogo img').attr('src','img/custeezlogo1.png');
+			$('.navbar-text').css('color','#1A0315');
+		}
+		
+		if(position > document.getElementById('firstImg').height){
+			$('#arrow').css('visibility','hidden');
+		} else {
+			$('#arrow').css('visibility','visible');
+		}
+	});
 </script>

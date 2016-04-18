@@ -24,26 +24,36 @@ if(isset($_SESSION['uid']) || isset($_SESSION['guid'])){
 <div>
 <?php include("header/headerInitial.html");?>
 </div>
-
+<div id="arrow" class="arrow bounce"></div>
 <div class="container" id="container">
+<img alt="custeez" src="img/custeez2.jpg" style="width: 100%;">
 
-	<div class="jumbotron" >
-		<h1>Custeez</h1>
-		<p>Customized Processes and Customized Forms Creator</p>
+<div class="row">
+	<div class="detail-box col-md-4">
+		<div class="detail-title">
+			Custeez
+		</div>
+		<div class="detail-content">
+			<p>Customized Processes and Customized Forms Creator</p>
+		</div>
 	</div>
-	<div class="jumbotron">
-		<h1>Customized Processes</h1>
-		<p> The website allows you to create your own process for your needs.</p>
+	<div class="detail-box-inverse col-md-4">
+		<div class="detail-title">
+			Customized Form
+		</div>
+		<div class="detail-content">
+			<p>The website allows you to create your own forms for your needs similar to Google Forms or Formstack.</p>
+		</div>
 	</div>
-	<div class="jumbotron">
-		<h1>Customized Form</h1>
-		<p> The website allows you to create your own forms for your needs similar to Google Forms or Formstack.</p>
+	<div class="detail-box col-md-4">
+		<div class="detail-title">
+			Customized Processes
+		</div>
+		<div class="detail-content">
+			<p>The website allows you to create your own process for your needs.</p>
+		</div>
 	</div>
-	<div class="jumbotron">
-		<h1>Guest Account</h1>
-		<p> A user may create a temporary account that will be removed later on.</p>
-	</div>
-	
+</div>
 </div>
 </body>
 </html>
