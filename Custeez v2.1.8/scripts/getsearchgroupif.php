@@ -1,0 +1,14 @@
+<?php
+session_start();
+include('conn.php');
+$q = $_GET['q'];
+$uid = $_GET['uid'];
+$query = "SELECT * FROM groups WHERE `owner_id` = '$uid' AND ((`groupName` LIKE '$q%') OR (`groupDetails` LIKE '$q%'))";
+$result = $conn->query($query);
+$arrays = array();
+while($row = $result->fetch_assoc()){
+	$arrays[] = $row;
+}
+
+echo json_encode($arrays);
+?>

@@ -1,0 +1,38 @@
+<?php
+include("scripts/conn.php");
+if(isset($_SESSION['uid'])){
+	$uid = $_SESSION['uid'];
+	$query = "SELECT * FROM users WHERE `user_id` = '$uid'";
+	$result = $conn->query($query);
+	$names = "";
+	while($row = $result->fetch_assoc()){
+	$names = $row['username'];
+	}	
+}
+
+if(isset($_SESSION['guid'])){
+$uid = $_SESSION['guid'];
+$query = "SELECT * FROM users WHERE `user_id` = '$uid'";
+	$result = $conn->query($query);
+	$names = "";
+	while($row = $result->fetch_assoc()){
+	$names = $row['username'];
+	}	
+}
+?>
+<nav id="navbar" class="navbar navbar-custom navbar-fixed-top">
+    <div class="navbar-header">
+	    <a id="navLogo" href="user.php" class="hvr-underline-reveal active">
+	    	<img id="firstImg" class="navbar-brand" style="height: 10%;" src="img/custeezlogo2.png">
+	    </a>
+    </div>
+    <ul class="nav navbar-text" style="font-size: 25px;font-family: sans-serif;padding:1.3%;">
+    	<li>Welcome <?php echo $names; ?>! ID: <?php echo $uid; ?></li>
+    </ul>
+    <ul class="nav navbar-text" style="width: 50%;">
+     <li>Custeez</li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right" style="padding-right: 30px;">
+     <li> <a class="hvr-underline-reveal" href="logout.php">Logout</a></li>
+    </ul>
+</nav>
