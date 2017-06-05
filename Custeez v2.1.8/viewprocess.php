@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 include("scripts/conn.php");
 $pid = 0;
@@ -14,7 +14,7 @@ if(isset($_SESSION['uid'])){
 	$uid = $_SESSION['uid'];
 	if(isset($_GET['pid'])){
 		$pid = $_GET['pid'];
-		
+
 		$query = "SELECT * FROM processes WHERE `process_id` = '$pid'";
 		$result = $conn->query($query);
 		while($row = $result->fetch_assoc()){
@@ -26,7 +26,7 @@ if(isset($_SESSION['uid'])){
 		}
 	}else if(isset($_GET['sid'])){
 		$sid = $_GET['sid'];
-		
+
 		$query = "SELECT * FROM steps WHERE `step_id` = '$sid'";
 		$result = $conn->query($query);
 		while($row = $result->fetch_assoc()){
@@ -40,7 +40,7 @@ if(isset($_SESSION['uid'])){
 	$uid = $_SESSION['guid'];
 	if(isset($_GET['pid'])){
 		$pid = $_GET['pid'];
-	
+
 		$query = "SELECT * FROM processes WHERE `process_id` = '$pid'";
 		$result = $conn->query($query);
 		while($row = $result->fetch_assoc()){
@@ -52,7 +52,7 @@ if(isset($_SESSION['uid'])){
 		}
 	}else if(isset($_GET['sid'])){
 		$sid = $_GET['sid'];
-	
+
 		$query = "SELECT * FROM steps WHERE `step_id` = '$sid'";
 		$result = $conn->query($query);
 		while($row = $result->fetch_assoc()){
@@ -72,7 +72,7 @@ if(isset($_SESSION['uid'])){
 <script src="js/jq.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/main.js"></script>
-<script src="dist/sweetalert.min.js"></script> 
+<script src="dist/sweetalert.min.js"></script>
 <script>
 var pid = "<?php echo $pid; ?>";
 var uid = "<?php echo $uid ?>";
@@ -94,11 +94,11 @@ var ppub = "<?php echo $pub ?>";
 <body>
 <?php include("header/headerUser.html");?>
 
-<div id="container" class="container">
+<div id="container" class="user-container">
 
 	<ul class="nav nav-tabs">
 		<li id="dashTab" class="hvr-overline-reveal"><a href="dashboard.php">Dashboard</a></li>
-		<?php 
+		<?php
 		if(isset($_SESSION['uid'])){
 			echo '<li id="editorTab" class="hvr-overline-reveal"><a href="editor.php">Editor</a></li>';
 			echo '<li id="reportsTab" class="hvr-overline-reveal"><a href="summary.php">Reports</a></li>';
@@ -120,17 +120,17 @@ var ppub = "<?php echo $pub ?>";
 			    	Description: <?php echo $details; ?></legend>
 			    	<div id="stepss">
 				    	<ul id="stepup">
-				    	
+
 				    	</ul>
 			    	</div>
 		    	</fieldset>
 				</div>
 		    </div>
-		    
+
 	    </div>
 	</div>
 </div>
-<?php include("footer/footer.html");?>
+ 
 
 <!--  MODALS  -->
 

@@ -115,7 +115,7 @@ var ppub = "<?php echo $pub ?>";
 
 <?php include("header/headerUser.html");?>
 
-<div id="container" class="container">
+<div id="container" class="user-container">
 
 	<ul class="nav nav-tabs">
 		<li id="dashTab" class="hvr-overline-reveal"><a href="dashboard.php">Dashboard</a></li>
@@ -153,7 +153,7 @@ var ppub = "<?php echo $pub ?>";
     		  	
 	</div>
 </div>
-<?php include("footer/footer.html");?>
+ 
 
 <!--  MODALS  -->
 

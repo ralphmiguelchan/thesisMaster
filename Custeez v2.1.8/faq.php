@@ -13,7 +13,7 @@
 <body>
 	<?php include("header/headerInitial.html");?>
 	<div id="arrow" class="arrow bounce"></div>
-	<div class="container" id="container" style="text-align: center;">
+	<div class="user-container" id="container" style="text-align: center;">
 	<img alt="contact" src="img/contact1.jpg" style="width: 100%;">
 		<div class="jumbotron" >
 			<h1>Information</h1>

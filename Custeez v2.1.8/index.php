@@ -25,7 +25,7 @@ if(isset($_SESSION['uid']) || isset($_SESSION['guid'])){
 <?php include("header/headerInitial.html");?>
 </div>
 <div id="arrow" class="arrow bounce"></div>
-<div class="container" id="container">
+<div class="user-container" id="container">
 <img alt="custeez" src="img/custeez2.jpg" style="width: 100%;">
 
 <div class="row">

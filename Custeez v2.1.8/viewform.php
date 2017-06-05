@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 include("scripts/conn.php");
 $pid = 0;
@@ -15,7 +15,7 @@ if(isset($_SESSION['uid'])){
 	$uid = $_SESSION['uid'];
 	if(isset($_GET['pid'])){
 		$pid = $_GET['pid'];
-		
+
 		$query = "SELECT * FROM processes WHERE `process_id` = '$pid'";
 		$result = $conn->query($query);
 		while($row = $result->fetch_assoc()){
@@ -27,7 +27,7 @@ if(isset($_SESSION['uid'])){
 		}
 	}else if(isset($_GET['sid'])){
 		$sid = $_GET['sid'];
-		
+
 		$query = "SELECT * FROM steps WHERE `step_id` = '$sid'";
 		$result = $conn->query($query);
 		while($row = $result->fetch_assoc()){
@@ -41,7 +41,7 @@ if(isset($_SESSION['uid'])){
 	$uid = $_SESSION['guid'];
 	if(isset($_GET['pid'])){
 		$pid = $_GET['pid'];
-	
+
 		$query = "SELECT * FROM processes WHERE `process_id` = '$pid'";
 		$result = $conn->query($query);
 		while($row = $result->fetch_assoc()){
@@ -53,7 +53,7 @@ if(isset($_SESSION['uid'])){
 		}
 	}else if(isset($_GET['sid'])){
 		$sid = $_GET['sid'];
-	
+
 		$query = "SELECT * FROM steps WHERE `step_id` = '$sid'";
 		$result = $conn->query($query);
 		while($row = $result->fetch_assoc()){
@@ -73,7 +73,7 @@ if(isset($_SESSION['uid'])){
 <script src="js/jq.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/main.js"></script>
-<script src="dist/sweetalert.min.js"></script> 
+<script src="dist/sweetalert.min.js"></script>
 <script src="js/ms.js"></script>
  <script type="text/javascript" src="js/jq.js"></script>
     <script type="text/javascript" src="js/jquery.uploadify.min.js"></script>
@@ -102,11 +102,11 @@ var ppub = "<?php echo $pub ?>";
 
 <?php include("header/headerUser.html");?>
 
-<div id="container" class="container">
+<div id="container" class="user-container">
 
 	<ul class="nav nav-tabs">
 		<li id="dashTab" class="hvr-overline-reveal"><a href="dashboard.php">Dashboard</a></li>
-		<?php 
+		<?php
 		if(isset($_SESSION['uid'])){
 			echo '<li id="editorTab" class="hvr-overline-reveal"><a href="editor.php">Editor</a></li>';
 			echo '<li id="reportsTab" class="hvr-overline-reveal"><a href="summary.php">Reports</a></li>';
@@ -114,8 +114,8 @@ var ppub = "<?php echo $pub ?>";
 		?>
 		  <li id="findUseTab" class="active"><a href="#find&use">Find &amp; Use</a></li>
 	</ul>
-		
-	<div class="tab-content">   
+
+	<div class="tab-content">
 		<div id="user" class="tab-pane fade in active col-sm-12" style="display: flex;">
 			<div id="sideBar" class="col-sm-3">
 		    	<fieldset>
@@ -123,29 +123,29 @@ var ppub = "<?php echo $pub ?>";
 		    	<input type="text" name="searchBar" class="form-control" id="searchBar" />
 		    	    	<?php include("search.php"); ?>
 		    	</fieldset>
-		    	<div id="main"  style="overflow:auto;" class="col-sm-9">
-				<div  class="col-sm-12"><br>	
+		    	<div id="main" style="height:auto;" class="col-sm-9">
+				<div  class="col-sm-12"><br>
 		    		<fieldset>
 			    	<legend>Form Name: <?php echo $name; ?><br><br>
 			    	Description: <?php echo $details; ?></legend>
-			    	
+
 			    	<form id="frm" name="frm">
 				    	<input type='hidden' id='sid' name='sid' value='<?php echo $sid; ?>' />
-				    	<input type='hidden' id='uid' name='uid' value='<?php echo $uid; ?>' />	
-				    	<input type='hidden' id='step' value='<?php echo $name; ?>' />	
+				    	<input type='hidden' id='uid' name='uid' value='<?php echo $uid; ?>' />
+				    	<input type='hidden' id='step' value='<?php echo $name; ?>' />
 				    	<ul id="form" class="need">
-				    	
+
 				    	</ul>
 			    	</form>
 			    	</fieldset>
 		    	</div>
 		    </div>
 		    </div>
-		    
+
 		</div>
 	</div>
 </div>
-<?php include("footer/footer.html");?>
+ 
 
 <!--  MODALS  -->
 

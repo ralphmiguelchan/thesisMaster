@@ -1,9 +1,9 @@
 <div id="side">
 <ul class="nav nav-tabs">
-    <li class="active"><a data-toggle="tab" href="#menu1">Action 1</a></li>
+    <li class="active"><a data-toggle="tab" href="#menu1">Actions</a></li>
 
   </ul>
-  
+
   <div class="tab-content">
 
   <div id="menu1" class="tab-pane fade in active">
@@ -14,9 +14,9 @@
   <button type="button" class="btn btn-primary btn-resized" data-toggle="modal" data-target="#addSelect">Add List</button><br><br>
     <button type="button" class="btn btn-primary btn-resized" data-toggle="modal" data-target="#addFile">Add File</button><br><br>
      <button type="button" class="btn btn-primary btn-resized" data-toggle="modal" data-target="#addApprover">Add Approver</button>
-  
+
   </div>
-  
+
 </div>
 </div>
 
@@ -35,7 +35,7 @@
 </fieldset>
 
 </form>
-<button type="button" class="btn btn-primary" id="saveBtn">Save</button><br><br>
+<button type="button" class="btn btn-success" id="saveBtn">Save</button><br><br>
 </div>
 
 
@@ -63,8 +63,8 @@
         <option value="number">Number</option>
         <option value="text">Text</option>
         </select>
-        
-       </form>       
+
+       </form>
       </div>
       <div class="modal-footer">
         Required: <input type="checkbox" id="req" name="txt[1][req]" value="2" />
@@ -96,7 +96,7 @@
       </div>
       <div class="modal-footer">
              <button type="button" class="btn btn-primary" data-dismiss="modal" id="addFileBtn">Save</button>
-      
+
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div>
@@ -124,7 +124,7 @@
       </div>
       <div class="modal-footer">
              <button type="button" class="btn btn-primary" data-dismiss="modal" id="editFileBtn">Save</button>
-      
+
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div>
@@ -145,7 +145,7 @@
        <form name="datas" id="datas" method="POST">
         <label for="title">Approver:</label>
         <select id='app'>
-        
+
         </select>
        </form>
        <button type="button" class="btn btn-primary" data-dismiss="modal" id="addApproverBtn">Save</button>
@@ -181,14 +181,14 @@
         <option value="email">Email</option>
         <option value="number">Number</option>
                 <option value="text">Text</option>
-        
+
         </select>
        </form>
-       
+
       </div>
       <div class="modal-footer">
               Required: <input type="checkbox" id="req" name="txt[1][req]" value="2" />
-      
+
       <button type="button" class="btn btn-primary" data-dismiss="modal" id="editTxtBtn">Save</button>
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
@@ -216,9 +216,9 @@
       </div>
       <div class="modal-footer">
              Required: <input type="checkbox" value="2" id="req" name="txt[1][req]" />
-      
+
              <button type="button" class="btn btn-primary" data-dismiss="modal" id="addParaBtn">Save</button>
-      
+
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div>
@@ -247,7 +247,7 @@
       <div class="modal-footer">
               Required: <input type="checkbox" value="2" id="req" name="txt[1][req]" />
              <button type="button" class="btn btn-primary" data-dismiss="modal" id="editParaBtn">Save</button>
-      
+
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div>
@@ -273,7 +273,7 @@
         <input type="text" class="form-control" name="txt[1][desc]" id="desc" />
         <fieldset><legend>Items</legend>
         <div id="items">
-        
+
         </div>
         </fieldset>
         <fieldset><legend>Add</legend>
@@ -281,7 +281,7 @@
         <label for="controlData">Title:</label>
         <input type="text" class="form-control" id="controlData" /><br>
                 <button type="button" style="float:right;" class="btn btn-primary" onClick="hideCheckItem();">Close</button>
-        
+
         <button type="button" style="float:right;" class="btn btn-primary" onClick="addCheckItem();">Add</button>
         </div>
         </fieldset>
@@ -314,10 +314,10 @@
         <label for="desc">Question Description:</label>
         <input type="text" class="form-control" name="txt[1][desc]" id="desc" />
                 <input type="hidden" class="form-control" name="txt[1][desc]" id="id" />
-        
+
         <fieldset><legend>Items</legend>
         <div id="items">
-        
+
         </div>
         </fieldset>
         <fieldset><legend>Add</legend>
@@ -326,7 +326,7 @@
         <input type="text" class="form-control" id="controlData" /><br>
         <button type="button" style="float:right;" class="btn btn-primary" onClick="hideCheckItem2();">Close</button>
         <button type="button" style="float:right;" class="btn btn-primary" onClick="addCheckItem2();">Add</button>&nbsp;
-		
+
         </div>
         </fieldset>
         <br>
@@ -334,7 +334,7 @@
        </form>
       </div>
       <div class="modal-footer">
-      
+
       <button type="button" class="btn btn-primary" data-dismiss="modal" id="editCheckBtn">Save</button>
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
@@ -361,7 +361,7 @@
         <input type="text" class="form-control" name="txt[1][desc]" id="desc" />
         <fieldset><legend>Items</legend>
         <div id="items">
-        
+
         </div>
         </fieldset>
         <fieldset><legend>Add</legend>
@@ -377,7 +377,7 @@
        </form>
       </div>
       <div class="modal-footer">
-      
+
       <button type="button" class="btn btn-primary" data-dismiss="modal" id="addRadioBtn">Save</button>
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
@@ -402,10 +402,10 @@
         <label for="desc">Question Description:</label>
         <input type="text" class="form-control" name="txt[1][desc]" id="desc" />
         <input type="hidden" class="form-control" name="txt[1][desc]" id="id" />
-        
+
         <fieldset><legend>Items</legend>
         <div id="items">
-        
+
         </div>
         </fieldset>
         <fieldset><legend>Add</legend>
@@ -413,7 +413,7 @@
         <label for="controlData">Title:</label>
         <input type="text" class="form-control" id="controlData" /><br>
                 <button type="button" style="float:right;" class="btn btn-primary" onClick="hideRadioItem2();">Close</button>
-        
+
         <button type="button" style="float:right;" class="btn btn-primary" onClick="addRadioItem2();">Add</button>
         </div>
         </fieldset>
@@ -422,7 +422,7 @@
        </form>
       </div>
       <div class="modal-footer">
-      
+
       <button type="button" class="btn btn-primary" data-dismiss="modal" id="editRadioBtn">Save</button>
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
@@ -448,7 +448,7 @@
         <input type="text" class="form-control" name="txt[1][desc]" id="desc" />
         <fieldset><legend>Items</legend>
         <select class="form-control" id="items">
-        
+
         </select><br>
         <button type="button" style="float:right;" class="btn btn-primary" onClick="removeSelectItem();">Remove Item</button>
         </fieldset>
@@ -465,8 +465,8 @@
        </form>
       </div>
       <div class="modal-footer">
-                  Required: <input type="checkbox" value="2" id="req" name="txt[1][req]" /> 
-      
+                  Required: <input type="checkbox" value="2" id="req" name="txt[1][req]" />
+
       <button type="button" class="btn btn-primary" data-dismiss="modal" id="addSelectBtn">Save</button>
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
@@ -493,7 +493,7 @@
         <input type="hidden" class="form-control" id="id" />
         <fieldset><legend>Items</legend>
         <select class="form-control" id="items">
-        
+
         </select><br>
         <button type="button" style="float:right;" class="btn btn-primary" onClick="removeSelectItem2();">Remove Item</button>
         </fieldset>
@@ -510,8 +510,8 @@
        </form>
       </div>
       <div class="modal-footer">
-                  Required: <input type="checkbox" value="2" id="req" name="txt[1][req]" /> 
-      
+                  Required: <input type="checkbox" value="2" id="req" name="txt[1][req]" />
+
       <button type="button" class="btn btn-primary" data-dismiss="modal" id="editSelectBtn">Save</button>
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>

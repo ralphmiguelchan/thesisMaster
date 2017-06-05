@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 include("scripts/conn.php");
 $pid = 0;
@@ -15,7 +15,7 @@ if(isset($_SESSION['uid'])){
 	$uid = $_SESSION['uid'];
 	if(isset($_GET['pid'])){
 		$pid = $_GET['pid'];
-		
+
 		$query = "SELECT * FROM processes WHERE `process_id` = '$pid'";
 		$result = $conn->query($query);
 		while($row = $result->fetch_assoc()){
@@ -27,7 +27,7 @@ if(isset($_SESSION['uid'])){
 		}
 	}else if(isset($_GET['sid'])){
 		$sid = $_GET['sid'];
-		
+
 		$query = "SELECT * FROM steps WHERE `step_id` = '$sid'";
 		$result = $conn->query($query);
 		while($row = $result->fetch_assoc()){
@@ -38,10 +38,10 @@ if(isset($_SESSION['uid'])){
 		$fid = $_GET['fid'];
 	}else if(isset($_GET['gid'])){
 	$gid = $_GET['gid'];
-		
+
 		$query = "SELECT * FROM groups WHERE `group_id` = '$gid'";
 		$result = $conn->query($query);
-		
+
 		while($row = $result->fetch_assoc()){
 			$name = $row['groupName'];
 			$details = $row['groupDetails'];
@@ -51,7 +51,7 @@ if(isset($_SESSION['uid'])){
 	$uid = $_SESSION['guid'];
 	if(isset($_GET['pid'])){
 		$pid = $_GET['pid'];
-	
+
 		$query = "SELECT * FROM processes WHERE `process_id` = '$pid'";
 		$result = $conn->query($query);
 		while($row = $result->fetch_assoc()){
@@ -63,7 +63,7 @@ if(isset($_SESSION['uid'])){
 		}
 	}else if(isset($_GET['sid'])){
 		$sid = $_GET['sid'];
-	
+
 		$query = "SELECT * FROM steps WHERE `step_id` = '$sid'";
 		$result = $conn->query($query);
 		while($row = $result->fetch_assoc()){
@@ -83,8 +83,8 @@ if(isset($_SESSION['uid'])){
 <script src="js/jq.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/main.js"></script>
-<script src="dist/sweetalert.min.js"></script> 
-<script src="js/dash.js"></script> 
+<script src="dist/sweetalert.min.js"></script>
+<script src="js/dash.js"></script>
 <script src="js/group.js"></script>
 <link href="css/bootstrap-switch.css" rel="stylesheet">
 <script src="js/bootstrap-switch.js"></script>
@@ -115,29 +115,29 @@ var ppub = "<?php echo $pub ?>";
 	<li id="dashTab" class="hvr-overline-reveal"><a href="dashboard.php">Dashboard</a></li>
 	<li id="editorTab" class="active"><a data-toggle="tab" href="#maker">Editor</a></li>
 	<li id="reportsTab" class="hvr-overline-reveal"><a href="summary.php">Reports</a></li>
-	<li id="findUseTab" class="hvr-overline-reveal"><a href="user.php">Find &amp;&amp; Use</a></li>
+	<li id="findUseTab" class="hvr-overline-reveal"><a href="user.php">Find &amp; Use</a></li>
 </ul>
-   
-    
+
+
   <div class="tab-content">
     <div id="maker" class="tab-pane fade in active col-sm-12" style="display: flex;">
       <div id="sideBar" class="col-sm-3" style="height:1000px;">
 
      	 <fieldset><legend>Add</legend>
-     	 <button type="button" class="btn btn-dash btn-resized" style="margin:0;" data-toggle="modal" data-target="#addProc">Add Process</button>
+     	 <button type="button" class="btn btn-success btn-resized" style="margin:0;" data-toggle="modal" data-target="#addProc">Add Process</button>
      	 <br><br><a href="editor.php"><button type="button" class="btn btn-primary btn-resized">Back</button></a>
      	 <br><br>
      	 <legend>Manage Members</legend>
      	 <label for="memberSearch">Add:</label>
      	 <input type="text" id="memberSearch" class='form-control' />
      	 <div id="memberadd" style="width:250px; height:100px; overflow:auto;">
-     	
+
      	 </div>
      	 <legend>Members</legend>
      	 <div id="memberlist" style="height:100px; overflow: auto;">
-     	 
+
      	 </div>
-     	
+
      	 <div id="processlist" style="display:none; height:100px; overflow: auto;">
      	 </div>
      	 </fieldset>
@@ -148,7 +148,7 @@ var ppub = "<?php echo $pub ?>";
 <div class="col-sm-12"><br>
 <fieldset>
 <legend>
-<span id='tit'>Group Name: <?php echo $name ?></span>&nbsp;<button class='btn btn-dash' style="margin: 15px;" data-toggle="modal" data-target="#editGroup">Edit</button><br>
+<span id='tit'>Group Name: <?php echo $name ?></span>&nbsp;<button class='btn btn-success' style="margin: 15px;" data-toggle="modal" data-target="#editGroup">Edit</button><br>
 <span id='desc'>Description: <?php echo $details ?></span><br>
 
 </legend></fieldset></div>
@@ -161,7 +161,7 @@ var ppub = "<?php echo $pub ?>";
 </div>
 </div>
 </div>
-<?php include("footer/footer.html");?>
+ 
 
 <!--  MODALS  -->
 
@@ -193,7 +193,7 @@ var ppub = "<?php echo $pub ?>";
           </div>
         <input type="hidden" name="id" value='<?php echo $_SESSION["uid"]; ?>' />
                 <input type="hidden" name="gid" value='<?php echo $_GET["gid"]; ?>' />
-        
+
        </form>
        <button type="button" class="btn btn-primary" id="addProcBtn">Save</button>
       </div>

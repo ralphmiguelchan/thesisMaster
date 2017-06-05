@@ -30,7 +30,7 @@ if(isset($_SESSION['uid'])){
 <body>
 <?php include("header/headerInitial.html");?>
 
-	<div id="container" class="container">
+	<div id="container" class="user-container">
 		<div id="loginDiv" style="margin-top: 10%;">
 			<fieldset>
 			<legend>Register as User</legend>

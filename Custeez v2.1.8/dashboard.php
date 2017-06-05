@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 include("scripts/conn.php");
 $pid = 0;
@@ -14,7 +14,7 @@ if(isset($_SESSION['uid'])){
 	$uid = $_SESSION['uid'];
 	if(isset($_GET['pid'])){
 		$pid = $_GET['pid'];
-		
+
 		$query = "SELECT * FROM processes WHERE `process_id` = '$pid'";
 		$result = $conn->query($query);
 		while($row = $result->fetch_assoc()){
@@ -26,7 +26,7 @@ if(isset($_SESSION['uid'])){
 		}
 	}else if(isset($_GET['sid'])){
 		$sid = $_GET['sid'];
-		
+
 		$query = "SELECT * FROM steps WHERE `step_id` = '$sid'";
 		$result = $conn->query($query);
 		while($row = $result->fetch_assoc()){
@@ -40,7 +40,7 @@ if(isset($_SESSION['uid'])){
 	$uid = $_SESSION['guid'];
 	if(isset($_GET['pid'])){
 		$pid = $_GET['pid'];
-	
+
 		$query = "SELECT * FROM processes WHERE `process_id` = '$pid'";
 		$result = $conn->query($query);
 		while($row = $result->fetch_assoc()){
@@ -52,7 +52,7 @@ if(isset($_SESSION['uid'])){
 		}
 	}else if(isset($_GET['sid'])){
 		$sid = $_GET['sid'];
-	
+
 		$query = "SELECT * FROM steps WHERE `step_id` = '$sid'";
 		$result = $conn->query($query);
 		while($row = $result->fetch_assoc()){
@@ -72,7 +72,7 @@ if(isset($_SESSION['uid'])){
 <script src="js/jq.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/main.js"></script>
-<script src="dist/sweetalert.min.js"></script> 
+<script src="dist/sweetalert.min.js"></script>
 <script src="js/dash.js"></script>
 <script>
 var pid = "<?php echo $pid; ?>";
@@ -97,7 +97,7 @@ var ppub = "<?php echo $pub ?>";
 <div id="container" class="user-container" style="height: auto;">
 	<ul class="nav nav-tabs">
 		<li id="dashTab" class="active"><a href="#dashboard">Dashboard</a></li>
-		<?php 
+		<?php
 		if(isset($_SESSION['uid'])){
 			echo '<li id="editorTab" class="hvr-overline-reveal"><a href="editor.php">Editor</a></li>';
 			echo '<li id="reportsTab" class="hvr-overline-reveal"><a href="summary.php">Reports</a></li>';
@@ -111,23 +111,23 @@ var ppub = "<?php echo $pub ?>";
     <div id="dashboard" class="tab-pane fade in active col-sm-10"><br>
 	    <fieldset>
 	    	<legend>For My Review</legend>
-		    <div id="forrev" style="overflow: auto;height: 33%;">
+		    <div id="forrev" style="height: 33%;">
 		    <?php include("notif.php"); ?>
 		    </div>
 	    </fieldset>
-	    
+
 	    <br><fieldset>
 			<legend>My Process/es' Status</legend>
-			<div style="overflow: auto;height: 33%;">
+			<div style="height:33%;">
 				<div id="pendproc">
 					<div class="row"></div>
 				</div>
 			</div>
-		</fieldset>	
-		
-		<br><fieldset>
-			<legend>My Approved/Declined Forms <button type="button" class="btn btn-danger" onClick="delSelectedSub();">Delete Selected</button></legend>
-			<div id="myforms" style="overflow: auto;">
+		</fieldset>
+
+		<br><fieldset style="height:100%;">
+			<legend>My Approved/Declined Forms <button type="button" style="margin:5px;" class="btn btn-danger" onClick="delSelectedSub();">Delete Selected</button></legend>
+			<div id="myforms" style="height:34%;">
 				<div id="appdecform">
 					<div class="row"></div>
 				</div>
@@ -141,6 +141,6 @@ var height = $("#forrev").height();
 $("#myforms").css("height",height);
 </script>
 
-<?php include("footer/footer.html");?>
+ 
 </body>
 </html>

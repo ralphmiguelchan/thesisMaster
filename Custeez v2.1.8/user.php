@@ -122,6 +122,6 @@ if(isset($_SESSION['uid'])){
     </div>
 </div>
 
-<?php include("footer/footer.html");?>
+ 
 </body>
 </html>

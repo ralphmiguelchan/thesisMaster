@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 include("scripts/conn.php");
 $pid = 0;
@@ -17,7 +17,7 @@ if(isset($_SESSION['uid'])){
 	$uid = $_SESSION['uid'];
 	if(isset($_GET['pid'])){
 		$pid = $_GET['pid'];
-		
+
 		$query = "SELECT * FROM processes WHERE `process_id` = '$pid'";
 		$result = $conn->query($query);
 		while($row = $result->fetch_assoc()){
@@ -29,7 +29,7 @@ if(isset($_SESSION['uid'])){
 		}
 	}else if(isset($_GET['sid'])){
 		$sid = $_GET['sid'];
-		
+
 		$query = "SELECT * FROM steps WHERE `step_id` = '$sid'";
 		$result = $conn->query($query);
 		while($row = $result->fetch_assoc()){
@@ -43,7 +43,7 @@ if(isset($_SESSION['uid'])){
 	$uid = $_SESSION['guid'];
 	if(isset($_GET['pid'])){
 		$pid = $_GET['pid'];
-	
+
 		$query = "SELECT * FROM processes WHERE `process_id` = '$pid'";
 		$result = $conn->query($query);
 		while($row = $result->fetch_assoc()){
@@ -55,7 +55,7 @@ if(isset($_SESSION['uid'])){
 		}
 	}else if(isset($_GET['sid'])){
 		$sid = $_GET['sid'];
-	
+
 		$query = "SELECT * FROM steps WHERE `step_id` = '$sid'";
 		$result = $conn->query($query);
 		while($row = $result->fetch_assoc()){
@@ -76,12 +76,12 @@ if(isset($_SESSION['uid'])){
 <script src="js/jq.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/main.js"></script>
-<script src="dist/sweetalert.min.js"></script> 
-<script src="js/dash.js"></script> 
-<script src="js/forms.js"></script> 
+<script src="dist/sweetalert.min.js"></script>
+<script src="js/dash.js"></script>
+<script src="js/forms.js"></script>
 <script src="js/treee.js"></script>
 <script src="js/trees.js"></script>
-<script src="js/group.js"></script> 
+<script src="js/group.js"></script>
 <script src="js/bootstrap-switch.js"></script>
 
 <script>
@@ -122,40 +122,40 @@ $("#firstImg").css("height","80px");
 	      <div id="sideBar" class="col-sm-3" style="height: 950px;">
 	      	<div class="col-sm-11"><br>
 				<?php if(isset($_GET['pid'])){
-				
+
 					echo "<fieldset><legend>Add</legend>";
-				echo '<button type="button" class="btn btn-dash btn-resized" data-toggle="modal" data-target="#addStep" style="margin:0;">Add Step</button>';
-				echo '<br><br><button type="button" class="btn btn-dash btn-resized" data-toggle="modal" data-target="#addExistingForm" style="margin:0;">Add Existing Form</button>';
-				
-				echo '<br><br><a href="editor.php"><button type="button" class="btn btn-primary btn-resized">Back</button></a>';
-				
+				echo '<button type="button" class="btn btn-success btn-resized" data-toggle="modal" data-target="#addStep" style="margin:0;">Add Step</button>';
+				echo '<br><br><button type="button" class="btn btn-success btn-resized" data-toggle="modal" data-target="#addExistingForm" style="margin:0;">Add Existing Form</button>';
+
+				echo '<br><br><a href="editor.php"><button type="button" class="btn btn-warning btn-resized">Back</button></a>';
+
 				echo '</fieldset>';
 				}else if(isset($_GET['sid'])){
 					echo "<fieldset><legend>Add</legend>";
-				echo '<a href="editor.php?pid='.$pid.'"><button type="button" class="btn btn-primary btn-resized">Back</button></a>';
-				
+				echo '<a href="editor.php?pid='.$pid.'"><button type="button" class="btn btn-warning btn-resized">Back</button></a>';
+
 				echo '</fieldset>';
 				}else if(isset($_GET['fid'])){
-					
+
 				}else{
 					echo "<fieldset><legend>Add</legend>";
-				echo '<button type="button" class="btn btn-dash btn-resized" data-toggle="modal" data-target="#addProc" style="margin:0;">Add Process</button>';
-				echo '<br><br><button type="button" class="btn btn-dash btn-resized" data-toggle="modal" data-target="#addGroup" style="margin:0;">Add Group</button><br><br>';
-				
+				echo '<button type="button" class="btn btn-success btn-resized" data-toggle="modal" data-target="#addProc" style="margin:0;">Add Process</button>';
+				echo '<br><br><button type="button" class="btn btn-success btn-resized" data-toggle="modal" data-target="#addGroup" style="margin:0;">Add Group</button><br><br>';
+
 				echo '</fieldset>';
 				echo "<fieldset>
 				<legend>Folders</legend>";
 				include("hey.php");
 				}
-				
+
 				?>
 			</div>
 		</div>
-	
-	
+
+
 			<div id="main" class="col-sm-9" style="height: auto;">
 				<div id='ginto'>
-				
+
 				</div>
 				<div class="col-sm-12"><br>
 					<fieldset>
@@ -169,7 +169,7 @@ $("#firstImg").css("height","80px");
 					while($s = $r->fetch_assoc()){
 						$d = $s['group_id'];
 					}
-					
+
 					$h = "SELECT * FROM groups WHERE `group_id` = '$d'";
 					$v = $conn->query($h);
 					$gr = "none";
@@ -178,11 +178,11 @@ $("#firstImg").css("height","80px");
 					}
 					echo "<span id='pdesc'>In the Group: ".$gr."</span><br>";
 					echo "<span id='pdesc'>Description:".$desc."</span>";
-					echo '<button type="button" class="btn btn-dash" data-toggle="modal" onClick="editBtn()" style="margin: 15px;">Edit</button>';
+					echo '<button type="button" class="btn btn-primary" data-toggle="modal" onClick="editBtn()" style="margin: 15px;">Edit</button>';
 					}else if(isset($_GET['sid'])){
-						
-						
-					
+
+
+
 						$q = "SELECT * FROM processes WHERE `process_id` = '$pid'";
 						$r = $conn->query($q);
 						$rgid = 1;
@@ -192,14 +192,14 @@ $("#firstImg").css("height","80px");
 								$rgid = $test['rgid'];
 							}
 						}
-						
+
 						echo "<span id='pdesc'>Process Name: ".$pnm."</span><br>";
 						echo "<span>In the Group: ".$gr."</span><br>";
 						echo "<span>RGID: ".$rgid."</span><br>";
 						echo "<span id='sname'>Step: ".$name."</span>&nbsp;";
 						echo '<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editStep">Edit</button>';
 					}
-					
+
 					?>
 					</legend>
 					<?php if(isset($_GET['pid'])){
@@ -207,7 +207,7 @@ $("#firstImg").css("height","80px");
 					}else if(isset($_GET['sid']) || isset($_GET['fid'])){
 						include("formmaker.php");
 					}
-					
+
 					?>
 			</fieldset>
 				</div>
@@ -215,7 +215,7 @@ $("#firstImg").css("height","80px");
 		</div>
 		</div>
 	</div>
-<?php include("footer/footer.html");?>
+ 
 
 <!--  MODALS  -->
 
@@ -243,15 +243,15 @@ $("#firstImg").css("height","80px");
           	$("#publicity").offText('Public');
           	$("#publicity").on('success');
           </script>
-           <input type="checkbox" class="form-control" value="2" id="publicity" data-on-text="Private" data-off-text="Public" name="publicity"><br><br>
+           <input type="checkbox" class="form-control" value="2" id="publicity" data-on-text="Private" data-on-color="success" data-off-text="Public" name="publicity"><br><br>
           </div>
         <input type="hidden" name="id" value='<?php echo $_SESSION["uid"]; ?>' />
        </form>
-       <button type="button" class="btn btn-primary" id="addProcBtn">Save</button>
+       <button type="button" class="btn btn-success" id="addProcBtn">Save</button>
         <button type="button" class="btn btn-primary" id="addProcBtn2">Save &amp; Add Another</button>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
       </div>
     </div>
 
@@ -269,16 +269,16 @@ $("#firstImg").css("height","80px");
         <h4 class="modal-title">Add Existing Form</h4>
       </div>
       <div class="modal-body">
-      
-      <div id="formLists" style="overflow:auto; height:200px">
+
+      <div id="formLists" style="overflow:auto; height:600px">
       <div class="row">
-      
+
       </div>
       </div>
-      
+
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
       </div>
     </div>
 
@@ -297,23 +297,23 @@ $("#firstImg").css("height","80px");
       </div>
       <div class="modal-body">
        <form name="addGroupForm" id="addGroupForm" method="POST">
-        <label for="procName" required="required">Group Name:</label>
+        <label for="procName" required="required">Group Name: </label>
         <input type="text" class="form-control" id="groupname" name="groupname" />
-        <label for="procDetails" required="required">Group Details:</label>
+        <label for="procDetails" required="required">Group Details: </label>
         <input type="text" class="form-control" id="groupdetails" name="groupdetails" /><br>
-        <label for="publicity">Private:</label>
+        <label for="publicity">Private: </label>
           <div class="form-group" style="height:30px;">
-           <input type="checkbox" class="form-control" value="2" id="publicity" data-on-text="Private" data-off-text="Public" name="publicity"><br><br>
+           <input type="checkbox" class="form-control" value="2" id="publicity" data-on-text="Private" data-on-color="success" data-off-text="Public" name="publicity"><br><br>
           </div>
         <input type="hidden" name="id" value='<?php echo $_SESSION["uid"]; ?>' />
-        
+
        </form>
-       <button type="button" class="btn btn-primary" id="addGroupBtn">Save</button>
+       <button type="button" class="btn btn-success" id="addGroupBtn">Save</button>
               <button type="button" class="btn btn-primary" id="addGroupBtn2">Save &amp; Add Another</button>
-       
+
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
       </div>
     </div>
 
@@ -333,18 +333,18 @@ $("#firstImg").css("height","80px");
       </div>
       <div class="modal-body">
        <form name="editProcForm" id="editProcForm" method="POST">
-        <label for="procName">Process Name:</label>
+        <label for="procName">Process Name :</label>
         <input type="text" class="form-control" id="procName" name="procName" />
-        <label for="procDetails">Process Details:</label>
+        <label for="procDetails">Process Details: </label>
         <input type="text" class="form-control" id="procDetails" name="procDetails" /><br>
-        <label for="publicity">Private:</label>
-           <input type="checkbox" class="form-control" value="2" id="publicity" data-on-text="Private" data-off-text="Public" name="publicity"><br><br>
+        <label for="publicity">Private: </label>
+           <input type="checkbox" class="form-control" value="2" id="publicity" data-on-text="Private" data-on-color="success" data-off-text="Public" name="publicity"><br><br>
         <input type="hidden" class="form-control" id="procId" name="procId" />
        </form>
-       <button type="button" class="btn btn-primary" data-dismiss="modal" id="editProcBtn">Save</button>
+       <button type="button" class="btn btn-success" data-dismiss="modal" id="editProcBtn">Save</button>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
       </div>
     </div>
 
@@ -362,17 +362,17 @@ $("#firstImg").css("height","80px");
       </div>
       <div class="modal-body">
        <form name="addStepForm" id="addStepForm" method="POST">
-        <label for="stepName">Step Name:</label>
+        <label for="stepName">Step Name: </label>
         <input type="text" class="form-control" id="stepName" name="stepName" />
         <input type="hidden" name="id" value='<?php echo $_SESSION["uid"]; ?>' />
         <input type="hidden" name="pid" value='<?php echo $_GET['pid']; ?>' />
         <input type="hidden" name="fid" id="fid" />
-        
+
        </form>
-       <button type="button" class="btn btn-primary" id="addStepBtn">Save</button>
+       <br><button type="button" class="btn btn-success" id="addStepBtn">Save</button>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
       </div>
     </div>
 
@@ -390,17 +390,17 @@ $("#firstImg").css("height","80px");
       </div>
       <div class="modal-body">
        <form name="addStepForm2" id="addStepForm2" method="POST">
-        <label for="stepName">Step Name:</label>
+        <label for="stepName">Step Name: </label>
         <input type="text" class="form-control" id="stepName" name="stepName" />
         <input type="hidden" name="id" value='<?php echo $_SESSION["uid"]; ?>' />
         <input type="hidden" name="pid" value='<?php echo $_GET['pid']; ?>' />
         <input type="hidden" name="fid" id="fid" />
-        
+
        </form>
-       <button type="button" class="btn btn-primary" id="addStepBtn2">Save</button>
+       <button type="button" class="btn btn-success" id="addStepBtn2">Save</button>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
       </div>
     </div>
 
@@ -418,15 +418,15 @@ $("#firstImg").css("height","80px");
       </div>
       <div class="modal-body">
        <form name="editStepForm" id="editStepForm" method="POST">
-        <label for="stepName">Step Name:</label>
+        <label for="stepName">Step Name: </label>
         <input type="text" class="form-control" id="stepName" name="stepName" />
         <input type="hidden" name="id" value='<?php echo $_SESSION["uid"]; ?>' />
         <input type="hidden" name="pid" value='<?php echo $_GET['pid']; ?>' />
        </form>
-       <button type="button" class="btn btn-primary" data-dismiss="modal" id="editStepBtn">Save</button>
+       <button type="button" class="btn btn-success" data-dismiss="modal" id="editStepBtn">Save</button>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
       </div>
     </div>
 

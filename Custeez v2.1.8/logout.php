@@ -18,7 +18,7 @@ session_destroy();
 
 <?php include('header/headerInitial.html');?>
 
-<div id="container" class="container">
+<div id="container" class="user-container">
 <img alt="comeback" src="img/comeback1.jpg" style="width: 100%;">
 <center>
 <div class="jumbotron" >
@@ -27,6 +27,6 @@ session_destroy();
 </div>
 </center>
 </div>
-<?php include("footer/footer.html");?>
+ 
 </body>
 </html>

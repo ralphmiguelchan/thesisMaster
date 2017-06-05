@@ -157,7 +157,7 @@ var ppub = "<?php echo $pub ?>";
     
 </div>
 
-<?php include("footer/footer.html");?>
+ 
 
 </body>
 </html>

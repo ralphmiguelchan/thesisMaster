@@ -9,11 +9,11 @@ function getGroupProcesses(){
 		$("#res").find(".row").html("");
 		$.each(json,function(i,item){
 			var lmain = $("#res").find(".row");
-			
-			
-			lmain.append("<div class='col-sm-4 heh'><center><div id='proc_" + item.process_id + "'></div></center></div>");
+
+
+			lmain.append("<div class='col-sm-3 heh'><center><div id='proc_" + item.process_id + "'></div></center></div>");
 			var rmain = $("#proc_" + item.process_id);
-			
+
 			rmain.append("<span>" + item.processName + "</span><br>");
 			rmain.append("<span style='color:red;'><i>" + item.processDetails + "</i></span><br>");
 			rmain.append("<span style='color:red;'>ID: " + item.rgid + "</span><br>");
