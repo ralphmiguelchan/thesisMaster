@@ -95,18 +95,22 @@ body {
 }
 
 #dashTab > a:hover{
+  border: none;
 	background-color: #535353;
 	color: #fff;
 }
 #editorTab > a:hover{
+  border: none;
 	background-color: #88D317;
 	color: #fff;
 }
 #reportsTab > a:hover{
+  border: none;
 	background-color: #1A0315;
 	color: #fff;
 }
 #findUseTab > a:hover{
+  border: none;
 	background-color: #6E3667;
 	color: #fff;
 }
@@ -347,7 +351,7 @@ body {
 /*End arrow*/
 /*detail-box*/
 .detail-box {
-	height: inherit;
+	height: 400px;
 	background-color: #88D317;
 	border-style: solid;
     border-width: 1px;
@@ -358,16 +362,16 @@ body {
 	font-weight: bold;
 	text-align:center;
 	color: #000;
-	padding: 10% 0 5%;
+	padding: 50px 0 20px;
 }
 .detail-box .detail-content{
 	font-size: 20px;
 	text-align:center;
 	color: #000;
-	padding: 20% 0;
+	padding: 80px 0;
 }
 .detail-box-inverse {
-	height: inherit;
+	height: 400px;
 	background-color: #535353;
 	border-style: solid;
     border-width: 1px;
@@ -378,13 +382,13 @@ body {
 	font-weight: bold;
 	text-align:center;
 	color: #fff;
-	padding: 10% 0 5%;
+	padding: 50px 0 20px;
 }
 .detail-box-inverse .detail-content{
 	font-size: 20px;
 	text-align:center;
 	color: #fff;
-	padding: 20% 0;
+	padding: 80px 0;
 }
 /*end detail-box*/
 .btn-success:hover {
@@ -412,4 +416,11 @@ body {
 }
 body {
   background-color: #fff;
+}
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+     border: 0px;
+}
+.nav-tabs > li > a {
+     margin-right: 0;
+     border-radius: 0;
 }

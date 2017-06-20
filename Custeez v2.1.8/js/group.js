@@ -32,9 +32,9 @@ function getMembers(q){
 
 		}else{
 			$.each(json,function(i,item){
-				$("#memberadd").append("<div style='width:92%; background:white;'>" +
+				$("#memberadd").append("<div style='width:100%;padding: 5px; background:white;'>" +
 	     	"<span>" + item.username + "</span><a href='javascript:addMember(" + item.user_id + ");'>" +
-	     	"<img style='float:right;' src='img/ok.png' width='20'></img></a>" +
+	     	"<img style='float:right;' src='img/ok.png' width='30'></img></a>" +
 	     	 "</div>");
 			});
 		}

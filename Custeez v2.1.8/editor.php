@@ -215,7 +215,7 @@ $("#firstImg").css("height","80px");
 		</div>
 		</div>
 	</div>
- 
+
 
 <!--  MODALS  -->
 
@@ -270,7 +270,7 @@ $("#firstImg").css("height","80px");
       </div>
       <div class="modal-body">
 
-      <div id="formLists" style="overflow:auto; height:600px">
+      <div id="formLists" style="overflow:auto;height:400px;">
       <div class="row">
 
       </div>

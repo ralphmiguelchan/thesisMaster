@@ -23,7 +23,7 @@ function fillExistingForm(){
 		var json = $.parseJSON(data);
 		$("#formLists").find(".row").html("");
 		$.each(json,function(i,item){
-			$("#formLists").find(".row").append("<div class='col-sm-3 notpend' style='margin:10px;width:28%;'>" +
+			$("#formLists").find(".row").append("<div class='col-sm-6 notpend' style='margin:10px;width:46%'>" +
       "<center>" +
       "<span>Name: <font style='color:#88d317'>" + item.formName + "</font></span>" +
       "<br><span>Form Details</span>"+

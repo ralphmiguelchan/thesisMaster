@@ -125,12 +125,12 @@ var ppub = "<?php echo $pub ?>";
 
      	 <fieldset><legend>Add</legend>
      	 <button type="button" class="btn btn-success btn-resized" style="margin:0;" data-toggle="modal" data-target="#addProc">Add Process</button>
-     	 <br><br><a href="editor.php"><button type="button" class="btn btn-primary btn-resized">Back</button></a>
+     	 <br><br><a href="editor.php"><button type="button" class="btn btn-warning btn-resized">Back</button></a>
      	 <br><br>
      	 <legend>Manage Members</legend>
      	 <label for="memberSearch">Add:</label>
      	 <input type="text" id="memberSearch" class='form-control' />
-     	 <div id="memberadd" style="width:250px; height:100px; overflow:auto;">
+     	 <div id="memberadd" style="width:100%; padding: 1px; height:100px; overflow:auto;">
 
      	 </div>
      	 <legend>Members</legend>
@@ -161,7 +161,7 @@ var ppub = "<?php echo $pub ?>";
 </div>
 </div>
 </div>
- 
+
 
 <!--  MODALS  -->
 
@@ -187,18 +187,24 @@ var ppub = "<?php echo $pub ?>";
         <label for="procName">Process Name:</label>
         <input type="text" class="form-control" name="procName" />
         <label for="procDetails">Process Details:</label>
-        <input type="text" class="form-control" name="procDetails" />
-         <div class="form-group" style="height:30px;">
-           <input type="checkbox" class="form-control" value="2" id="publicity" data-on-text="Private" data-off-text="Public" name="publicity"><br><br>
-          </div>
+        <input type="text" class="form-control" name="procDetails" /><br>
+				<label for="publicity">Private:</label>
+				 <div class="form-group" style="height:30px;">
+				 <script>
+					 $("#publicity").onText('Private');
+					 $("#publicity").offText('Public');
+					 $("#publicity").on('success');
+				 </script>
+					<input type="checkbox" class="form-control" value="2" id="publicity" data-on-text="Private" data-on-color="success" data-off-text="Public" name="publicity"><br><br>
+				 </div>
         <input type="hidden" name="id" value='<?php echo $_SESSION["uid"]; ?>' />
                 <input type="hidden" name="gid" value='<?php echo $_GET["gid"]; ?>' />
 
        </form>
-       <button type="button" class="btn btn-primary" id="addProcBtn">Save</button>
+       <button type="button" class="btn btn-success" id="addProcBtn">Save</button>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
       </div>
     </div>
 

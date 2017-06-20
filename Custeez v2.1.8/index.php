@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 if(isset($_SESSION['uid']) || isset($_SESSION['guid'])){
 	header("location: user.php");
@@ -37,7 +37,7 @@ if(isset($_SESSION['uid']) || isset($_SESSION['guid'])){
 			<p>Customized Processes and Customized Forms Creator</p>
 		</div>
 	</div>
-	<div class="detail-box-inverse col-md-4">
+	<div class="detail-box-inverse col-sm-4">
 		<div class="detail-title">
 			Customized Form
 		</div>
@@ -51,6 +51,26 @@ if(isset($_SESSION['uid']) || isset($_SESSION['guid'])){
 		</div>
 		<div class="detail-content">
 			<p>The website allows you to create your own process for your needs.</p>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="detail-box-inverse col-md-12">
+		<div class="detail-title">
+			Digitize
+		</div>
+		<div class="detail-content">
+			<p>Start digitizing your processes that involve forms to lessen the hassle.</p>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="detail-box col-md-12">
+		<div class="detail-title">
+			Register
+		</div>
+		<div class="detail-content">
+			<p>Click <a href="login.php">here</a> to register and enjoy our features.</p>
 		</div>
 	</div>
 </div>
